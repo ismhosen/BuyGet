@@ -3,10 +3,10 @@ function myLink()
 {
 	echo "
 		<meta name='viewport' content='width=device-width, initial-scale=1'>
-		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css'>
+		<link rel='stylesheet' href='bootstrap/bootstrap.min.css'>		
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-		<script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js'></script>
+		<script type='text/javascript' src='bootstrap/bootstrap.min.js'></script>
 	";
 }
 function myHeader(){
@@ -18,6 +18,10 @@ function myHeader(){
 		
 		
 		<style type='text/css'>
+			body
+			{
+				background: #e6f0ff;
+			}
 			.signupin
 			{
 				padding: 15px 25px;
@@ -39,8 +43,8 @@ function myHeader(){
 					<div class='navbar-header'>
 						<a class='navbar-brand' href='#home'>Buy & Get</a>
 					</div>
-					<a class='signupin navbar-right' href='#home'><span class='glyphicon glyphicon-user mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign in</font></a>
-					<a class='signupin navbar-right' href='#home'><span class='glyphicon glyphicon-log-in mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign Up</font></a>
+					<a class='signupin navbar-right' href='#home'><span class='fa fa-user mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign in</font></a>
+					<a class='signupin navbar-right' href='#home'><span class='fa fa-hand-o-right mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign Up</font></a>
 
 					<div class='container'>
 						<ul class='nav navbar-nav pull-left'>
@@ -53,8 +57,9 @@ function myHeader(){
 
 							<li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href=''><font class='mynavbar' color='#4d94ff'>Categories <span class='caret'></span> </font></a>
 								<ul class='dropdown-menu'>
-								  <li><a href=''><font class='mynavbar' color='#4d94ff'>Electronics</font></a></li>
-								  <li><a href=''><font class='mynavbar' color='#4d94ff'>Watch</font></a></li>
+								  <li><a href='mobile.php'><font class='mynavbar' color='#4d94ff'>Mobile</font></a></li>
+								  <li><a href='laptop.php'><font class='mynavbar' color='#4d94ff'>Laptop</font></a></li>
+								  <li><a href='watch.php'><font class='mynavbar' color='#4d94ff'>Watch</font></a></li>
 								  <li><a href=''><font class='mynavbar' color='#4d94ff'>cloths</font></a></li>
 								</ul>
 							</li>
@@ -84,14 +89,13 @@ function mySearch()
 			{
 				width:100%;
 				position:fixed;
+				top:0;
 				z-index:1;
 				background-color:rgba(0, 0, 128,0.3);
 			}
 			.mysearchboxx
 			{
-				
-				
-				
+
 			}
 			.mysearchbox
 			{
@@ -100,7 +104,9 @@ function mySearch()
 				height: 30px;
 				border: .1px solid #fff;
 				border-radius: 2px;
-				
+				background-image: url("images/search.png");
+				background-position: 470px 7px; 
+  				background-repeat: no-repeat;
 				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .3);
     			box-shadow: 0 0 10px rgba(0, 0, 204, .3);
 			}
@@ -112,46 +118,34 @@ function mySearch()
 			}
 			.mysearchbox:focus
 			{
-				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .5);
-    			box-shadow: 0 0 10px rgba(0, 0, 204, .5);
-			}
-			.search-container button
-			{
-				color: #fff;
-				background-color: #4d94ff;
-				border: none;
-				padding: 8px 15px;
-			}
-			.search-container button:hover
-			{
 				transition: all .3s ease-in-out;
-				color: #fff;
-				background-color: #000099;
-				border: none;
-				padding: 7px 15px;
-				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .4);
-    			box-shadow: 0 0 10px rgba(0, 0, 204, .4);
+				-webkit-box-shadow: 0 0 10px rgba(255, 255, 255, .7);
+    			box-shadow: 0 0 10px rgba(255, 255, 255, .7);
 			}
-			.advance-search select
+			.mycategories
 			{
-				width: 160px;
-				border: none;
-				padding: 5px 15px;
-				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .3);
-    			box-shadow: 0 0 10px rgba(0, 0, 204, .3);
-			}
-			.advance-search input[type=text]
-			{
+				width: 200px;
+				height: 30px;
+				border: none;;
 				border-radius: 2px;
-				border: none;
-				padding: 5px 15px;
-				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .3);
-    			box-shadow: 0 0 10px rgba(0, 0, 204, .3);
-			}.advance-search input[type=text]:focus
+			}
+			.myprice
+			{
+				width: 80px;
+				height: 30px;
+				border: none;;
+				border-radius: 2px;
+			}
+			.mycategories:focus
 			{
 				transition: all .3s ease-in-out;
-				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .4);
-    			box-shadow: 0 0 10px rgba(0, 0, 204, .4);
+				-webkit-box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    			box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+			}.myprice:focus
+			{
+				transition: all .3s ease-in-out;
+				-webkit-box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+    			box-shadow: 0 0 10px rgba(255, 255, 255, 1);
 			}
 			
 		</style>
@@ -160,21 +154,22 @@ function mySearch()
 		<search>
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-6  text-center mysearchboxx">
+					<div class="col-md-12  text-center mysearchboxx pull-left">
 						<div class="search-container">
-							<form action="" method="POST">
-								<span class="myseacrh"><input type="text" class="mysearchbox" size="30" placeholder="&nbsp;&nbsp;Search here ..." name="search"><button type="submit"><font ><i class="fa fa-search"></i></font></button></span>
+							<form action="" method="POST" class="">
+								<span class="myseacrh"><input type="text" class="mysearchbox "  placeholder="&nbsp;Search here ..." name="search">
+								<select class="mycategories">
+								  <option value="Select from here">Select from here</option>
+								  <option value="Laptop">Laptop</option>
+								  <option value="Mobile">Mobile</option>
+								  <option value="Watch">Watch</option>
+								</select>
+								<span>
+									<label style="color:#fff">&nbsp;&nbsp;Price: &nbsp;</label>
+									<input type="text" class="myprice" placeholder="&nbsp;min" maxlength="6">&nbsp;&nbsp;<span style="color:#fff">-</span>&nbsp;&nbsp;<input type="text" class="myprice" placeholder="&nbsp;max" maxlength="6">&nbsp;&nbsp;<span style="color:#fff">/-</span>
+								</span>
 							</form>			
 						</div>
-					</div>
-					<div class="col-md-6  text-center">
-						<div class="search-container">
-							<form action="" method="POST">
-								<span class="myseacrh"><input type="text" class="mysearchbox" size="30" placeholder="&nbsp;&nbsp;Search here ..." name="search"><button type="submit"><font ><i class="fa fa-search"></i></font></button></span>
-							</form>			
-						</div>
-					</div>
-					
 					</div>
 				</div>
 			</div>

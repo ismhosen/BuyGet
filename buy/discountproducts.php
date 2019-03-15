@@ -87,43 +87,10 @@ mySearch();
 								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
 							</div>
 						</div>
-<!--
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><i class="fa fa-money" style="color:#4d94ff;"></i>&nbsp;<span style="font-weight:bold;"> <del>100000</del> 100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><i class="fa fa-money" style="color:#4d94ff;"></i>&nbsp;<span style="font-weight:bold;"> <del>100000</del> 100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><i class="fa fa-money" style="color:#4d94ff;"></i>&nbsp;<span style="font-weight:bold;"> <del>100000</del> 100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><i class="fa fa-money" style="color:#4d94ff;"></i>&nbsp;<span style="font-weight:bold;"> <del>100000</del> 100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
--->
 					</div>
 				</div>
-			</div>		
+			</div>	
+		</div>
 	</body>
 </html><br><br><br><br><br><br><br><br>
 	

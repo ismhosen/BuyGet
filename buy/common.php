@@ -43,8 +43,8 @@ function myHeader(){
 					<div class='navbar-header'>
 						<a class='navbar-brand' href='#home'>Buy & Get</a>
 					</div>
-					<a class='signupin navbar-right' href='#home'><span class='fa fa-user mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign in</font></a>
-					<a class='signupin navbar-right' href='#home'><span class='fa fa-hand-o-right mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign Up</font></a>
+					<a class='signupin navbar-right' href='signin.php'><span class='fa fa-user mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign in</font></a>
+					<a class='signupin navbar-right' href='signup.php'><span class='fa fa-hand-o-right mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign Up</font></a>
 
 					<div class='container'>
 						<ul class='nav navbar-nav pull-left'>

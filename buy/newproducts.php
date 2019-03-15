@@ -123,7 +123,8 @@ mySearch();
 -->
 					</div>
 				</div>
-			</div>		
+			</div>
+		</div>
 	</body>
 </html><br><br><br><br><br><br><br><br>
 	

@@ -1,5 +1,5 @@
 <?php
-echo "<title>Watch</title>";
+echo "<title>Sign in</title>";
 include 'common.php';
 myLink();
 myHeader();
@@ -71,8 +71,6 @@ mySearch();
 												<hr>
 											</td>
 										</tr>
-										
-										
 									</tbody>	
 								</table>
 								<hr>
@@ -85,8 +83,7 @@ mySearch();
 			</form>
 		</div>
 	</body>
-</html>
-	
+</html>	
 <?php
 myFooter();
 ?>

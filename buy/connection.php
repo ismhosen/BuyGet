@@ -6,5 +6,4 @@ function connection()
 	return $con;
 }
 
-
 ?>

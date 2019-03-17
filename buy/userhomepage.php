@@ -1,9 +1,8 @@
 <?php
-echo "<title>Home</title>";
+echo "<title>UserHomePage</title>";
 include 'common.php';
-include 'connection.php';
 myLink();
-myHeader();
+userHeader();
 mySearch();
 ?>
 <html>
@@ -56,13 +55,6 @@ mySearch();
 				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .4);
     			box-shadow: 0 0 10px rgba(32, 80, 223, .4);
 				
-			}
-			.productdiv img:hover
-			{
-				transition: all .3s ease-in-out; 
-				-ms-transform: scale(1.5); /* IE 9 */
-				-webkit-transform: scale(.5); /* Safari 3-8 */
-  				transform: scale(1.1); 
 			}
 			.text-style{
 				
@@ -132,30 +124,51 @@ mySearch();
 					<br>
 					<span class="new-products-text">New Products</span>
 					<br><br>
-					<div class="row text-center">
-						<?php 
-						$query1=mysqli_query(connection(),"SELECT * FROM laptops LIMIT 5");
-						$rows1=mysqli_num_rows($query1);
-						if($rows1>0)
-						{
-							while($row=mysqli_fetch_assoc($query1))  
-							{
-						
-						?>
+					<div class="row text-center">	
 						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box" style="height:305px;">
-								<img src="images/<?php echo $row['main_image'];?>" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="index.php?id=<?php echo $row['id'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
+							<div class="product-box">
+								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
+								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
 								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
 								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
 							</div>
 						</div>
-						<?php }}?>
+						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
+							<div class="product-box">
+								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
+								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
+								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
+								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
+							<div class="product-box">
+								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
+								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
+								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
+								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
+							<div class="product-box">
+								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
+								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
+								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
+								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
+							<div class="product-box">
+								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
+								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
+								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
+								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
+							</div>
+						</div>
 						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="background: none;valign:bottom;">
-							<a href="discountproducts.php"><span>See all</span></a>
+							<a href="newproducts.php"><span>See all</span></a>
 						</div>
 					</div>
-
 				</div>
 			</div>
 			<div class="discount-products">
@@ -165,7 +178,7 @@ mySearch();
 					<br><br>
 					<div class="row text-center">	
 						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box" style="height:200px;">
+							<div class="product-box">
 								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
 								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
 								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;<span style="font-weight:bold;"> <del>100000</del></span> 100000 /-</span>

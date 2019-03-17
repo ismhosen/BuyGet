@@ -43,8 +43,8 @@ function myHeader(){
 					<div class='navbar-header'>
 						<a class='navbar-brand' href='#home'>Buy & Get</a>
 					</div>
-					<a class='signupin navbar-right' href='signin.php'><span class='fa fa-user mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign in</font></a>
 					<a class='signupin navbar-right' href='signup.php'><span class='fa fa-hand-o-right mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign Up</font></a>
+					<a class='signupin navbar-right' href='signin.php'><span class='fa fa-user mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign in</font></a>
 
 					<div class='container'>
 						<ul class='nav navbar-nav pull-left'>
@@ -54,6 +54,83 @@ function myHeader(){
 						</ul>
 						<ul class='nav navbar-nav pull-right'>
 							<li class='scoll-smooth'><a href='index.php'><font class='mynavbar' color='#4d94ff'>Home</font></a></li>
+
+							<li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href=''><font class='mynavbar' color='#4d94ff'>Categories <span class='caret'></span> </font></a>
+								<ul class='dropdown-menu'>
+								  <li><a href='mobile.php'><font class='mynavbar' color='#4d94ff'>Mobile</font></a></li>
+								  <li><a href='laptop.php'><font class='mynavbar' color='#4d94ff'>Laptop</font></a></li>
+								  <li><a href='watch.php'><font class='mynavbar' color='#4d94ff'>Watch</font></a></li>
+								  <li><a href=''><font class='mynavbar' color='#4d94ff'>cloths</font></a></li>
+								</ul>
+							</li>
+							<li class='scoll-smooth'><a href='#home'><font class='mynavbar' color='#4d94ff'>Help</font></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			
+		</header>
+	</body>
+</html>
+	
+	";
+}
+
+function userHeader(){
+	echo "
+	<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta charset='utf-8'>
+		
+		
+		<style type='text/css'>
+			body
+			{
+				background: #e6f0ff;
+			}
+			.signupin
+			{
+				padding: 15px 25px;
+			}
+			.mynavbar:hover
+			{
+				color: #000099;
+				transition: all .5s ease-in-out;
+				-webkit-transition: all .5s ease-in-out;
+				
+			}
+			.mydropdown
+			{
+				left:80%;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<header>
+			<nav class='navbar navbar-default navbar-fixed-top'>
+				<div class='container-fluid'>
+					<div class='navbar-header'>
+						<a class='navbar-brand' href='#home'>Buy & Get</a>
+					</div>
+					<a class='signupin navbar-right' href='signup.php'><span class='fa fa-sign-out mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign Out</font></a>
+					
+					<a class='signupin navbar-right' data-toggle='dropdown'><span class='fa fa-user mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;My Account<span class='caret'></span></font></a>
+								<ul class='dropdown-menu mydropdown pull-right '>
+								  <li><a href='laptop.php'><font class='mynavbar' color='#4d94ff'>See Cart</font></a></li>
+								  <li><a href='watch.php'><font class='mynavbar' color='#4d94ff'>Update Profile</font></a></li>
+								  <li><a href=''><font class='mynavbar' color='#4d94ff'>Help</font></a></li>
+								</ul>
+
+					<div class='container'>
+						<ul class='nav navbar-nav pull-left'>
+							<li class='scoll-smooth'><a href='#home'><font class='mynavbar' color='#4d94ff'>Gift Cards</font></a></li>
+							<li class='scoll-smooth'><a href='newproducts.php'><font class='mynavbar' color='#4d94ff'>New Products</font></a></li>
+							<li class='scoll-smooth'><a href='discountproducts.php'><font class='mynavbar' color='#4d94ff'>Discount Products</font></a></li>
+						</ul>
+						<ul class='nav navbar-nav pull-right'>
+							<li class='scoll-smooth'><a href='userhomepage.php'><font class='mynavbar' color='#4d94ff'>Home</font></a></li>
 
 							<li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href=''><font class='mynavbar' color='#4d94ff'>Categories <span class='caret'></span> </font></a>
 								<ul class='dropdown-menu'>

@@ -215,7 +215,7 @@ $checkBox=$_POST['checkBox'];
 		if($errCount==1)
 		{
 			//$con=mysqli_connect("localhost","root","","buy&get");
-			$sql="INSERT INTO customers(name,email,password,phone,dob,gender,address) VALUES('$name','$email','$pass','$phone','$date','$address','$gender')";
+			$sql="INSERT INTO customers(name,email,password,phone,dob,gender,address) VALUES('$name','$email','$pass','$phone','$date','$gender','$address')";
 			$sql1="INSERT INTO users(email,password) VALUES('$email','$pass')";
 			mysqli_query(connection(),$sql);
 			mysqli_query(connection(),$sql1);

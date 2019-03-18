@@ -1,7 +1,6 @@
 <?php
 echo "<title>Sign in</title>";
 include 'common.php';
-include 'connection.php';
 myLink();
 myHeader();
 mySearch();
@@ -76,7 +75,12 @@ mySearch();
 												<hr>
 												<input type="password" class="myinput input-sm"  placeholder="&nbsp;Enter your paswword ..." name="password">
 												<?php
-													if($_GET['msg']=='error')
+													
+													if($_GET['msg']=='email_empty' || $_GET['msg']=='pass_empty')
+													{
+														echo "<span class='error'>Username or Password can't be empty</span>";
+													}
+													elseif($_GET['msg']=='error')
 													{
 														echo "<span class='error'>Username or Password invalid</span>";
 													}

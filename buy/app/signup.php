@@ -2,7 +2,7 @@
 session_start();
 echo "<title>Sign Up</title>";
 include 'common.php';
-include 'connection.php';
+include '../data/connection.php';
 myLink();
 myHeader();
 mySearch();

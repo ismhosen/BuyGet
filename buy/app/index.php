@@ -1,7 +1,7 @@
 <?php
 echo "<title>Home</title>";
 include 'common.php';
-include '../data/connection.php';
+include '../data/products_data_access.php';
 myLink();
 myHeader();
 mySearch();
@@ -134,7 +134,8 @@ mySearch();
 					<br><br>
 					<div class="row text-center">
 						<?php 
-						$query1=mysqli_query(connection(),"SELECT * FROM laptops LIMIT 5");
+						//$query1=mysqli_query(connection(),"SELECT * FROM laptops LIMIT 5");
+						$query1=laptops_index_query();
 						$rows1=mysqli_num_rows($query1);
 						if($rows1>0)
 						{

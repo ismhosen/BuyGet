@@ -2,7 +2,7 @@
 	
 include '../data/users_data_access.php';
 
-function validate_login_from_db($email,$pass)
+function validate_signin_from_db($email,$pass)
 {
 	if($email=="")
 	{
@@ -14,7 +14,7 @@ function validate_login_from_db($email,$pass)
 	}
 	else
 	{
-		$rows=mysqli_num_rows(loginQuery($email,$pass));
+		$rows=mysqli_num_rows(signinQuery($email,$pass));
 		if($rows==1)
 		{
 			$_SESSION['email']=$email;

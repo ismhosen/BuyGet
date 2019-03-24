@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../service/user_service.php';
+require '../service/users_service.php';
 $emailErr=$passErr="";
 $errCount=1;
 $email=$_POST['email'];
@@ -11,7 +11,7 @@ if(isset($_POST['submit']))
 {
 
 	echo '<script>alert("message successfully sent")</script>';
-	validate_login_from_db($email,$pass);
+	validate_signin_from_db($email,$pass);
 	
 }
 

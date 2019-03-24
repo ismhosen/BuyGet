@@ -181,11 +181,20 @@ function mySearch()
 				height: 30px;
 				border: .1px solid #fff;
 				border-radius: 2px;
-				background-image: url("images/search.png");
-				background-position: 470px 7px; 
-  				background-repeat: no-repeat;
 				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .3);
     			box-shadow: 0 0 10px rgba(0, 0, 204, .3);
+			}
+			.mysearchbutton
+			{
+				left:-100;
+				margin-top:70px;
+				width: 30px;
+				height: 30px;
+				border: .1px solid #fff;
+				border-radius: 2px;
+				background-image: url("images/search.png");
+				background-position: 7px 7px; 
+  				background-repeat: no-repeat;
 			}
 			.mysearchbox:hover
 			{
@@ -231,10 +240,13 @@ function mySearch()
 		<search>
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-12  text-center mysearchboxx pull-left">
+					<div class="col-md-12  text-center mysearchboxx pull-eft">
 						<div class="search-container">
-							<form action="" method="POST" class="">
-								<span class="myseacrh"><input type="text" class="mysearchbox "  placeholder="&nbsp;Search here ..." name="search">
+							<form action="search.php" method="GET" class="">
+								<span class="myseacrh"><input id="searchBox" onkeyup="searchByAjax()" type="text" class="mysearchbox"  placeholder="&nbsp;Search here ..." name="searchBox" >
+								<input type="submit" class="mysearchbutton" value="">
+								</span>
+
 								<select class="mycategories">
 								  <option value="Select from here">Select from here</option>
 								  <option value="Laptop">Laptop</option>
@@ -256,30 +268,6 @@ function mySearch()
 	
 	';
 }
-//<div class="col-md-12 text-center">
-//						<div class="advance-search">
-//						  	<a href="#demo" class="btn btn-info" data-toggle="collapse">Advance Search</a>
-//							<div id="demo" class="collapse">
-//								<div class="container">
-//									<br>
-//									<div class="categories">
-//										<label style="color:#fff">Categories: &nbsp;</label>
-//										<select>
-//										  <option value="Select from here">Select from here</option>
-//										  <option value="Laptop">Laptop</option>
-//										  <option value="Mobile">Mobile</option>
-//										  <option value="Watch">Watch</option>
-//										</select>
-//									</div><br>
-//									<div class="price">
-//										<form>
-//											<label style="color:#fff">Price: &nbsp;</label>
-//											<input type="text" placeholder="min" size="5" maxlength="6">&nbsp;&nbsp;<span style="color:#fff">-</span>&nbsp;&nbsp;<input type="text" placeholder="max" size="5" maxlength="6">&nbsp;&nbsp;<span style="color:#fff">/-</span>
-//										</form>
-//									</div>
-//								</div>
-//							</div>
-//						</div>
 
 function myFooter()
 {

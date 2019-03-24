@@ -325,3 +325,31 @@ mySearch();
 <?php
 myFooter();
 ?>
+<!--
+<script>
+	function searchByAjax()
+	{
+		$.ajax({
+		  url: 'search.php',
+		  data: {
+			  'searchText':$('#searchBox').val(),
+		  },
+		  method: 'GET',
+		  success: function(result) {
+			console.log(result);
+//			$('#dataTable').html(result);
+		  },
+		  error: function(jqXHR, textStatus, errorThrown) {
+			if(jqXHR.status == '500') {
+			  alert('Internal server error: 500');
+			} else {
+			  alert('Unexpected error');
+			}
+		  }
+		})
+	}
+	$('#chello').click(function(){
+		alert('hello');
+	})
+</script>
+-->

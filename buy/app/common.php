@@ -2,21 +2,20 @@
 function myLink()
 {
 	echo "
+		
+		<meta charset='utf-8'>
 		<meta name='viewport' content='width=device-width, initial-scale=1'>
 		<link rel='stylesheet' href='bootstrap/bootstrap.min.css'>		
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-		<script type='text/javascript' src='bootstrap/bootstrap.min.js'></script>
+		<script type='text/javascript' src='bootstrap/bootstrap.js'></script>
 	";
 }
-function myHeader(){
+function demoheader(){
 	echo "
-	<!DOCTYPE html>
-<html lang='en'>
+<!DOCTYPE html>
+<html lang='en'>	
 	<head>
-		<meta charset='utf-8'>
-		
-		
 		<style type='text/css'>
 			body
 			{
@@ -33,7 +32,6 @@ function myHeader(){
 				-webkit-transition: all .5s ease-in-out;
 				
 			}
-			
 		</style>
 	</head>
 	<body>
@@ -74,6 +72,66 @@ function myHeader(){
 </html>
 	
 	";
+}
+function myheader()
+{
+	echo '
+<!DOCTYPE html>
+<html lang="en">	
+	<head>
+		<style type="text/css">
+			body
+			{
+				background: #e6f0ff;
+			}
+			.signupin
+			{
+				padding: 15px 25px;
+			}
+			.mynavbar:hover
+			{
+				color: #000099;
+				transition: all .5s ease-in-out;
+				-webkit-transition: all .5s ease-in-out;	
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="fa fa-bars""></span>	
+						</button>
+						<a href="#myPage" class="navbar-brand">Buy & Get</a>
+					</div>
+					
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav navbar-right">
+							<a class="signupin navbar-right" href="signup.php"><span class="fa fa-hand-o-right mycolor"></span><font class="mynavbar" color="#4d94ff">&nbsp;&nbsp;Sign Up</font></a>
+							<a class="signupin navbar-right" href="signin.php"><span class="fa fa-user mycolor"></span><font class="mynavbar" color="#4d94ff">&nbsp;&nbsp;Sign in</font></a>
+						</ul>
+						<div class=container>
+							<ul class="nav navbar-nav navbar-left">
+								<li><a href="#home"><font class="mynavbar" color="#4d94ff">Gift Cards</font></a></li>
+								<li><a href="#home"><font class="mynavbar" color="#4d94ff">New Products</font></a></li>
+								<li><a href="#home"><font class="mynavbar" color="#4d94ff">Discount PRoducts</font></a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="scoll-smooth"><a href="index.php"><font class="mynavbar" color="#4d94ff">Home</font></a></li>
+								<li class="scoll-smooth"><a href="index.php"><font class="mynavbar" color="#4d94ff">Categories</font></a></li>
+								<li class="scoll-smooth"><a href="index.php"><font class="mynavbar" color="#4d94ff">Help</font></a></li>
+							</ul>
+						</div>
+						
+					</div>
+				</div>
+			</nav>
+		</header>
+	</body>
+</html>	
+	';
 }
 
 function userHeader(){

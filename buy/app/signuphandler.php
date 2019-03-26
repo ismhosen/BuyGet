@@ -22,8 +22,6 @@ $_SESSION['gender'] = $gender;
 $checkBox=$_POST['checkBox'];
 	if(isset($_POST['submit']))
 	{
-
-		
 		$ch = validate_signup_checkbox($checkBox);
 		$add = validate_signup_address($address);
 		$gen = validate_signup_gender($gender);

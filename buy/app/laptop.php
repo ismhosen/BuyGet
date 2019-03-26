@@ -3,7 +3,7 @@ echo "<title>Laptop</title>";
 include 'common.php';
 include '../data/products_data_access.php';
 myLink();
-myHeader();
+demoheader();
 mySearch();
 ?>
 <html>

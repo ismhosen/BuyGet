@@ -120,7 +120,14 @@ function myheader()
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
 								<li class="scoll-smooth"><a href="index.php"><font class="mynavbar" color="#4d94ff">Home</font></a></li>
-								<li class="scoll-smooth"><a href="index.php"><font class="mynavbar" color="#4d94ff">Categories</font></a></li>
+								<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar" color="#4d94ff">Categories <span class="caret"></span> </font></a>
+									<ul class="dropdown-menu">
+									<li><a href="mobile.php"><font class="mynavbar" color="#4d94ff">Mobile</font></a></li>
+									<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Laptop</font></a></li>
+									<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Watch</font></a></li>
+									<li><a href=""><font class="mynavbar" color="#4d94ff">cloths</font></a></li>
+									</ul>
+								</li>
 								<li class="scoll-smooth"><a href="index.php"><font class="mynavbar" color="#4d94ff">Help</font></a></li>
 							</ul>
 						</div>

@@ -168,5 +168,4 @@ mySearch();
 session_unset();
 //session_destroy();
 myFooter();
-mysqli_query($con);
 ?>

@@ -47,7 +47,7 @@ myLink();
 					<div class="row text-center">
 						<?php 
 						//$query1=mysqli_query(connection(),"SELECT * FROM laptops LIMIT 5");
-						$query1=searchBoxQuery($search);
+						$query1=search_Box_Query($search);
 						$rows1=mysqli_num_rows($query1);
 						if($rows1>0)
 						{

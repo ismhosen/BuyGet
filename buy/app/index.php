@@ -146,14 +146,14 @@ mySearch();
 						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
 							<div class="product-box" style="height:305px;">
 								<img src="images/<?php echo $row['main_image'];?>" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="index.php?id=<?php echo $row['id'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
+								<a href="product_details.php?id=<?php echo $row['id'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
 								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
 								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
 							</div>
 						</div>
 						<?php }}?>
 						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="background: none;valign:bottom;">
-							<a href="discountproducts.php"><span>See all</span></a>
+							<a href="laptop.php"><span>See all</span></a>
 						</div>
 					</div>
 

@@ -126,6 +126,7 @@ mySearch();
 				</div>
 			</div>
 		</div>
+		<div id="demo"></div>
 		<div class="products">
 			<div class="new-products">
 				<div class="container">
@@ -326,31 +327,27 @@ mySearch();
 <?php
 myFooter();
 ?>
-<!--
+
 <script>
 	function searchByAjax()
 	{
-		$.ajax({
-		  url: 'search.php',
-		  data: {
-			  'searchText':$('#searchBox').val(),
-		  },
-		  method: 'GET',
-		  success: function(result) {
-			console.log(result);
-//			$('#dataTable').html(result);
-		  },
-		  error: function(jqXHR, textStatus, errorThrown) {
-			if(jqXHR.status == '500') {
-			  alert('Internal server error: 500');
-			} else {
-			  alert('Unexpected error');
-			}
-		  }
-		})
+		let divid=document.getElementById("demo");
+		let searchid=document.getElementById("searchbox");
+		if(searchid=="")
+		{
+			divid.innerHTML="";
+		}
+		let xhttp=new XMLHttpRequest();
+		xhttp.onreadystatechange=function()
+		{
+			if(this.readyState==4 && this.status==200)
+				{
+					console.log(this.responseText);
+					divid.innerHTML=this.responseText;
+				}
+		};
+		xhttp.open("GET","search.php",true);
+		xhttp.send();
 	}
-	$('#chello').click(function(){
-		alert('hello');
-	})
 </script>
--->
+

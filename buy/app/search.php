@@ -69,9 +69,7 @@ myLink();
 							echo "Null Given";
 						}
 						?>
-						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="background: none;valign:bottom;">
-							<a href="discountproducts.php"><span>See all</span></a>
-						</div>
+						
 					</div>
 
 				</div>

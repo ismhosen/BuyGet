@@ -14,5 +14,9 @@ function laptops_id_query($id)
 {
 	return mysqli_query(connection(),"SELECT * FROM laptops WHERE id=$id");
 }
+function order_By_Date()
+{
+	return mysqli_query(connection(),"SELECT * FROM laptops ORDER BY datee ASC LIMIT 5");
+}
 
 ?>

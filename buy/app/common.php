@@ -4,7 +4,8 @@ function myLink()
 	echo "
 		
 		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width, initial-scale=1'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		
 		<link rel='stylesheet' href='bootstrap/bootstrap.min.css'>		
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
@@ -86,7 +87,12 @@ function myheader()
 			}
 			.signupin
 			{
-				padding: 15px 25px;
+				padding: 15px 20px;
+			}
+			#myNavbar a
+			{
+				margin:0;
+				paddin:0;
 			}
 			.mynavbar:hover
 			{
@@ -94,6 +100,19 @@ function myheader()
 				transition: all .5s ease-in-out;
 				-webkit-transition: all .5s ease-in-out;	
 			}
+			@media screen and (max-width: 932px) and (min-width: 768px) {
+				.signupin {
+					padding: 15px 5px!important;
+				}
+				
+			  }
+			  @media screen and (max-width: 852px) and (min-width: 768px) {
+				
+				.mynavbar, .fa {
+					font-size:11px;
+				}
+			  }
+			  
 		</style>
 	</head>
 	<body>
@@ -115,12 +134,12 @@ function myheader()
 						<div class=container>
 							<ul class="nav navbar-nav navbar-left">
 								<li><a href="#home"><font class="mynavbar" color="#4d94ff">Gift Cards</font></a></li>
-								<li><a href="#home"><font class="mynavbar" color="#4d94ff">New Products</font></a></li>
-								<li><a href="#home"><font class="mynavbar" color="#4d94ff">Discount PRoducts</font></a></li>
+								<li><a href="newproducts.php"><font class="mynavbar" color="#4d94ff">New Products</font></a></li>
+								<li><a href="discountproducts.php"><font class="mynavbar" color="#4d94ff">Discount PRoducts</font></a></li>
 							</ul>
-							<ul class="nav navbar-nav navbar-right">
-								<li class="scoll-smooth"><a href="index.php"><font class="mynavbar" color="#4d94ff">Home</font></a></li>
-								<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar" color="#4d94ff">Categories <span class="caret"></span> </font></a>
+							<ul class="nav navbar-nav navbar-right" id="main-bar">
+								<li class="scoll-smooth"><a href="index.php"><font class="mynavbar " color="#4d94ff">Home</font></a></li>
+								<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff">Categories <span class="caret"></span> </font></a>
 									<ul class="dropdown-menu">
 									<li><a href="mobile.php"><font class="mynavbar" color="#4d94ff">Mobile</font></a></li>
 									<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Laptop</font></a></li>
@@ -247,7 +266,10 @@ function mySearch()
 				border: .1px solid #fff;
 				border-radius: 2px;
 				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .3);
-    			box-shadow: 0 0 10px rgba(0, 0, 204, .3);
+				box-shadow: 0 0 10px rgba(0, 0, 204, .3);
+				background-image: url("images/search.png");
+				background-position: 471px 7px; 
+  				background-repeat: no-repeat;
 			}
 			.mysearchbutton
 			{
@@ -308,20 +330,7 @@ function mySearch()
 					<div class="col-md-12  text-center mysearchboxx pull-eft">
 						<div class="search-container">
 							<form action="search.php" method="GET" class="">
-								<span class="myseacrh"><input id="searchBox" onkeyup="searchByAjax()" type="text" class="mysearchbox"  placeholder="&nbsp;Search here ..." name="searchBox" >
-								<input type="submit" class="mysearchbutton" value="">
-								</span>
-
-								<select class="mycategories">
-								  <option value="Select from here">Select from here</option>
-								  <option value="Laptop">Laptop</option>
-								  <option value="Mobile">Mobile</option>
-								  <option value="Watch">Watch</option>
-								</select>
-								<span>
-									<label style="color:#fff">&nbsp;&nbsp;Price: &nbsp;</label>
-									<input type="text" class="myprice" placeholder="&nbsp;min" maxlength="6">&nbsp;&nbsp;<span style="color:#fff">-</span>&nbsp;&nbsp;<input type="text" class="myprice" placeholder="&nbsp;max" maxlength="6">&nbsp;&nbsp;<span style="color:#fff">/-</span>
-								</span>
+								<span class="myseacrh"><input id="searchBox" onkeyup="searchByAjax(this.value)" type="text" class="mysearchbox"  placeholder="&nbsp;Search here ..." name="searchBox" ></span>
 							</form>			
 						</div>
 					</div>

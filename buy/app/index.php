@@ -243,7 +243,7 @@ mySearch();
 								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
 							</div>
 						</div>
-						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="background: none;width:91px;">
+						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="width:91px;">
 							<a href="discountproducts.php"><span>See all</span></a>
 						</div>
 					</div>
@@ -275,7 +275,7 @@ mySearch();
 							</div>
 						</div>
 						<?php }}?>
-						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="background: none;width:91px;">
+						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="width:91px;">
 							<a href="laptop.php"><span>See all</span></a>
 						</div>
 					</div>
@@ -327,7 +327,7 @@ mySearch();
 								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
 							</div>
 						</div>
-						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="background: none;width:91px;">
+						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="width:91px;">
 							<a href="mobile.php"><span>See all</span></a>
 						</div>
 					</div>

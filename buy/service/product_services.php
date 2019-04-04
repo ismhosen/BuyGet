@@ -12,4 +12,3 @@ include '../data/products_data_access.php';
 			}
 		}
 	}
-?>

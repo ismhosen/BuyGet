@@ -14,11 +14,30 @@ function validate_signin_from_db($email,$pass)
 	}
 	else
 	{
-		$rows=mysqli_num_rows(signin_Query($email,$pass));
+		$signin_Query = signin_Query($email,$pass);
+		$rows=mysqli_num_rows($signin_Query);
 		if($rows==1)
 		{
-			$_SESSION['email']=$email;
-			header('location: userhomepage.php');
+			$query=email_Query($email);
+			while($row=mysqli_fetch_assoc($query))  
+			{
+               $user=array(
+				   'name'=>$row['name'],
+				   'email'=>$row['email'],
+				   'phone'=>$row['phone'],
+				   'dob'=>$row['dob'],
+				   'gender'=>$row['gender'],
+				   'imgname'=>$row['imgname']
+			   );
+			//    echo "<script>alert('gfh')</script>";
+				// $user=json_encode($user_json);
+				// var_dump ($user['email']);
+				// var_dump ($user);
+				$_SESSION['user']=$user;
+			}
+			
+			// header('location: userhomepage.php?email='.$_SESSION['user']['email']);
+			echo "<script>document.location='userhomepage.php';</script>";
 		}
 		else
 		{

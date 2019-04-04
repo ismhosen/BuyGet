@@ -160,81 +160,98 @@ function myheader()
 	';
 }
 
-function userHeader(){
-	echo "
-	<!DOCTYPE html>
-<html lang='en'>
+function userheader()
+{
+	echo '
+<!DOCTYPE html>
+<html lang="en">	
 	<head>
-		<meta charset='utf-8'>
-		
-		
-		<style type='text/css'>
+		<style type="text/css">
 			body
 			{
 				background: #e6f0ff;
 			}
 			.signupin
 			{
-				padding: 15px 25px;
+				padding: 15px 20px;
+			}
+			#myNavbar a
+			{
+				margin:0;
+				paddin:0;
 			}
 			.mynavbar:hover
 			{
 				color: #000099;
 				transition: all .5s ease-in-out;
-				-webkit-transition: all .5s ease-in-out;
+				-webkit-transition: all .5s ease-in-out;	
+			}
+			@media screen and (max-width: 932px) and (min-width: 768px) {
+				.signupin {
+					padding: 15px 5px!important;
+				}
 				
-			}
-			.mydropdown
-			{
-				left:80%;
-			}
-			
+			  }
+			  @media screen and (max-width: 852px) and (min-width: 768px) {
+				
+				.mynavbar, .fa {
+					font-size:11px;
+				}
+			  }
+			  
 		</style>
 	</head>
 	<body>
 		<header>
-			<nav class='navbar navbar-default navbar-fixed-top'>
-				<div class='container-fluid'>
-					<div class='navbar-header'>
-						<a class='navbar-brand' href='#home'>Buy & Get</a>
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="fa fa-bars""></span>	
+						</button>
+						<a href="#myPage" class="navbar-brand">Buy & Get</a>
 					</div>
-					<a class='signupin navbar-right' href='signup.php'><span class='fa fa-sign-out mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;Sign Out</font></a>
 					
-					<a class='signupin navbar-right' data-toggle='dropdown'><span class='fa fa-user mycolor'></span><font class='mynavbar' color='#4d94ff'>&nbsp;&nbsp;My Account<span class='caret'></span></font></a>
-								<ul class='dropdown-menu mydropdown pull-right '>
-								  <li><a href='laptop.php'><font class='mynavbar' color='#4d94ff'>See Cart</font></a></li>
-								  <li><a href='watch.php'><font class='mynavbar' color='#4d94ff'>Update Profile</font></a></li>
-								  <li><a href=''><font class='mynavbar' color='#4d94ff'>Help</font></a></li>
-								</ul>
-
-					<div class='container'>
-						<ul class='nav navbar-nav pull-left'>
-							<li class='scoll-smooth'><a href='#home'><font class='mynavbar' color='#4d94ff'>Gift Cards</font></a></li>
-							<li class='scoll-smooth'><a href='newproducts.php'><font class='mynavbar' color='#4d94ff'>New Products</font></a></li>
-							<li class='scoll-smooth'><a href='discountproducts.php'><font class='mynavbar' color='#4d94ff'>Discount Products</font></a></li>
-						</ul>
-						<ul class='nav navbar-nav pull-right'>
-							<li class='scoll-smooth'><a href='userhomepage.php'><font class='mynavbar' color='#4d94ff'>Home</font></a></li>
-
-							<li class='dropdown'><a class='dropdown-toggle' data-toggle='dropdown' href=''><font class='mynavbar' color='#4d94ff'>Categories <span class='caret'></span> </font></a>
-								<ul class='dropdown-menu'>
-								  <li><a href='mobile.php'><font class='mynavbar' color='#4d94ff'>Mobile</font></a></li>
-								  <li><a href='laptop.php'><font class='mynavbar' color='#4d94ff'>Laptop</font></a></li>
-								  <li><a href='watch.php'><font class='mynavbar' color='#4d94ff'>Watch</font></a></li>
-								  <li><a href=''><font class='mynavbar' color='#4d94ff'>cloths</font></a></li>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav navbar-right">
+							<a class="signupin navbar-right" href="index.php?email=".$_SESSION["email"]"><span class="fa fa-hand-o-right mycolor"></span><font class="mynavbar" color="#4d94ff">&nbsp;&nbsp;Sign Out</font></a>
+							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff">Categories <span class="caret"></span> </font></a>
+								<ul class="dropdown-menu">
+								<li><a href="mobile.php"><font class="mynavbar" color="#4d94ff">Mobile</font></a></li>
+								<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Laptop</font></a></li>
+								<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Watch</font></a></li>
+								<li><a href=""><font class="mynavbar" color="#4d94ff">cloths</font></a></li>
+								<li><a href=""><font class="mynavbar" color="#4d94ff">Help</font></a></li>
 								</ul>
 							</li>
-							<li class='scoll-smooth'><a href='#home'><font class='mynavbar' color='#4d94ff'>Help</font></a></li>
 						</ul>
+						<div class=container>
+							<ul class="nav navbar-nav navbar-left">
+								<li><a href="#home"><font class="mynavbar" color="#4d94ff">Gift Cards</font></a></li>
+								<li><a href="newproducts.php"><font class="mynavbar" color="#4d94ff">New Products</font></a></li>
+								<li><a href="discountproducts.php"><font class="mynavbar" color="#4d94ff">Discount PRoducts</font></a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right" id="main-bar">
+								<li class="scoll-smooth"><a href="index.php"><font class="mynavbar " color="#4d94ff">Home</font></a></li>
+								<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff">Categories <span class="caret"></span> </font></a>
+									<ul class="dropdown-menu">
+									<li><a href="mobile.php"><font class="mynavbar" color="#4d94ff">Mobile</font></a></li>
+									<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Laptop</font></a></li>
+									<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Watch</font></a></li>
+									<li><a href=""><font class="mynavbar" color="#4d94ff">cloths</font></a></li>
+									</ul>
+								</li>
+								
+							</ul>
+						</div>
+						
 					</div>
 				</div>
 			</nav>
-			
 		</header>
 	</body>
-</html>
-	
-	";
+</html>	
+	';
 }
 
 function mySearch()
@@ -271,18 +288,7 @@ function mySearch()
 				background-position: 471px 7px; 
   				background-repeat: no-repeat;
 			}
-			.mysearchbutton
-			{
-				left:-100;
-				margin-top:70px;
-				width: 30px;
-				height: 30px;
-				border: .1px solid #fff;
-				border-radius: 2px;
-				background-image: url("images/search.png");
-				background-position: 7px 7px; 
-  				background-repeat: no-repeat;
-			}
+		
 			.mysearchbox:hover
 			{
 				transition: all .3s ease-in-out;
@@ -320,6 +326,42 @@ function mySearch()
 				-webkit-box-shadow: 0 0 10px rgba(255, 255, 255, 1);
     			box-shadow: 0 0 10px rgba(255, 255, 255, 1);
 			}
+			@media screen and (max-width: 550px) and (min-width: 462px) {
+				
+				#searchBox {
+					width:400px;
+				}
+				.mysearchbox
+				{
+					background-image: url("images/search.png");
+				background-position: 370px 7px; 
+  				background-repeat: no-repeat;
+				}
+			  }
+			  @media screen and (max-width: 461px) and (min-width: 332px) {
+				
+				#searchBox {
+					width:300px;
+				}
+				.mysearchbox
+				{
+					background-image: url("images/search.png");
+				background-position: 270px 7px; 
+  				background-repeat: no-repeat;
+				}
+			  }
+			  @media screen and (max-width: 332px) and (min-width: 100px) {
+				
+				#searchBox {
+					width:200px;
+				}
+				.mysearchbox
+				{
+					background-image: url("images/search.png");
+				background-position: 170px 7px; 
+  				background-repeat: no-repeat;
+				}
+			  }
 			
 		</style>
 	</head>

@@ -160,97 +160,102 @@ function myheader()
 	';
 }
 
-function userheader()
+function userheader($name,$imgname)
 {
 	echo '
-<!DOCTYPE html>
+	<!DOCTYPE html>
 <html lang="en">	
 	<head>
 		<style type="text/css">
-			body
-			{
-				background: #e6f0ff;
+		body
+		{
+			background: #e6f0ff;
+		}
+		nav
+		{
+			background-color:rgba(0, 0, 128,0.3);
+		}
+		.signupin
+		{
+			padding: 15px 20px;
+		}
+		#myNavbar a
+		{
+			margin:0;
+			paddin:0;
+		}
+		.mynavbar:hover
+		{
+			color: #000099;
+			transition: all .5s ease-in-out;
+			-webkit-transition: all .5s ease-in-out;	
+		}
+		@media screen and (max-width: 932px) and (min-width: 768px) {
+			.signupin {
+				padding: 15px 5px!important;
 			}
-			.signupin
-			{
-				padding: 15px 20px;
+		
+			
+		  }
+		  @media screen and (max-width: 858px) and (min-width: 768px) {
+			
+			.mynavbar, .fa {
+				font-size:11px;
 			}
-			#myNavbar a
-			{
-				margin:0;
-				paddin:0;
-			}
-			.mynavbar:hover
-			{
-				color: #000099;
-				transition: all .5s ease-in-out;
-				-webkit-transition: all .5s ease-in-out;	
-			}
-			@media screen and (max-width: 932px) and (min-width: 768px) {
-				.signupin {
-					padding: 15px 5px!important;
-				}
-				
-			  }
-			  @media screen and (max-width: 852px) and (min-width: 768px) {
-				
-				.mynavbar, .fa {
-					font-size:11px;
-				}
-			  }
+		
+		  }
 			  
 		</style>
 	</head>
 	<body>
-		<header>
-			<nav class="navbar navbar-default navbar-fixed-top">
-				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-							<span class="fa fa-bars""></span>	
-						</button>
-						<a href="#myPage" class="navbar-brand">Buy & Get</a>
-					</div>
-					
-					<div class="collapse navbar-collapse" id="myNavbar">
-						<ul class="nav navbar-nav navbar-right">
-							<a class="signupin navbar-right" href="index.php?email=".$_SESSION["email"]"><span class="fa fa-hand-o-right mycolor"></span><font class="mynavbar" color="#4d94ff">&nbsp;&nbsp;Sign Out</font></a>
-							<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff">Categories <span class="caret"></span> </font></a>
-								<ul class="dropdown-menu">
-								<li><a href="mobile.php"><font class="mynavbar" color="#4d94ff">Mobile</font></a></li>
-								<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Laptop</font></a></li>
-								<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Watch</font></a></li>
-								<li><a href=""><font class="mynavbar" color="#4d94ff">cloths</font></a></li>
-								<li><a href=""><font class="mynavbar" color="#4d94ff">Help</font></a></li>
-								</ul>
-							</li>
+	<header>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="fa fa-bars""></span>	
+				</button>
+				<a href="#myPage" class="navbar-brand">Buy & Get</a>
+			</div>
+			
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff"><img class="img-circle" src="images/'.$imgname.'" width="21px" height="21px">&nbsp;&nbsp;'.$name.' <span class="caret"></span> </font></a>
+						<ul class="dropdown-menu">
+						<li><a href="userprofile.php"><font class="mynavbar" color="#4d94ff">My Profile</font></a></li>
+						<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Cart Requests</font></a></li>
+						<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Bookmarks products</font></a></li>
+						<li><a href="index.php"><font class="mynavbar" color="#4d94ff">Sign Out</font></a></li>
+						<li><a href=""><font class="mynavbar" color="#4d94ff">Help</font></a></li>
 						</ul>
-						<div class=container>
-							<ul class="nav navbar-nav navbar-left">
-								<li><a href="#home"><font class="mynavbar" color="#4d94ff">Gift Cards</font></a></li>
-								<li><a href="newproducts.php"><font class="mynavbar" color="#4d94ff">New Products</font></a></li>
-								<li><a href="discountproducts.php"><font class="mynavbar" color="#4d94ff">Discount PRoducts</font></a></li>
+					</li>
+				</ul>
+				<div class=container>
+					<ul class="nav navbar-nav navbar-left">
+						<li><a href="#home"><font class="mynavbar" color="#4d94ff">Gift Cards</font></a></li>
+						<li><a href="newproducts.php"><font class="mynavbar" color="#4d94ff">New Products</font></a></li>
+						<li><a href="discountproducts.php"><font class="mynavbar" color="#4d94ff">Discount PRoducts</font></a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right" id="main-bar">
+						<li class="scoll-smooth"><a href="index.php"><font class="mynavbar " color="#4d94ff">Home</font></a></li>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff">Categories <span class="caret"></span> </font></a>
+							<ul class="dropdown-menu">
+							<li><a href="mobile.php"><font class="mynavbar" color="#4d94ff">Mobile</font></a></li>
+							<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Laptop</font></a></li>
+							<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Watch</font></a></li>
+							<li><a href=""><font class="mynavbar" color="#4d94ff">cloths</font></a></li>
 							</ul>
-							<ul class="nav navbar-nav navbar-right" id="main-bar">
-								<li class="scoll-smooth"><a href="index.php"><font class="mynavbar " color="#4d94ff">Home</font></a></li>
-								<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff">Categories <span class="caret"></span> </font></a>
-									<ul class="dropdown-menu">
-									<li><a href="mobile.php"><font class="mynavbar" color="#4d94ff">Mobile</font></a></li>
-									<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Laptop</font></a></li>
-									<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Watch</font></a></li>
-									<li><a href=""><font class="mynavbar" color="#4d94ff">cloths</font></a></li>
-									</ul>
-								</li>
-								
-							</ul>
-						</div>
+						</li>
 						
-					</div>
+					</ul>
 				</div>
-			</nav>
-		</header>
+				
+			</div>
+		</div>
+	</nav>
+</header>
 	</body>
-</html>	
+</html>		
 	';
 }
 
@@ -394,12 +399,10 @@ function myFooter()
 	<head>
 		<meta charset="utf-8">		
 		<style type="text/css">
-			.signupin
-			{
-				padding: 15px 25px;
-			}
+			
 			.footer 
 			{
+				position:relative;
 			  	left: 0;
 			  	bottom: 0;
 			  	width: 100%;
@@ -407,6 +410,7 @@ function myFooter()
 				-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .25);
     			box-shadow: 0 0 10px rgba(0, 0, 0, .25);
 				padding: 25px;
+				
 			}
 			.myicon{
 				padding: 5px 10px;

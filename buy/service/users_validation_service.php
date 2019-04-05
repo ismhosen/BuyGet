@@ -27,6 +27,7 @@ function validate_signin_from_db($email,$pass)
 				   'phone'=>$row['phone'],
 				   'dob'=>$row['dob'],
 				   'gender'=>$row['gender'],
+				   'address'=>$row['address'],
 				   'imgname'=>$row['imgname']
 			   );
 			//    echo "<script>alert('gfh')</script>";

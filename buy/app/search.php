@@ -7,6 +7,10 @@ myLink();
 <html>
 	<head>
 		<style>
+			body
+			{
+				background: #e6f0ff;
+			}
 			.products
 			{
 				background: #e6f0ff;

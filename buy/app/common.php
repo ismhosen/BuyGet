@@ -123,7 +123,7 @@ function myheader()
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 							<span class="fa fa-bars""></span>	
 						</button>
-						<a href="#myPage" class="navbar-brand">Buy & Get</a>
+						<a href="index.php" class="navbar-brand">Buy & Get</a>
 					</div>
 					
 					<div class="collapse navbar-collapse" id="myNavbar">
@@ -215,7 +215,7 @@ function userheader($name,$imgname)
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 					<span class="fa fa-bars""></span>	
 				</button>
-				<a href="#myPage" class="navbar-brand">Buy & Get</a>
+				<a href="userhomepage.php" class="navbar-brand">Buy & Get</a>
 			</div>
 			
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -237,7 +237,7 @@ function userheader($name,$imgname)
 						<li><a href="discountproducts.php"><font class="mynavbar" color="#4d94ff">Discount PRoducts</font></a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right" id="main-bar">
-						<li class="scoll-smooth"><a href="index.php"><font class="mynavbar " color="#4d94ff">Home</font></a></li>
+						<li class="scoll-smooth"><a href="userhomepage.php"><font class="mynavbar " color="#4d94ff">Home</font></a></li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff">Categories <span class="caret"></span> </font></a>
 							<ul class="dropdown-menu">
 							<li><a href="mobile.php"><font class="mynavbar" color="#4d94ff">Mobile</font></a></li>
@@ -268,6 +268,7 @@ function mySearch()
 	<head>
 		<meta charset="utf-8">		
 		<style type="text/css">
+			
 			search
 			{
 				width:100%;

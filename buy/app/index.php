@@ -1,5 +1,7 @@
 <?php
 echo "<title>Home</title>";
+session_start();
+session_destroy();
 include 'common.php';
 include '../data/products_data_access.php';
 myLink();
@@ -338,7 +340,6 @@ mySearch();
 		
 	</body>
 </html>
-<p id="par"></p>
 <?php
 myFooter();
 ?>

@@ -35,7 +35,7 @@ userheader($name,$imgname);
             table tbody tr td
 			{
 				padding: 10px;
-				border:1px solid rgba(77,148,255,.3);
+				/* border:1px solid rgba(77,148,255,.3); */
 			}
 			table tbody tr:hover
 			{
@@ -124,26 +124,76 @@ userheader($name,$imgname);
                             </tr>
                         </tbody>
                     </table><br>
-                    <form method="POST" action="" id="formid">
-                        <input type="submit" name="submit" id="imgSubmitBtn" value="Update Profile" class="submitBtn" onclick="">
-                    </form>
+                    
+                    <input  type="button" name="submit" id="imgSubmitBtn" value="Update Profile" class="submitBtn" onclick='editByAjax()'>
+                    <input  type="button" name="submit" id="imgSubmitBtn" value="Update Password" class="submitBtn" onclick='editpassByAjax()'>
+                    
                 </div>
             </div>
+            <div id="demo"></div>
         </div>
 		<script>
-            let edit_image_btn=document.getElementById('edit_image_btn');
-            let formid=document.getElementById('formid');
-            let imgSubmitBtn=document.getElementById('imgSubmitBtn');
-            let imgErr=document.getElementById('imgErr');
-            edit_image_btn.onclick=function()
+            // let edit_image_btn=document.getElementById('edit_image_btn');
+            // let formid=document.getElementById('formid');
+            // let imgSubmitBtn=document.getElementById('imgSubmitBtn');
+            // let imgErr=document.getElementById('imgErr');
+            // edit_image_btn.onclick=function()
+            // {
+            //     formid.style.display="block";
+            //     imgSubmitBtn.onclick=function()
+            //     {
+            //         formid.style.display="block";
+            //         imgErr.innerhtml="block";
+            //         alert('hello');
+            //     }
+            // }
+            function editByAjax()
             {
-                formid.style.display="block";
-                imgSubmitBtn.onclick=function()
+                
+                let divid=document.getElementById("demo");
+                let xhttp=new XMLHttpRequest();
+                xhttp.onreadystatechange=function()
                 {
-                    formid.style.display="block";
-                    imgErr.innerhtml="block";
-                    alert('hello');
-                }
+                    console.log(this.readyState);
+                    console.log(this.status);
+                if(this.readyState==4 && this.status==200)
+                    {
+                       
+                        // console.log("200: ",this.responseText);
+                        // console.log(this.responseText);
+                        // alert(this.responseText);
+                        
+                        // divid.style.display = "block";
+                        divid.innerHTML=this.responseText;
+                    }
+                };
+                xhttp.open("GET","editprofile.php",true);
+                xhttp.send();
+            
+            }
+            function editpassByAjax()
+            {
+                
+                let divid=document.getElementById("demo");
+                let xhttp=new XMLHttpRequest();
+                xhttp.onreadystatechange=function()
+                {
+                    console.log(this.readyState);
+                    console.log(this.status);
+                if(this.readyState==4 && this.status==200)
+                    {
+                       
+                        // console.log("200: ",this.responseText);
+                        // console.log(this.responseText);
+                        // alert(this.responseText);
+                        
+                        // divid.style.display = "block";
+                        divid.innerHTML=this.responseText;
+                    }
+                };
+                xhttp.open("GET","editpassword.php",true);
+                xhttp.send();
+            
             }
             
         </script>

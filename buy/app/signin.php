@@ -3,7 +3,6 @@ echo "<title>Sign in</title>";
 include 'common.php';
 myLink();
 myHeader();
-mySearch();
 ?>
 
 <html>

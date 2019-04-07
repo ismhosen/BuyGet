@@ -5,7 +5,6 @@ include 'common.php';
 //include '../service/users_service.php';
 myLink();
 myHeader();
-mySearch();
 ?>
 
 <html>

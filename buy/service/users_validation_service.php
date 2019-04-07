@@ -24,6 +24,7 @@ function validate_signin_from_db($email,$pass)
                $user=array(
 				   'name'=>$row['name'],
 				   'email'=>$row['email'],
+				   'password'=>$row['password'],
 				   'phone'=>$row['phone'],
 				   'dob'=>$row['dob'],
 				   'gender'=>$row['gender'],
@@ -212,6 +213,41 @@ function validate_signup_checkbox($checkBox)
 	if($checkBox=="")
 	{
 				return "*Check required";
+	}
+	return "";
+}
+function validate_update_name($name)
+{
+	$word=str_word_count($name);
+	if($word<2)
+	{
+		return "*Name at least two words";
+	}
+	return "";
+}
+function validate_update_password($pass,$cpass)
+{
+	$passErrlocal=0;
+	//var_dump(strlen($pass) != 5);
+	if(strlen($pass) != 5) 
+	{
+		return "*Password must be five (5) characters";	
+	}
+	elseif(!(count((explode("@",$pass)))>=2||count(explode("#",$pass))>=2||count(explode("$",$pass))>=2||count(explode("%",$pass))>=2))
+	{
+		return "*Password must contain at least one of the special characters (@, #, $, %)";
+	}
+	elseif($pass!=$cpass)
+	{
+		return "*Password doesn't match";
+	}
+	return "";
+}
+function validate_update_phone($phone)
+{
+	if(strlen($phone) != 11) 
+	{
+				return "*Mobile no must be (11) characters";
 	}
 	return "";
 }

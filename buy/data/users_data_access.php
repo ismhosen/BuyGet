@@ -13,6 +13,18 @@ function signup_Query($name,$email,$pass,$phone,$date,$gender,$address)
 	mysqli_query(connection(),$sql);
 	mysqli_query(connection(),$sql1);
 }
+function update_Query($name,$email,$phone,$date,$address)
+{
+	$address=mysqli_real_escape_string(connection(),$address);
+	$sql="UPDATE customers SET name='$name', phone='$phone', dob='$date', address='$address' WHERE email='$email'";
+	mysqli_query(connection(),$sql);
+}
+function update_password_Query($email,$pass)
+{
+	$address=mysqli_real_escape_string(connection(),$address);
+	$sql="UPDATE customers SET password='$pass' WHERE email='$email'";
+	mysqli_query(connection(),$sql);
+}
 function email_Query($email)
 {
 	return mysqli_query(connection(),"SELECT * FROM customers WHERE email='$email'");

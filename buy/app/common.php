@@ -5,7 +5,6 @@ function myLink()
 		
 		<meta charset='utf-8'>
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-		
 		<link rel='stylesheet' href='bootstrap/bootstrap.min.css'>		
 		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
@@ -123,7 +122,7 @@ function myheader()
 						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 							<span class="fa fa-bars""></span>	
 						</button>
-						<a href="index.php" class="navbar-brand">Buy & Get</a>
+						<a href="index.php" class="navbar-brand"><img src="images/logo.png" width=70px></a>
 					</div>
 					
 					<div class="collapse navbar-collapse" id="myNavbar">
@@ -215,7 +214,7 @@ function userheader($name,$imgname)
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 					<span class="fa fa-bars""></span>	
 				</button>
-				<a href="userhomepage.php" class="navbar-brand">Buy & Get</a>
+				<a href="homepagebuyer.php" class="navbar-brand">Buy & Get</a>
 			</div>
 			
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -237,7 +236,7 @@ function userheader($name,$imgname)
 						<li><a href="discountproducts.php"><font class="mynavbar" color="#4d94ff">Discount PRoducts</font></a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right" id="main-bar">
-						<li class="scoll-smooth"><a href="userhomepage.php"><font class="mynavbar " color="#4d94ff">Home</font></a></li>
+						<li class="scoll-smooth"><a href="homepagebuyer.php"><font class="mynavbar " color="#4d94ff">Home</font></a></li>
 						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff">Categories <span class="caret"></span> </font></a>
 							<ul class="dropdown-menu">
 							<li><a href="mobile.php"><font class="mynavbar" color="#4d94ff">Mobile</font></a></li>

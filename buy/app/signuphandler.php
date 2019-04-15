@@ -3,6 +3,7 @@ session_start();
 require '../service/users_validation_service.php';
 $nameErr=$emailErr=$passErr=$cpassErr=$phoneErr=$dateErr=$addresErr=$genderErr=$emailErrspace="";
 $errCount=1;
+$types=$_POST['types'];
 $name=$_POST['fullname'];
 $_SESSION['name'] = $name;
 $email=$_POST['email'];
@@ -32,7 +33,7 @@ $checkBox=$_POST['checkBox'];
 		$name1 = validate_signup_name($name);
 		if($ch == "" && $add == "" && $gen == "" && $date1 == "" && $phone1 == "" && $pass1 == "" && $email1 == "" && $name1 == "")
 		{
-			signup_Query($name,$email,$pass,$phone,$date,$gender,$address);
+			signup_Query($name,$email,$pass,$phone,$date,$gender,$address,$types);
 			echo "<script>document.location='signin.php';</script>";
 			$_SESSION['name'] = "";
 			$_SESSION['email'] = "";

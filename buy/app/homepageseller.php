@@ -1,11 +1,23 @@
 <?php
-echo "<title>Buy & Get</title>";
 session_start();
-session_destroy();
 include 'common.php';
+include '../service/user_service.php';
 include '../data/products_data_access.php';
+$email=$_SESSION['user']['email'];
+$name=$_SESSION['user']['name'];
+$imgname=$_SESSION['user']['imgname'];
+// get_users($email);
+// echo "<script>alert('$email')</script>";
+echo "<title>Buy & Get</title>";
 myLink();
-myHeader();
+if($email=="")
+{
+	myHeader();
+}
+else
+{
+	userHeader($name,$imgname);
+}
 mySearch();
 ?>
 <!DOCTYPE html>
@@ -366,6 +378,7 @@ myFooter();
 					divid.style.display = "block";
 					divid.innerHTML=this.responseText;
 				}
+			
 			};
 			xhttp.open("GET","search.php?str="+str,true);
 			xhttp.send();

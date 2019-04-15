@@ -1,9 +1,21 @@
 <?php
 echo "<title>Laptop</title>";
+session_start();
+$email=$_SESSION['user']['email'];
+$name=$_SESSION['user']['name'];
+$imgname=$_SESSION['user']['imgname'];
 include 'common.php';
 include '../data/products_data_access.php';
 myLink();
-demoheader();
+if($email=="")
+{
+	myHeader();
+}
+else
+{
+	userHeader($name,$imgname);
+}
+
 mySearch();
 ?>
 <html>
@@ -85,15 +97,15 @@ mySearch();
 									<a href="#brand-collapse" class="" data-toggle="collapse"><span style="font-size:15px;" class="">Brand</span><span  style="font-size:15px;" class="pull-right fa fa-plus "> </span> </a><hr class="title-hr">
 									<div id="brand-collapse" class="collapse collapse-style" style="">
 										<form>
-											<input type="radio" name="asus"><span>&nbsp;&nbsp;Asus</span><hr>
-											<input type="radio" name="accer"><span>&nbsp;&nbsp;Accer</span><hr>
-											<input type="radio" name="dell"><span>&nbsp;&nbsp;Dell</span><hr>
-											<input type="radio" name="hp"><span>&nbsp;&nbsp;HP</span><hr>
-											<input type="radio" name="lenevo"><span>&nbsp;&nbsp;Lenevo</span><hr>
-											<input type="radio" name="microsoft"><span>&nbsp;&nbsp;Microsoft</span><hr>
-											<input type="radio" name="macbook"><span>&nbsp;&nbsp;Macbook</span><hr>
-											<input type="radio" name="razer"><span>&nbsp;&nbsp;Razer</span><hr>
-											<input type="radio" name="ilife"><span>&nbsp;&nbsp;I-Life</span><hr>
+											<input type="radio" id="asus" name="asus" value="Asus" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Asus</span><hr>
+											<input type="radio" id="accer" name="accer" value="Accer" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Accer</span><hr>
+											<input type="radio" id="dell" name="dell" value="Dell" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Dell</span><hr>
+											<input type="radio" id="hp" name="hp" value="HP" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;HP</span><hr>
+											<input type="radio" id="lenovo" name="lenovo" value="Lenovo" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Lenevo</span><hr>
+											<input type="radio" id="microsoft" name="microsoft" value="Microsoft" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Microsoft</span><hr>
+											<input type="radio" id="macbook" name="macbook" value="Macbook" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Macbook</span><hr>
+											<input type="radio" id="razer" name="razer" value="Razer" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Razer</span><hr>
+											<input type="radio" id="ilife" name="ilife" value="ilife" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;I-Life</span><hr>
 										</form>
 									</div>
 								</div>
@@ -202,11 +214,11 @@ mySearch();
 									</div>
 								</div>
 							</div>
-							
 						</div>
-						
+						<div id="searchdiv"></div>
 						<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
 							<span class="laptop-products-text pull-left">Laptops</span><br><hr style="background:#4d94ff;height:1px;">
+							
 							<?php 
 							$query1=laptops_all_query();
 							$rows1=mysqli_num_rows($query1);
@@ -232,7 +244,92 @@ mySearch();
 			</div>
 		</div>
 	</body>
-</html><br><br><br><br><br><br><br><br>
+	<script>
+		function brandsearchbyajax()
+		{
+			let divid=document.getElementById("searchdiv");
+			var asus_input_id=document.getElementById("asus");
+			var accer_input_id=document.getElementById("accer");
+			var dell_input_id=document.getElementById("dell");
+			var hp_input_id=document.getElementById("hp");
+			var lenovo_input_id=document.getElementById("lenovo");
+			var microsoft_input_id=document.getElementById("microsoft");
+			var macbook_input_id=document.getElementById("macbook");
+			var razer_input_id=document.getElementById("razer");
+			var ilife_input_id=document.getElementById("ilife");
+			if(asus_input_id.checked==true)
+			{
+				var asus_brand=asus_input_id.value;
+				
+			}
+			if(accer_input_id.checked==true)
+			{
+				var accer_brand=accer_input_id.value;
+				
+			}
+			if(dell_input_id.checked==true)
+			{
+				var dell_brand=dell_input_id.value;
+				
+			}
+			if(hp_input_id.checked==true)
+			{
+				var hp_brand=hp_input_id.value;
+				
+			}
+			if(lenovo_input_id.checked==true)
+			{
+				var lenovo_brand=lenovo_input_id.value;
+				
+			}
+			if(microsoft_input_id.checked==true)
+			{
+				var microsoft_brand=microsoft_input_id.value;
+				
+			}
+			if(macbook_input_id.checked==true)
+			{
+				var macbook_brand=macbook_input_id.value;
+				
+			}
+			if(razer_input_id.checked==true)
+			{
+				var razer_brand=razer_input_id.value;
+				
+			}
+			if(ilife_input_id.checked==true)
+			{
+				var ilife_brand=ilife_input_id.value;
+				
+			}			
+			// alert(asus_brand);
+			// alert(accer_brand);
+			// alert(brands);
+			let xhttp=new XMLHttpRequest();
+			if(asus_brand=="" && accer_brand=="" && dell_brand=="" && hp_brand=="" && lenovo_brand=="" && microsoft_brand=="" && macbook_brand=="" && razer_brand=="" && ilife_brand=="")
+				{
+					
+					divid.style.display = "none";
+				}
+			else
+			{
+				xhttp.onreadystatechange=function()
+				{
+					
+				if(this.readyState==4 && this.status==200)
+					{
+						// console.log("200: ",this.responseText);
+						// alert(this.responseText);
+						divid.style.display = "block";
+						divid.innerHTML=this.responseText;
+					}
+				};
+				xhttp.open("GET","searchByCategory.php?asus_brand="+asus_brand + "&accer_brand="+accer_brand + "&dell_brand="+dell_brand + "&hp_brand="+hp_brand + "&lenovo_brand="+lenovo_brand + "&microsoft_brand="+microsoft_brand + "&macbook_brand="+macbook_brand + "&razer_brand="+razer_brand + "&ilife_brand="+ilife_brand,true);
+				xhttp.send();
+			}
+		}
+	</script>
+</html>
 	
 <?php
 myFooter();

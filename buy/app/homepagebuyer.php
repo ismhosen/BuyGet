@@ -9,12 +9,15 @@ $imgname=$_SESSION['user']['imgname'];
 // get_users($email);
 // echo "<script>alert('$email')</script>";
 echo "<title>Buy & Get</title>";
+myLink();
 if($email=="")
 {
-	header('location: index.php');
+	myHeader();
 }
-myLink();
-userHeader($name,$imgname);
+else
+{
+	userHeader($name,$imgname);
+}
 mySearch();
 ?>
 <!DOCTYPE html>

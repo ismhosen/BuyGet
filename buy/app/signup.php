@@ -58,9 +58,22 @@ myHeader();
 									<tbody>
 										<tr>
 											<td>
-												<label>Full Name : &nbsp;</label>
+												<label style="color:#4d94ff">Become a : &nbsp;</label>
 											</td>
 											<td>
+												<select class="myinput input-sm" style="cursor:pointer;" name="types">
+													<option>buyer</option>
+													<option>Seller</option>
+												</select>
+											</td>		
+										</tr>
+										<tr>
+											<td>
+												<hr>	
+												<label>Full Name : &nbsp;</label>
+											</td>
+											<td>	
+												<hr>
 												<input type="text" class="myinput input-sm"  placeholder="&nbsp;Enter your Full Name..." name="fullname" size="50" value="<?php echo $_SESSION['name'];?>">
 												<span class="error"><?php echo $_GET['msgname']?></span>
 											</td>		

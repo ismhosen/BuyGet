@@ -4,6 +4,7 @@ include '../data/users_data_access.php';
 
 function validate_signin_from_db($email,$pass)
 {
+	$types="";
 	if($email=="")
 	{
 		header('location: signin.php?msg=email_empty');
@@ -18,6 +19,12 @@ function validate_signin_from_db($email,$pass)
 		$rows=mysqli_num_rows($signin_Query);
 		if($rows==1)
 		{
+			while($row=mysqli_fetch_assoc($signin_Query))  
+			{
+				$types=$row['type'];
+				echo "<script>alert('$types')</script>";
+			}
+			
 			$query=email_Query($email);
 			while($row=mysqli_fetch_assoc($query))  
 			{
@@ -37,9 +44,16 @@ function validate_signin_from_db($email,$pass)
 				// var_dump ($user);
 				$_SESSION['user']=$user;
 			}
-			
+			if($types=="buyer")
+			{
+				echo "<script>document.location='homepagebuyer.php';</script>";
+			}
+			else
+			{
+				echo "<script>document.location='homepageseller.php';</script>";
+			}
 			// header('location: userhomepage.php?email='.$_SESSION['user']['email']);
-			echo "<script>document.location='userhomepage.php';</script>";
+			
 		}
 		else
 		{
@@ -227,19 +241,26 @@ function validate_update_name($name)
 }
 function validate_update_password($pass,$cpass)
 {
-	$passErrlocal=0;
-	//var_dump(strlen($pass) != 5);
-	if(strlen($pass) != 5) 
+	if($pass==""||$cpass=="")
 	{
-		return "*Password must be five (5) characters";	
+				return "*Password is required";
 	}
-	elseif(!(count((explode("@",$pass)))>=2||count(explode("#",$pass))>=2||count(explode("$",$pass))>=2||count(explode("%",$pass))>=2))
+	else
 	{
-		return "*Password must contain at least one of the special characters (@, #, $, %)";
-	}
-	elseif($pass!=$cpass)
-	{
-		return "*Password doesn't match";
+		$passErrlocal=0;
+		//var_dump(strlen($pass) != 5);
+		if(strlen($pass) != 5) 
+		{
+			return "*Password must be five (5) characters";	
+		}
+		elseif(!(count((explode("@",$pass)))>=2||count(explode("#",$pass))>=2||count(explode("$",$pass))>=2||count(explode("%",$pass))>=2))
+		{
+			return "*Password must contain at least one of the special characters (@, #, $, %)";
+		}
+		elseif($pass!=$cpass)
+		{
+			return "*Password doesn't match";
+		}
 	}
 	return "";
 }

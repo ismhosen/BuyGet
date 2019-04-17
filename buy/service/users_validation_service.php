@@ -22,7 +22,8 @@ function validate_signin_from_db($email,$pass)
 			while($row=mysqli_fetch_assoc($signin_Query))  
 			{
 				$types=$row['type'];
-				echo "<script>alert('$types')</script>";
+				$_SESSION['type']=$types;
+				// echo "<script>alert('$types')</script>";
 			}
 			
 			$query=email_Query($email);

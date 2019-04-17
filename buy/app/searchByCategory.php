@@ -1,5 +1,6 @@
 <?php
 include '../data/search_data_access.php';
+// include '../data/connection.php';
 include 'common.php';
 $asus_brand=$_GET['asus_brand'];
 $accer_brand=$_GET['accer_brand'];
@@ -10,6 +11,7 @@ $microsoft_brand=$_GET['microsoft_brand'];
 $macbook_brand=$_GET['macbook_brand'];
 $razer_brand=$_GET['razer_brand'];
 $ilife_brand=$_GET['ilife_brand'];
+$i3_brand=$_GET['i3_brand'];
 myLink();
 ?>
 <html>
@@ -60,7 +62,24 @@ myLink();
 					<div class="row text-center">
 						<?php 
 						
-						$query1=search_By_Brand($asus_brand);
+						$query1=search_By_Brand($asus_brand,$accer_brand,$i3_brand);
+						// $query="SELECT * FROM laptops WHERE status='1'";
+						// var_dump($asus_brand);
+						// if($asus_brand!="undefined" && !empty($asus_brand))
+						// {
+						// 	$query .=" OR brand LIKE '%".$asus_brand."%'";
+						// }
+						// if($accer_brand!="undefined" && !empty($accer_brand))
+						// {
+						// 	$query .=" OR brand LIKE '%".$accer_brand."%'";
+						// }
+						// if($i3_brand!="undefined" && !empty($i3_brand))
+						// {
+						// 	$query .=" AND processor LIKE '%".$i3_brand."%'";
+						// }
+						// var_dump($query);
+						// $result=mysqli_query(connection(),$query);
+						var_dump($query1);
 						$rows1=mysqli_num_rows($query1);
 						if($rows1>0)
 						{

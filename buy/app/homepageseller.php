@@ -14,339 +14,169 @@ if($email=="")
 {
 	myHeader();
 }
-else
+else if($_SESSION['type']=="seller")
 {
-	userHeader($name,$imgname);
+	sellerheader($name,$imgname);
 }
-mySearch();
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<style>
-			.myslides
-		{
-			margin-top: 53px;
-			display:none;
-		}
-		.slideshow-container
-		{
-			max-width:2000px;
-			position: relative;
-			margin:auto;
-		}
-		
-		.text
-		{
-			color:#f2f2f2;
-			font-size:15px;
-			padding:8px 12px;
-			position:absolute;
-			bottom: 8px;
-			width:100%;
-			text-align:center;
-		}
-		.numbertext
-		{
-			color: #f2f2f2;
-			font-size:12px;
-			padding:8px 12px;
-			position:absolute;
-			top:0;
-		}
-		
-		.fade
-		{
-			-webkit-animation-name:fade;
-			-webkit-animation-duration:1.5s;
-			animation-name: fade;
-			animation-duration: 2s;
-		}
-		@-webkit-keyframes fade
-		{
-			from{opacity: 1}
-			to {opacity: 1}
-		}
-		@media only screen and (max-width:300px)
-		{
-			.prev, .next, .text{font-size: 11px}
-		}
-			/* .slider
+			body
 			{
-				position: absolute;
-				top: 52px;
+				margin-top: 52px;
+				padding: 0%;
 			}
-			.slider-index
+			.left-bar
 			{
 				
-			} */
-			.products
+				padding: 0%;
+				background:#4d94ff;
+				height: 700px;
+			}
+			
+			.dashboard-header
 			{
-				margin-top: 10px;
-				background: #e6f0ff;
+				margin-top: 70px;
+				margin: 0%;
+				padding: 10px;
+				background: #1c67d8;
+				color: #fff;
+			}
+			.mynavbar
+			{
+				/* margin-top: 2%; */
+			}
+			.mynavbar ul
+			{
 				
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				cursor: pointer;
 			}
-			.new-products-text
+			.mynavbar li:first-child
 			{
-				font-size: 17;			
-				color: #4d94ff;
+				/* border-top: 1px solid #1c67d8; */
 			}
-			.discount-products-text
+			.mynavbar li:first-child:hover
 			{
-				font-size: 17;			
-				color: #4d94ff;
+				border-top: 1px solid #4d94ff;
 			}
-			.laptop-products-text
+			.mynavbar li a 
 			{
-				font-size: 17;			
-				color: #4d94ff;
-			}.mobile-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
-			}
-			.productdiv{
 				
-				background: #fff;
-				margin-right:13px;
-				margin-bottom:10px;
-				padding: 10px 15px;
-				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .2);
-    			box-shadow: 0 0 10px rgba(32, 80, 223, .2);
-				
-			}.productdiv:hover{
+				color: #fff;
+				display: block;
+				padding: 5px 10px;
+				text-decoration: none;
+				border-bottom: 1px solid #1c67d8;
+			}
+			.mynavbar li a:hover
+			{
+				background: #1c67d8;
+				transition: all 0.3s ease-in-out;
+			}
+			table tbody tr:hover
+			{
 				transition: all .3s ease-in-out;
-				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .4);
-    			box-shadow: 0 0 10px rgba(32, 80, 223, .4);
-				
+				background:#fff;
 			}
-			.productdiv img:hover
+			.products-container
 			{
-				transition: all .3s ease-in-out; 
-				-ms-transform: scale(1.5); /* IE 9 */
-				-webkit-transform: scale(.5); /* Safari 3-8 */
-  				transform: scale(1.1); 
+				background: #1c67d8;
+				height: 40px;
+				padding: 1px;
 			}
-			.text-style{
-				
-				font-size: 15px;
+			.products-container h4
+			{
+				padding: 1px 10px;
 			}
-			@media screen and (max-width: 1200px) and (min-width: 639px) {
-				
-				.productdiv {
-					width:200px;
-				}
-			  }
-			  @media screen and (max-width: 639px){
-				
-				.productdiv {
-					width:280px;
-				}
-			  }
+			.mysearchbox
+			{
+				border: .1px solid #fff;
+				border-radius: 2px;
+				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .3);
+				box-shadow: 0 0 10px rgba(0, 0, 204, .3);
+				background-image: url("images/search.png");
+				background-position: 123px 3px; 
+  				background-repeat: no-repeat;
+			}
+		
+			.mysearchbox:hover
+			{
+				transition: all .3s ease-in-out;
+				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .5);
+    			box-shadow: 0 0 10px rgba(0, 0, 204, .5);
+			}
+			.mysearchbox:focus
+			{
+				transition: all .3s ease-in-out;
+				-webkit-box-shadow: 0 0 10px rgba(255, 255, 255, .7);
+    			box-shadow: 0 0 10px rgba(255, 255, 255, .7);
+			}
+			.myseacrh
+			{
+				padding: 7px 10px;
+			}
 		</style>
 	</head>
 	<body>
-		<div class="slider">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12 slider-index">
-						<div class="slideshow-container">
-							<div class="myslides fade">
-								<div class="numbertext">1/3</div>
-								<img src="images/1.png" style="width: 100%">
-								<div class="text">Caption One</div>
-							</div>
-							<div class="myslides fade">
-								<div class="numbertext">2/3</div>
-								<img src="images/2.png" style="width: 100%">
-								<div class="text">Caption two</div>
-							</div>
-							<div class="myslides fade">
-								<div class="numbertext">3/3</div>
-								<img src="images/3.png" style="width: 100%">
-								<div class="text">Caption three</div>
-							</div>
-						</div><br>
-						<div style="text-align: center">
-							<span class="dot" onclick="currenslide(1)"></span>
-							<span class="dot" onclick="currenslide(2)"></span>
-							<span class="dot" onclick="currenslide(3)"></span>
-						</div>
-					</div>
+		<div class="container-fluid">
+			<div class="col-lg-2 col-md-3 col-sm-3 col-xs-4 left-bar">
+				<h4 class="dashboard-header">Dashboard</h4>
+				<div class="mynavbar">
+					<ul>
+						<li><a href="homepageseller.php">My Products</a></li>
+						<li><a>Recent Orders</a></li>
+						<li><a>Contact List</a></li>
+					</ul>
 				</div>
 			</div>
-		</div>
-		<div id="demo"></div>
-		<div class="products">
-			<div class="new-products">
-				<div class="container">
-					<br>
-					<span class="new-products-text">New Products</span>
-					<br><br>
-					<div class="row text-center">
-						<?php 
+			<div class="col-lg-10 col-md-9 col-sm-9 col-xs-8 right-bar">
+					
+					<div class="products-container">
+						<h4 class="" style="color:#fff;float: left;">Product Table</h4>
+						<form action="search.php" method="GET" class="myseacrh">
+							<span class=""><input id="searchBox" onkeyup="ownersProducts(this.value)" type="text" class="mysearchbox pull-right"  placeholder="&nbsp;Search here ..." name="searchBox" ></span>
+						</form>			
+					</div>
+					<span id="demo"></span>
+					<table class="table table-responsive">
 						
-						$query1=order_By_Date();
-						$rows1=mysqli_num_rows($query1);
-						if($rows1>0)
-						{
-							while($row=mysqli_fetch_assoc($query1))  
+						<thead>
+							<th>Product Model</th>
+							<th>Product Image</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Status</th>
+							<th>Action</th>
+						</thead>
+						
+						<tbody >
+							
+							<?php
+							$query1=owner_id($email);
+							$rows1=mysqli_num_rows($query1);
+							if($rows1>0)
 							{
-								
-						
-						?>
-						<div class="col-lg-2 col-md-4 col-sm-4 col-xs-6 productdiv" style="height:335px;">
-							<div class="product-box">
-								<img src="images/<?php echo $row['main_image'];?>" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="product_details.php?id=<?php echo $row['id'];?>&brand=<?php echo $row['brand'];?>&model=<?php echo $row['model'];?>&processor=<?php echo $row['processor'];?>&gen=<?php echo $row['generation'];?>&clock_speed=<?php echo $row['clock_speed'];?>&cache=<?php echo $row['cache'];?>&d_type=<?php echo $row['display_type'];?>&d_resolution=<?php echo $row['display_resolution'];?>&touch=<?php echo $row['touch'];?>&r_type=<?php echo $row['ram_type'];?>&ram=<?php echo $row['ram'];?>&storage=<?php echo $row['storage'];?>&g_chipset=<?php echo $row['graphics_chipset'];?>&g_memory=<?php echo $row['graphics_memory'];?>&networking=<?php echo $row['networking'];?>&d_port=<?php echo $row['display_port'];?>&a_port=<?php echo $row['audio_port'];?>&u_port=<?php echo $row['usb_port'];?>&battery=<?php echo $row['battery'];?>&weight=<?php echo $row['weight'];?>&color=<?php echo $row['color'];?>&os=<?php echo $row['operating_system'];?>&others=<?php echo $row['networking'];?>&part=<?php echo $row['part_no'];?>&origin=<?php echo $row['origin'];?>&assemble=<?php echo $row['assemble'];?>&warranty=<?php echo $row['warranty'];?>&r_price=<?php echo $row['regular_price'];?>&s_price=<?php echo $row['special_price'];?>&header=<?php echo $row['header'];?>&d_size=<?php echo $row['display_size'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<?php }}?>
-						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="width:91px;">
-							<a href="laptop.php"><span>See all</span></a>
-						</div>
-					</div>
-
+								while($row=mysqli_fetch_assoc($query1))  
+								{
+							?>
+							<tr>
+								<td><?= $row['model']?></td>
+								<td><img src="images/<?= $row['main_image']?>" width="80px;"></td>
+								<td>Regular: <?= $row['regular_price']?></br>Special: <?= $row['special_price']?></br>Discount: <?= $row['discount_price']?></td>
+								<td><?= $row['quantity']?></td>
+								<td><?= $row['status']?></td>
+								<td><button type="submit" class="btn btn-success"><span class="fa fa-edit"></span></td>	
+								</tr>
+							<?php }}?>
+						</tbody>
+					</table>
+					
 				</div>
-			</div>
-			<div class="discount-products">
-				<div class="container">
-					<br>
-					<span class="discount-products-text">Discount Products</span>
-					<br><br>
-					<div class="row text-center">	
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;<span style="font-weight:bold;"> <del>100000</del></span> 100000 /-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;<span style="font-weight:bold;"> <del>100000</del></span> 100000 /-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;<span style="font-weight:bold;"> <del>100000</del></span> 100000 /-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;<span style="font-weight:bold;"> <del>100000</del></span> 100000 /-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;<span style="font-weight:bold;"> <del>100000</del></span> 100000 /-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="width:91px;">
-							<a href="discountproducts.php"><span>See all</span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="laptop-products">
-				<div class="container">
-					<br>
-					<span class="laptop-products-text">Laptop</span>
-					<br><br>
-					<div class="row text-center">	
-						<?php 
-						
-						$query1=laptops_index_query();
-						$rows1=mysqli_num_rows($query1);
-						if($rows1>0)
-						{
-							while($row=mysqli_fetch_assoc($query1))  
-							{
-								
-						
-						?>
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv" style="height:335px;">
-							<div class="product-box">
-								<img src="images/<?php echo $row['main_image'];?>" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="product_details.php?id=<?php echo $row['id'];?>&brand=<?php echo $row['brand'];?>&model=<?php echo $row['model'];?>&processor=<?php echo $row['processor'];?>&gen=<?php echo $row['generation'];?>&clock_speed=<?php echo $row['clock_speed'];?>&cache=<?php echo $row['cache'];?>&d_type=<?php echo $row['display_type'];?>&d_resolution=<?php echo $row['display_resolution'];?>&touch=<?php echo $row['touch'];?>&r_type=<?php echo $row['ram_type'];?>&ram=<?php echo $row['ram'];?>&storage=<?php echo $row['storage'];?>&g_chipset=<?php echo $row['graphics_chipset'];?>&g_memory=<?php echo $row['graphics_memory'];?>&networking=<?php echo $row['networking'];?>&d_port=<?php echo $row['display_port'];?>&a_port=<?php echo $row['audio_port'];?>&u_port=<?php echo $row['usb_port'];?>&battery=<?php echo $row['battery'];?>&weight=<?php echo $row['weight'];?>&color=<?php echo $row['color'];?>&os=<?php echo $row['operating_system'];?>&others=<?php echo $row['networking'];?>&part=<?php echo $row['part_no'];?>&origin=<?php echo $row['origin'];?>&assemble=<?php echo $row['assemble'];?>&warranty=<?php echo $row['warranty'];?>&r_price=<?php echo $row['regular_price'];?>&s_price=<?php echo $row['special_price'];?>&header=<?php echo $row['header'];?>&d_size=<?php echo $row['display_size'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<?php }}?>
-						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="width:91px;">
-							<a href="laptop.php"><span>See all</span></a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="mobile-products">
-				<div class="container">
-					<br>
-					<span class="mobile-products-text">Mobile</span>
-					<br><br>
-					<div class="row text-center">	
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-							<div class="product-box">
-								<img src="images/laptop%203.png" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-								<a href="#"><span style="cursor: pointer;">ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
-							</div>
-						</div>
-						<div class="col-lg-1 col-md-6 col-sm-12 col-xs-12 productdiv" style="width:91px;">
-							<a href="mobile.php"><span>See all</span></a>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 		
 		
@@ -357,7 +187,7 @@ myFooter();
 ?>
 
 <script>
-	function searchByAjax(str)
+	function ownersProducts(str)
 	{
 		let divid=document.getElementById("demo");
 		let xhttp=new XMLHttpRequest();
@@ -380,41 +210,9 @@ myFooter();
 				}
 			
 			};
-			xhttp.open("GET","search.php?str="+str,true);
+			xhttp.open("GET","searchownerproducts.php?str="+str,true);
 			xhttp.send();
 		}
 	}
-
-	var slideIndex=0;
-		showSlides();
-		function currenslide(n)
-		{
-			showSlides(slideIndex=n);
-		}
-		
-		function showSlides()
-		{
-			var i;
-			var slides=document.getElementsByClassName("myslides");
-			var dots=document.getElementsByClassName("dot");
-			for(i=0;i<slides.length;i++)
-			{
-				slides[i].style.display="none";
-			}
-			slideIndex++;
-			if(slideIndex>slides.length)
-			{
-				slideIndex=1;
-			}
-			for(i=0;i<dots.length;i++)
-			{
-				dots[i].className=dots[i].className.replace(" active", "");
-			}
-			slides[slideIndex-1].style.display="block";
-			dots[slideIndex-1].className +=" active";
-			setTimeout(showSlides,2000);
-			// setInterval(showSlides,2000);
-		}
-
 </script>
 

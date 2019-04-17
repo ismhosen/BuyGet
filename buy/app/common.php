@@ -6,8 +6,8 @@ function myLink()
 		<meta charset='utf-8'>
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 		<link rel='stylesheet' href='bootstrap/bootstrap.min.css'>		
-		<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
-		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+		<link rel='stylesheet' href='font-awesome/css/font-awesome.min.css'>
+		<script type='text/javascript' src='jquery/jquery.min.js'></script>
 		<script type='text/javascript' src='bootstrap/bootstrap.js'></script>
 	";
 }
@@ -159,7 +159,7 @@ function myheader()
 	';
 }
 
-function userheader($name,$imgname)
+function buyerheader($name,$imgname)
 {
 	echo '
 	<!DOCTYPE html>
@@ -257,6 +257,101 @@ function userheader($name,$imgname)
 </html>		
 	';
 }
+function sellerheader($name,$imgname)
+{
+	echo '
+	<!DOCTYPE html>
+<html lang="en">	
+	<head>
+		<style type="text/css">
+		body
+		{
+			background: #e6f0ff;
+		}
+		nav
+		{
+			background-color:rgba(0, 0, 128,0.3);
+		}
+		.signupin
+		{
+			padding: 15px 20px;
+		}
+		#myNavbar a
+		{
+			margin:0;
+			paddin:0;
+		}
+		.mynavbar:hover
+		{
+			color: #000099;
+			transition: all .5s ease-in-out;
+			-webkit-transition: all .5s ease-in-out;	
+		}
+		@media screen and (max-width: 932px) and (min-width: 768px) {
+			.signupin {
+				padding: 15px 5px!important;
+			}
+		
+			
+		  }
+		  @media screen and (max-width: 858px) and (min-width: 768px) {
+			
+			.mynavbar, .fa {
+				font-size:11px;
+			}
+		
+		  }
+			  
+		</style>
+	</head>
+	<body>
+	<header>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="fa fa-bars""></span>	
+				</button>
+				<a href="homepagebuyer.php" class="navbar-brand">Buy & Get</a>
+			</div>
+			
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff"><img class="img-circle" src="images/'.$imgname.'" width="21px" height="21px">&nbsp;&nbsp;'.$name.' <span class="caret"></span> </font></a>
+						<ul class="dropdown-menu">
+						<li><a href="userprofile.php"><font class="mynavbar" color="#4d94ff">My Profile</font></a></li>
+						<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Cart Requests</font></a></li>
+						<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Bookmarks products</font></a></li>
+						<li><a href="index.php"><font class="mynavbar" color="#4d94ff">Sign Out</font></a></li>
+						<li><a href=""><font class="mynavbar" color="#4d94ff">Help</font></a></li>
+						</ul>
+					</li>
+				</ul>
+				<div class=container>
+					<ul class="nav navbar-nav navbar-right" id="main-bar">
+						<li class="scoll-smooth"><a href="homepageseller.php"><font class="mynavbar " color="#4d94ff">Home</font></a></li>
+						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff">Categories <span class="caret"></span> </font></a>
+							<ul class="dropdown-menu">
+								<li><a href="mobile.php"><font class="mynavbar" color="#4d94ff">Mobile</font></a></li>
+								<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Laptop</font></a></li>
+								<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Watch</font></a></li>
+								<li><a href=""><font class="mynavbar" color="#4d94ff">cloths</font></a></li>
+								<li><a href="newproducts.php"><font class="mynavbar" color="#4d94ff">New Products</font></a></li>
+								<li><a href="discountproducts.php"><font class="mynavbar" color="#4d94ff">Discount PRoducts</font></a></li>
+							</ul>
+						</li>
+						
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+	</nav>
+</header>
+	</body>
+</html>		
+	';
+}
 
 function mySearch()
 {
@@ -275,10 +370,6 @@ function mySearch()
 				top:0;
 				z-index:1;
 				background-color:rgba(0, 0, 128,0.3);
-			}
-			.mysearchboxx
-			{
-
 			}
 			.mysearchbox
 			{

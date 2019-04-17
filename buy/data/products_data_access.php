@@ -18,5 +18,9 @@ function order_By_Date()
 {
 	return mysqli_query(connection(),"SELECT * FROM laptops ORDER BY datee ASC LIMIT 5");
 }
+function owner_id($email)
+{
+	return mysqli_query(connection(),"SELECT * FROM laptops WHERE owner_email=$email");
+}
 
 ?>

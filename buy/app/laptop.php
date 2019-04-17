@@ -11,9 +11,13 @@ if($email=="")
 {
 	myHeader();
 }
-else
+else if($_SESSION['type']=="seller")
 {
-	userHeader($name,$imgname);
+	sellerheader($name,$imgname);
+}
+else if($_SESSION['type']=="buyer")
+{
+	buyerheader($name,$imgname);
 }
 
 mySearch();
@@ -97,15 +101,15 @@ mySearch();
 									<a href="#brand-collapse" class="" data-toggle="collapse"><span style="font-size:15px;" class="">Brand</span><span  style="font-size:15px;" class="pull-right fa fa-plus "> </span> </a><hr class="title-hr">
 									<div id="brand-collapse" class="collapse collapse-style" style="">
 										<form>
-											<input type="radio" id="asus" name="asus" value="Asus" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Asus</span><hr>
-											<input type="radio" id="accer" name="accer" value="Accer" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Accer</span><hr>
-											<input type="radio" id="dell" name="dell" value="Dell" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Dell</span><hr>
-											<input type="radio" id="hp" name="hp" value="HP" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;HP</span><hr>
-											<input type="radio" id="lenovo" name="lenovo" value="Lenovo" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Lenevo</span><hr>
-											<input type="radio" id="microsoft" name="microsoft" value="Microsoft" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Microsoft</span><hr>
-											<input type="radio" id="macbook" name="macbook" value="Macbook" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Macbook</span><hr>
-											<input type="radio" id="razer" name="razer" value="Razer" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Razer</span><hr>
-											<input type="radio" id="ilife" name="ilife" value="ilife" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;I-Life</span><hr>
+											<input type="checkbox" id="asus" name="brand" value="Asus" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Asus</span><hr>
+											<input type="checkbox" id="accer" name="brand" value="Accer" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Accer</span><hr>
+											<input type="checkbox" id="dell" name="brand" value="Dell" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Dell</span><hr>
+											<input type="checkbox" id="hp" name="brand" value="HP" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;HP</span><hr>
+											<input type="checkbox" id="lenovo" name="brand" value="Lenovo" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Lenevo</span><hr>
+											<input type="checkbox" id="microsoft" name="brand" value="Microsoft" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Microsoft</span><hr>
+											<input type="checkbox" id="macbook" name="brand" value="Macbook" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Macbook</span><hr>
+											<input type="checkbox" id="razer" name="brand" value="Razer" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Razer</span><hr>
+											<input type="checkbox" id="ilife" name="brand" value="ilife" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;I-Life</span><hr>
 										</form>
 									</div>
 								</div>
@@ -113,14 +117,14 @@ mySearch();
 									<a href="#processor-collapse" class="" data-toggle="collapse"><span style="font-size:15px;" class="">Processor</span><span  style="font-size:15px;" class="pull-right fa fa-plus "> </span> </a><hr class="title-hr">
 									<div id="processor-collapse" class="collapse collapse-style" style="">
 										<form>
-											<input type="radio" name="i3"><span>&nbsp;&nbsp;Core i3</span><hr>
-											<input type="radio" name="i5"><span>&nbsp;&nbsp;Core i5</span><hr>
-											<input type="radio" name="i7"><span>&nbsp;&nbsp;Core i7</span><hr>
-											<input type="radio" name="i9"><span>&nbsp;&nbsp;Core i9</span><hr>
-											<input type="radio" name="ryzen3"><span>&nbsp;&nbsp;AMD Ryzen 3</span><hr>
-											<input type="radio" name="ryzen5"><span>&nbsp;&nbsp;AMD Ryzen 5</span><hr>
-											<input type="radio" name="ryzen7"><span>&nbsp;&nbsp;AMD Ryzen 7</span><hr>
-											<input type="radio" name="pentium"><span>&nbsp;&nbsp;Intel Pentium</span><hr>
+											<input type="checkbox" name="i3" id="i3" value="i3" onclick="brandsearchbyajax()"><span>&nbsp;&nbsp;Core i3</span><hr>
+											<input type="checkbox" name="i5"><span>&nbsp;&nbsp;Core i5</span><hr>
+											<input type="checkbox" name="i7"><span>&nbsp;&nbsp;Core i7</span><hr>
+											<input type="checkbox" name="i9"><span>&nbsp;&nbsp;Core i9</span><hr>
+											<input type="checkbox" name="ryzen3"><span>&nbsp;&nbsp;AMD Ryzen 3</span><hr>
+											<input type="checkbox" name="ryzen5"><span>&nbsp;&nbsp;AMD Ryzen 5</span><hr>
+											<input type="checkbox" name="ryzen7"><span>&nbsp;&nbsp;AMD Ryzen 7</span><hr>
+											<input type="checkbox" name="pentium"><span>&nbsp;&nbsp;Intel Pentium</span><hr>
 										</form>
 									</div>
 								</div>
@@ -128,10 +132,10 @@ mySearch();
 									<a href="#generation-collapse" class="" data-toggle="collapse"><span style="font-size:15px;" class="">Generation</span><span  style="font-size:15px;" class="pull-right fa fa-plus "> </span> </a><hr class="title-hr">
 									<div id="generation-collapse" class="collapse collapse-style" style="">
 										<form>
-											<input type="radio" name="5th"><span>&nbsp;&nbsp;5th</span><hr>
-											<input type="radio" name="6th"><span>&nbsp;&nbsp;6th</span><hr>
-											<input type="radio" name="7th"><span>&nbsp;&nbsp;7th</span><hr>
-											<input type="radio" name="8th"><span>&nbsp;&nbsp;8th</span><hr>
+											<input type="checkbox" name="5th"><span>&nbsp;&nbsp;5th</span><hr>
+											<input type="checkbox" name="6th"><span>&nbsp;&nbsp;6th</span><hr>
+											<input type="checkbox" name="7th"><span>&nbsp;&nbsp;7th</span><hr>
+											<input type="checkbox" name="8th"><span>&nbsp;&nbsp;8th</span><hr>
 										</form>
 									</div>
 								</div>
@@ -139,14 +143,14 @@ mySearch();
 									<a href="#screen-size-collapse" class="" data-toggle="collapse"><span style="font-size:15px;" class="">Screen-size</span><span  style="font-size:15px;" class="pull-right fa fa-plus "> </span> </a><hr class="title-hr">
 									<div id="screen-size-collapse" class="collapse collapse-style" style="">
 										<form>
-											<input type="radio" name="HD"><span>&nbsp;&nbsp;10 to 10.6 inch</span><hr>
-											<input type="radio" name="FHD"><span>&nbsp;&nbsp;11 to 11.6 inch</span><hr>
-											<input type="radio" name="2k"><span>&nbsp;&nbsp;12 to 12.6 inch</span><hr>
-											<input type="radio" name="QHD"><span>&nbsp;&nbsp;13 inch</span><hr>
-											<input type="radio" name="4k"><span>&nbsp;&nbsp;14 inch</span><hr>
-											<input type="radio" name="4k"><span>&nbsp;&nbsp;15 to 15.6 inch</span><hr>
-											<input type="radio" name="4k"><span>&nbsp;&nbsp;17 to 17.6 inch</span><hr>
-											<input type="radio" name="4k"><span>&nbsp;&nbsp;13 to 14 inch</span><hr>
+											<input type="checkbox" name="HD"><span>&nbsp;&nbsp;10 to 10.6 inch</span><hr>
+											<input type="checkbox" name="FHD"><span>&nbsp;&nbsp;11 to 11.6 inch</span><hr>
+											<input type="checkbox" name="2k"><span>&nbsp;&nbsp;12 to 12.6 inch</span><hr>
+											<input type="checkbox" name="QHD"><span>&nbsp;&nbsp;13 inch</span><hr>
+											<input type="checkbox" name="4k"><span>&nbsp;&nbsp;14 inch</span><hr>
+											<input type="checkbox" name="4k"><span>&nbsp;&nbsp;15 to 15.6 inch</span><hr>
+											<input type="checkbox" name="4k"><span>&nbsp;&nbsp;17 to 17.6 inch</span><hr>
+											<input type="checkbox" name="4k"><span>&nbsp;&nbsp;13 to 14 inch</span><hr>
 										</form>
 									</div>
 								</div>
@@ -154,11 +158,11 @@ mySearch();
 									<a href="#resolution-collapse" class="" data-toggle="collapse"><span style="font-size:15px;" class="">Resolution</span><span  style="font-size:15px;" class="pull-right fa fa-plus "> </span> </a><hr class="title-hr">
 									<div id="resolution-collapse" class="collapse collapse-style" style="">
 										<form>
-											<input type="radio" name="HD"><span>&nbsp;&nbsp;HD</span><hr>
-											<input type="radio" name="FHD"><span>&nbsp;&nbsp;Full HD</span><hr>
-											<input type="radio" name="2k"><span>&nbsp;&nbsp;2k</span><hr>
-											<input type="radio" name="QHD"><span>&nbsp;&nbsp;QHD</span><hr>
-											<input type="radio" name="4k"><span>&nbsp;&nbsp;4k</span><hr>
+											<input type="checkbox" name="HD"><span>&nbsp;&nbsp;HD</span><hr>
+											<input type="checkbox" name="FHD"><span>&nbsp;&nbsp;Full HD</span><hr>
+											<input type="checkbox" name="2k"><span>&nbsp;&nbsp;2k</span><hr>
+											<input type="checkbox" name="QHD"><span>&nbsp;&nbsp;QHD</span><hr>
+											<input type="checkbox" name="4k"><span>&nbsp;&nbsp;4k</span><hr>
 										</form>
 									</div>
 								</div>
@@ -166,11 +170,11 @@ mySearch();
 									<a href="#ram-collapse" class="" data-toggle="collapse"><span style="font-size:15px;" class="">Ram</span><span  style="font-size:15px;" class="pull-right fa fa-plus "> </span> </a><hr class="title-hr">
 									<div id="ram-collapse" class="collapse collapse-style" style="">
 										<form>
-											<input type="radio" name="2GB"><span>&nbsp;&nbsp;2GB</span><hr>
-											<input type="radio" name="4GB"><span>&nbsp;&nbsp;4GB</span><hr>
-											<input type="radio" name="6GB"><span>&nbsp;&nbsp;6GB</span><hr>
-											<input type="radio" name="8th"><span>&nbsp;&nbsp;8GB</span><hr>
-											<input type="radio" name="16GB"><span>&nbsp;&nbsp;16GB</span><hr>
+											<input type="checkbox" name="2GB"><span>&nbsp;&nbsp;2GB</span><hr>
+											<input type="checkbox" name="4GB"><span>&nbsp;&nbsp;4GB</span><hr>
+											<input type="checkbox" name="6GB"><span>&nbsp;&nbsp;6GB</span><hr>
+											<input type="checkbox" name="8th"><span>&nbsp;&nbsp;8GB</span><hr>
+											<input type="checkbox" name="16GB"><span>&nbsp;&nbsp;16GB</span><hr>
 										</form>
 									</div>
 								</div>
@@ -178,16 +182,16 @@ mySearch();
 									<a href="#storage-collapse" class="" data-toggle="collapse"><span style="font-size:15px;" class="">Storage</span><span  style="font-size:15px;" class="pull-right fa fa-plus "> </span> </a><hr class="title-hr">
 									<div id="storage-collapse" class="collapse collapse-style" style="">
 										<form>
-											<input type="radio" name="2GB"><span>&nbsp;&nbsp;64GB eMMC</span><hr>
-											<input type="radio" name="4GB"><span>&nbsp;&nbsp;500GB HDD</span><hr>
-											<input type="radio" name="6GB"><span>&nbsp;&nbsp;1TB HDD</span><hr>
-											<input type="radio" name="8th"><span>&nbsp;&nbsp;2TB HDD</span><hr>
-											<input type="radio" name="16GB"><span>&nbsp;&nbsp;128GB SSD</span><hr>
-											<input type="radio" name="16GB"><span>&nbsp;&nbsp;128GB SATA SSD</span><hr>
-											<input type="radio" name="16GB"><span>&nbsp;&nbsp;256GB SSD</span><hr>
-											<input type="radio" name="16GB"><span>&nbsp;&nbsp;256GB SATA SSD</span><hr>
-											<input type="radio" name="16GB"><span>&nbsp;&nbsp;512GB SSD</span><hr>
-											<input type="radio" name="16GB"><span>&nbsp;&nbsp;512GB SATA SSD</span><hr>
+											<input type="checkbox" name="2GB"><span>&nbsp;&nbsp;64GB eMMC</span><hr>
+											<input type="checkbox" name="4GB"><span>&nbsp;&nbsp;500GB HDD</span><hr>
+											<input type="checkbox" name="6GB"><span>&nbsp;&nbsp;1TB HDD</span><hr>
+											<input type="checkbox" name="8th"><span>&nbsp;&nbsp;2TB HDD</span><hr>
+											<input type="checkbox" name="16GB"><span>&nbsp;&nbsp;128GB SSD</span><hr>
+											<input type="checkbox" name="16GB"><span>&nbsp;&nbsp;128GB SATA SSD</span><hr>
+											<input type="checkbox" name="16GB"><span>&nbsp;&nbsp;256GB SSD</span><hr>
+											<input type="checkbox" name="16GB"><span>&nbsp;&nbsp;256GB SATA SSD</span><hr>
+											<input type="checkbox" name="16GB"><span>&nbsp;&nbsp;512GB SSD</span><hr>
+											<input type="checkbox" name="16GB"><span>&nbsp;&nbsp;512GB SATA SSD</span><hr>
 										</form>
 									</div>
 								</div>
@@ -195,11 +199,11 @@ mySearch();
 									<a href="#graphics-memory-collapse" class="" data-toggle="collapse"><span style="font-size:15px;" class="">Graphics Memory</span><span  style="font-size:15px;" class="pull-right fa fa-plus "> </span> </a><hr class="title-hr">
 									<div id="graphics-memory-collapse" class="collapse collapse-style" style="">
 										<form>
-											<input type="radio" name="2GB"><span>&nbsp;&nbsp;2GB</span><hr>
-											<input type="radio" name="4GB"><span>&nbsp;&nbsp;4GB</span><hr>
-											<input type="radio" name="6GB"><span>&nbsp;&nbsp;6GB</span><hr>
-											<input type="radio" name="8th"><span>&nbsp;&nbsp;8GB</span><hr>
-											<input type="radio" name="shared"><span>&nbsp;&nbsp;Shared</span><hr>
+											<input type="checkbox" name="2GB"><span>&nbsp;&nbsp;2GB</span><hr>
+											<input type="checkbox" name="4GB"><span>&nbsp;&nbsp;4GB</span><hr>
+											<input type="checkbox" name="6GB"><span>&nbsp;&nbsp;6GB</span><hr>
+											<input type="checkbox" name="8th"><span>&nbsp;&nbsp;8GB</span><hr>
+											<input type="checkbox" name="shared"><span>&nbsp;&nbsp;Shared</span><hr>
 										</form>
 									</div>
 								</div>
@@ -257,6 +261,7 @@ mySearch();
 			var macbook_input_id=document.getElementById("macbook");
 			var razer_input_id=document.getElementById("razer");
 			var ilife_input_id=document.getElementById("ilife");
+			var i3_input_id=document.getElementById("i3");
 			if(asus_input_id.checked==true)
 			{
 				var asus_brand=asus_input_id.value;
@@ -301,8 +306,13 @@ mySearch();
 			{
 				var ilife_brand=ilife_input_id.value;
 				
-			}			
-			// alert(asus_brand);
+			}	
+			if(i3_input_id.checked==true)
+			{
+				var i3_brand=i3_input_id.value;
+				
+			}		
+			// alert(i3_brand);
 			// alert(accer_brand);
 			// alert(brands);
 			let xhttp=new XMLHttpRequest();
@@ -324,7 +334,7 @@ mySearch();
 						divid.innerHTML=this.responseText;
 					}
 				};
-				xhttp.open("GET","searchByCategory.php?asus_brand="+asus_brand + "&accer_brand="+accer_brand + "&dell_brand="+dell_brand + "&hp_brand="+hp_brand + "&lenovo_brand="+lenovo_brand + "&microsoft_brand="+microsoft_brand + "&macbook_brand="+macbook_brand + "&razer_brand="+razer_brand + "&ilife_brand="+ilife_brand,true);
+				xhttp.open("GET","searchByCategory.php?asus_brand="+asus_brand + "&accer_brand="+accer_brand + "&dell_brand="+dell_brand + "&hp_brand="+hp_brand + "&lenovo_brand="+lenovo_brand + "&microsoft_brand="+microsoft_brand + "&macbook_brand="+macbook_brand + "&razer_brand="+razer_brand + "&ilife_brand="+ilife_brand + "&i3_brand="+i3_brand,true);
 				xhttp.send();
 			}
 		}

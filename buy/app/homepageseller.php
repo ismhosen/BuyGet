@@ -73,10 +73,17 @@ else if($_SESSION['type']=="seller")
 				text-decoration: none;
 				border-bottom: 1px solid #1c67d8;
 			}
+			.active
+            {
+				border-top: 3px solid #4d94ff;
+                background: #1c67d8;
+            }
 			.mynavbar li a:hover
 			{
 				background: #1c67d8;
 				transition: all 0.3s ease-in-out;
+				border-top: 2px solid #1c67d8;
+				border-bottom: none;
 			}
 			table tbody tr:hover
 			{
@@ -120,6 +127,30 @@ else if($_SESSION['type']=="seller")
 			{
 				padding: 7px 10px;
 			}
+			.myiconbutton-plus
+			{
+				border: none;
+				color: #fff;
+				background: #32ac0d;
+				border-radius:2px;
+				padding: 5px 10px;
+				margin: 0px 15px 0px 5px;
+			}
+			.myiconbutton-delete
+			{
+				border: none;
+				color: #fff;
+				background: #ad0808;
+				border-radius:3px;
+				padding: 5px 10px;
+				margin: 0px 10px 0px 5px;
+			}
+			.myiconbutton-delete:hover, .myiconbutton-plus:hover
+			{
+				transition: all .3s ease-in-out;
+				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .5);
+    			box-shadow: 0 0 10px rgba(255,255,255, .5);
+			}
 		</style>
 	</head>
 	<body>
@@ -128,7 +159,7 @@ else if($_SESSION['type']=="seller")
 				<h4 class="dashboard-header">Dashboard</h4>
 				<div class="mynavbar">
 					<ul>
-						<li><a href="homepageseller.php">My Products</a></li>
+						<li><a class="active" href="homepageseller.php">My Products</a></li>
 						<li><a>Recent Orders</a></li>
 						<li><a>Contact List</a></li>
 					</ul>
@@ -138,18 +169,22 @@ else if($_SESSION['type']=="seller")
 					
 					<div class="products-container">
 						<h4 class="" style="color:#fff;float: left;">Product Table</h4>
-						<form action="search.php" method="GET" class="myseacrh">
+						
+						<div class="myseacrh">
 							<span class=""><input id="searchBox" onkeyup="ownersProducts(this.value)" type="text" class="mysearchbox pull-right"  placeholder="&nbsp;Search here ..." name="searchBox" ></span>
-						</form>			
+							<a href="addproducts.php"><button type="button" class="pull-right myiconbutton-plus"><span class="fa fa-plus"></span></button></a>
+							<a><button type="button" class="pull-right myiconbutton-delete"><span class="fa fa-trash"></span></button></a>
+						</div>			
 					</div>
 					<span id="demo"></span>
 					<table class="table table-responsive">
 						
 						<thead>
-							<th>Product Model</th>
-							<th>Product Image</th>
-							<th>Price</th>
-							<th>Quantity</th>
+							<th width="150px"><input type="checkbox" name="select_all">&nbsp;&nbsp;Select All</th>
+							<th width="300px">Product Model</th>
+							<th width="200px">Product Image</th>
+							<th width="200px">Price</th>
+							<th width="200px">Quantity</th>
 							<th>Status</th>
 							<th>Action</th>
 						</thead>
@@ -163,14 +198,19 @@ else if($_SESSION['type']=="seller")
 							{
 								while($row=mysqli_fetch_assoc($query1))  
 								{
+								
 							?>
 							<tr>
+								<td><input type="checkbox" name="select_all"></td>
 								<td><?= $row['model']?></td>
 								<td><img src="images/<?= $row['main_image']?>" width="80px;"></td>
 								<td>Regular: <?= $row['regular_price']?></br>Special: <?= $row['special_price']?></br>Discount: <?= $row['discount_price']?></td>
 								<td><?= $row['quantity']?></td>
 								<td><?= $row['status']?></td>
-								<td><button type="submit" class="btn btn-success"><span class="fa fa-edit"></span></td>	
+								<td>
+									<a href="editproducts.php?header=<?php echo $row['header']?>&id=<?php echo $row['id']?>"><button type="submit" class="btn btn-success" name=""><span class="fa fa-edit"></span></button></a>
+									
+								</td>	
 								</tr>
 							<?php }}?>
 						</tbody>

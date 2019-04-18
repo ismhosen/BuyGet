@@ -1,5 +1,5 @@
 
-table tbody tr td
+            table tbody tr td
 			{
 				padding: 10px;
 				border:.1px solid rgba(77,148,255,.3);

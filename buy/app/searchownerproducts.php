@@ -101,7 +101,7 @@ $email=$_SESSION['user']['email'];
                 <?php }}
                 else
                 {
-                    echo "<h4 class='error'>No result found</h4>";
+                    echo "<td class='error'>No result found</td>";
                 }
                 ?>
             </tbody>

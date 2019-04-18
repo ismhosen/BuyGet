@@ -11,9 +11,13 @@ if($email=="")
 {
 	myHeader();
 }
-else
+else if($_SESSION['type']=="seller")
 {
-	userHeader($name,$imgname);
+	sellerheader($name,$imgname);
+}
+else if($_SESSION['type']=="buyer")
+{
+	buyerheader($name,$imgname);
 }
 
 

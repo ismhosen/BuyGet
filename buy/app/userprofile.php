@@ -12,12 +12,19 @@ $imgname=$_SESSION['user']['imgname'];
 // get_users($email);
 // echo "<script>alert('$email')</script>";
 echo "<title>Buy & Get</title>";
+myLink();
 if($email=="")
 {
-	header('location: index.php');
+	myHeader();
 }
-myLink();
-userheader($name,$imgname);
+else if($_SESSION['type']=="seller")
+{
+	sellerheader($name,$imgname);
+}
+else if($_SESSION['type']=="buyer")
+{
+	buyerheader($name,$imgname);
+}
 ?>
 <html>
 	<head>

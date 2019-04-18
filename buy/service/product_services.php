@@ -12,3 +12,13 @@ include '../data/products_data_access.php';
 			}
 		}
 	}
+	function model_validate($model)
+	{
+		$query=laptops_model_query($model);
+		$rows1=mysqli_num_rows($query);
+		if($rows1>0)
+		{
+			return false;
+		}
+		return true;
+	}

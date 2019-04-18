@@ -1,8 +1,23 @@
 <?php
 echo "<title>New Products</title>";
 include 'common.php';
+session_start();
+$email=$_SESSION['user']['email'];
+$name=$_SESSION['user']['name'];
+$imgname=$_SESSION['user']['imgname'];
 myLink();
-myHeader();
+if($email=="")
+{
+	myHeader();
+}
+else if($_SESSION['type']=="seller")
+{
+	sellerheader($name,$imgname);
+}
+else if($_SESSION['type']=="buyer")
+{
+	buyerheader($name,$imgname);
+}
 mySearch();
 ?>
 <html>

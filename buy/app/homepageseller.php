@@ -160,6 +160,7 @@ else if($_SESSION['type']=="seller")
 				<div class="mynavbar">
 					<ul>
 						<li><a class="active" href="homepageseller.php">My Products</a></li>
+						<li><a href="addproducts.php">Add Products</a></li>
 						<li><a>Recent Orders</a></li>
 						<li><a>Contact List</a></li>
 					</ul>

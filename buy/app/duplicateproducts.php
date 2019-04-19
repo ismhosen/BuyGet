@@ -200,7 +200,7 @@ else if($_SESSION['type']=="seller")
                 </div>
                 
             </div>
-            <form method="POST" action="updateproducts.php?id=<?php echo $id?>">
+            <form method="POST" action="productshandler.php?id=<?php echo $id?>">
                 <div class="col-lg-6 col-md-5 col-sm-5 col-xs-6 right-bar">
                         <span id="demo"></span>
                         <table class="table table-responsive">

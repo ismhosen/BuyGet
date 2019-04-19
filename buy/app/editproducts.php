@@ -261,7 +261,7 @@ else if($_SESSION['type']=="seller")
                 </div>
                 
             </div>
-            <form method="POST" action="updateproducts.php?id=<?php echo $id?>" id="myform">
+            <form method="POST" action="productshandler.php?id=<?php echo $id?>" id="myform">
                 <div class="col-lg-6 col-md-5 col-sm-5 col-xs-6 right-bar">
                     <span id="demo"></span>
                     <table class="table table-responsive">
@@ -444,7 +444,7 @@ else if($_SESSION['type']=="seller")
                 <div class="modal-header text-center">
                     <Span class="close">&times;</Span>
                     <h4>Are sure want to delte this?</h4><hr>
-                    <form method="POST" action="updateproducts.php?id=<?php echo $id?>">
+                    <form method="POST" action="productshandler.php?id=<?php echo $id?>">
                         <button type="submit" class="btn btn-success" name="ok"><span class="fa fa-check"></span>&nbsp Ok</button>
                         <button type="submit" class="btn btn-danger" name="cancel"><span class="fa fa-remove"></span>&nbsp Cancel</button>
                     </form>

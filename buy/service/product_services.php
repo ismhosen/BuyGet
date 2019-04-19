@@ -22,3 +22,15 @@ include '../data/products_data_access.php';
 		}
 		return true;
 	}
+	function image_mvoe($imgname)
+	{
+		$fileName=$_FILES['$imgname']['name'];
+		$tempName=$_FILES['$imgname']['temp_name'];
+
+			if(!empty($fileName))
+			{
+				$location="../app/images/";
+				move_uploaded_file($tempName,$location.$fileName);
+			}
+		
+	}

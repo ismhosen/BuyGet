@@ -251,6 +251,7 @@ mySearch();
 	<script>
 		function brandsearchbyajax()
 		{
+			// console.log(brand);
 			let divid=document.getElementById("searchdiv");
 			var asus_input_id=document.getElementById("asus");
 			var accer_input_id=document.getElementById("accer");
@@ -306,12 +307,25 @@ mySearch();
 			{
 				var ilife_brand=ilife_input_id.value;
 				
-			}	
+			}
 			if(i3_input_id.checked==true)
 			{
 				var i3_brand=i3_input_id.value;
 				
-			}		
+			}
+
+			let brands =[];
+			let brand = document.getElementsByName("brand");
+			brand.forEach(element => {
+				brands.push({
+					'brand': element.value,
+					'value': element.checked
+				})
+
+			});
+
+			// console.log(brands.length);
+
 			// alert(i3_brand);
 			// alert(accer_brand);
 			// alert(brands);
@@ -334,7 +348,8 @@ mySearch();
 						divid.innerHTML=this.responseText;
 					}
 				};
-				xhttp.open("GET","searchByCategory.php?asus_brand="+asus_brand + "&accer_brand="+accer_brand + "&dell_brand="+dell_brand + "&hp_brand="+hp_brand + "&lenovo_brand="+lenovo_brand + "&microsoft_brand="+microsoft_brand + "&macbook_brand="+macbook_brand + "&razer_brand="+razer_brand + "&ilife_brand="+ilife_brand + "&i3_brand="+i3_brand,true);
+				// xhttp.open("GET","searchByCategory.php?asus_brand="+asus_brand + "&accer_brand="+accer_brand + "&dell_brand="+dell_brand + "&hp_brand="+hp_brand + "&lenovo_brand="+lenovo_brand + "&microsoft_brand="+microsoft_brand + "&macbook_brand="+macbook_brand + "&razer_brand="+razer_brand + "&ilife_brand="+ilife_brand + "&i3_brand="+i3_brand,true);
+				xhttp.open("GET","searchByCategory.php?brands="+ JSON.stringify(brands),true);
 				xhttp.send();
 			}
 		}

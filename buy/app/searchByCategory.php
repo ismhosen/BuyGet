@@ -12,6 +12,9 @@ $macbook_brand=$_GET['macbook_brand'];
 $razer_brand=$_GET['razer_brand'];
 $ilife_brand=$_GET['ilife_brand'];
 $i3_brand=$_GET['i3_brand'];
+// $brands=$_GET['brands'];
+
+
 myLink();
 ?>
 <html>
@@ -61,10 +64,35 @@ myLink();
 					<br><br>
 					<div class="row text-center">
 						<?php 
-						
+						$brands = isset($_REQUEST['brands']) ? json_decode($_REQUEST['brands']) : array();
+						// // var_dump(count($brands));
+						// for($i=0; $i<count($brands); $i++)
+						// {
+						// 	// echo $brands[$i]->brand;
+						// }
+
 						$query1=search_By_Brand($asus_brand,$accer_brand,$i3_brand);
-						// $query="SELECT * FROM laptops WHERE status='1'";
+						$query="SELECT * FROM laptops WHERE status='1'";
 						// var_dump($asus_brand);
+						$flag = 0;
+						for($i=0; $i<count($brands); $i++)
+						{
+							echo $brands[$i]->value;
+							if($brands[$i]->value == 1)
+							{
+								if($flag == 1)
+								{
+									$query .=" OR brand LIKE '%".$brands[$i]->brand."%'";
+								}
+								else
+								{
+									// echo "<script> console.log($i)</script>";
+									$query .=" AND brand LIKE '%".$brands[$i]->brand."%'";
+									$flag = 1;
+								}
+							}	
+						}
+						
 						// if($asus_brand!="undefined" && !empty($asus_brand))
 						// {
 						// 	$query .=" OR brand LIKE '%".$asus_brand."%'";
@@ -77,13 +105,13 @@ myLink();
 						// {
 						// 	$query .=" AND processor LIKE '%".$i3_brand."%'";
 						// }
-						// var_dump($query);
-						// $result=mysqli_query(connection(),$query);
-						var_dump($query1);
-						$rows1=mysqli_num_rows($query1);
+						var_dump($query);
+						$result=mysqli_query(connection(),$query);
+						// var_dump($query1);
+						$rows1=mysqli_num_rows($result);
 						if($rows1>0)
 						{
-							while($row=mysqli_fetch_assoc($query1))  
+							while($row=mysqli_fetch_assoc($result))  
 							{
 						
 						?>

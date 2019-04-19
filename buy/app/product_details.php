@@ -169,9 +169,9 @@ get_title($id);
 			</div><hr>
 			<div class="product-table">
 				<div class="row">
-						<button type='submit' id='product-details' onclick='detailsBtn();'>Product-Details</button>
-						<button type='submit' id='product-review' onclick='reviewBtn();'>Product-Review</button>
-					<div id="table">
+						<button id='details-btn' onclick='selectbutton();'>Product-Details</button>
+						<button id='review-btn' onclick='selectbutton();'>Product-Review</button>
+					<div id="details">
 						<table>
 						<h4>Product Details</h4><hr style='width:100%; border:1px solid rgba(77,148,255,.2);margin-top:5px;margin-bottom:15px;'>
 							<tbody>
@@ -304,12 +304,44 @@ get_title($id);
 							<i class='fa fa-star' title='Best'></i>&nbsp;&nbsp;
 						</form>
 					</div>
-					
 				</div>
 			</div>
 		</div>
 	</body><hr>
 	<script>
+		function selectbutton()
+			{
+				let details=document.getElementById("details");
+				let detailsbtn=document.getElementById("details-btn");
+				let reviewbtn=document.getElementById("review-btn");
+				let review=document.getElementById("review");
+				let xhttp=new XMLHttpRequest();
+				
+				xhttp.onreadystatechange=function()
+				{
+					
+				if(this.readyState==4 && this.status==200)
+					{
+						// console.log("200: ",this.responseText);
+						// alert(this.responseText);
+						reviewbtn.onclick=function()
+						{
+							review.style.display = "block";
+							details.style.display = "none";
+						};
+						detailsbtn.onclick=function()
+						{
+							details.style.display = "block";
+							review.style.display = "none";
+						};
+						// divid.innerHTML=this.responseText;
+					}
+				
+				};
+				xhttp.open("GET","product_details.php",true);
+				xhttp.send();
+			
+			}
 	function imagechange(id)
 	{
 		var x=document.getElementById(id).src;
@@ -324,30 +356,30 @@ get_title($id);
 
 		// console.log(id);
 	}
-	function detailsBtn()
-	{
-		var x = document.getElementById("table");
-		var y = document.getElementById("review");
-		if (x.style.display === "none") {
-			x.style.display = "block";
-			y.style.display = "none";
-		} else {
-			x.style.display = "none";
-			y.style.display = "none";
-		}
-	}
-	function reviewBtn()
-	{
-		var x = document.getElementById("review");
-		var y = document.getElementById("table");
-		if (x.style.display === "none") {
-			x.style.display = "block";
-			y.style.display = "none";
-		} else {
-			x.style.display = "none";
-			y.style.display = "none";
-		}
-	}
+	// function detailsBtn()
+	// {
+	// 	var x = document.getElementById("table");
+	// 	var y = document.getElementById("review");
+	// 	if (x.style.display === "none") {
+	// 		x.style.display = "block";
+	// 		y.style.display = "none";
+	// 	} else {
+	// 		x.style.display = "none";
+	// 		y.style.display = "none";
+	// 	}
+	// }
+	// function reviewBtn()
+	// {
+	// 	var x = document.getElementById("review");
+	// 	var y = document.getElementById("table");
+	// 	if (x.style.display === "none") {
+	// 		x.style.display = "block";
+	// 		y.style.display = "none";
+	// 	} else {
+	// 		x.style.display = "none";
+	// 		y.style.display = "none";
+	// 	}
+	// }
 		
 
 	</script>

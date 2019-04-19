@@ -7,6 +7,10 @@ include '../service/product_services.php';
 $id=$_GET['id'];
 $email=$_SESSION['user']['email'];
 $imgname=$_POST['imgname'];
+$fileName=$_FILES['imgname']['name'];
+$tempName=$_FILES['imgname']['temp_name'];
+// echo "<script>alert('$imgname')</script>";
+image_mvoe($imgname);
 $brand=$_POST['brand'];
 $model=$_POST['model'];
 $header=$_POST['header'];
@@ -45,6 +49,11 @@ $quantity=$_POST['quantity'];
 $status=$_POST['status'];
 $date=date("Y-m-d h:i:sa");
 
+if(isset($_POST['add']))
+{
+    products_add($email,$brand,$model,$header,$processor,$gen,$clock_speed,$cache,$d_type,$d_size,$d_res,$touch,$r_type,$ram,$storage,$g_chipset,$g_memory,$networking,$d_port,$a_port,$u_port,$battery,$weight,$color,$os,$others,$part_no,$origin,$assemble,$warranty,$upcoming,$gifts,$r_price,$s_price,$d_price,$quantity,$status,$imgname);
+    echo "<script>document.location='homepageseller.php';</script>";
+}
 if(isset($_POST['update']))
 {
     //  echo "hello ".$date." ".$status." ".$d_price;

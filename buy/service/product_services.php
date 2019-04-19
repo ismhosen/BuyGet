@@ -34,3 +34,15 @@ include '../data/products_data_access.php';
 			}
 		
 	}
+	function owner_name($email)
+	{
+		$query=get_owner_name($email);
+		$rows1=mysqli_num_rows($query);
+		if($rows1>0)
+		{
+			while($row=mysqli_fetch_assoc($query))  
+			{
+				echo $row['name'];
+			}
+		}
+	}

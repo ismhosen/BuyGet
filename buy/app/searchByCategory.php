@@ -96,9 +96,6 @@ myLink();
 
 						// $query.=$query3.$query2;
 						$processors = isset($_REQUEST['processors']) ? json_decode($_REQUEST['processors']) : array();
-						// $query1=search_By_Brand($asus_brand,$accer_brand,$i3_brand);
-						// $query="SELECT * FROM laptops WHERE status='1'";
-						// var_dump($asus_brand);
 						$flag = 0;
 						for($i=0; $i<count($processors); $i++)
 						{
@@ -123,9 +120,6 @@ myLink();
 						}
 
 						$generations = isset($_REQUEST['generations']) ? json_decode($_REQUEST['generations']) : array();
-						// $query1=search_By_Brand($asus_brand,$accer_brand,$i3_brand);
-						// $query="SELECT * FROM laptops WHERE status='1'";
-						// var_dump($asus_brand);
 						$flag = 0;
 						for($i=0; $i<count($generations); $i++)
 						{
@@ -150,9 +144,6 @@ myLink();
 						}
 
 						$screensizes = isset($_REQUEST['screensizes']) ? json_decode($_REQUEST['screensizes']) : array();
-						// $query1=search_By_Brand($asus_brand,$accer_brand,$i3_brand);
-						// $query="SELECT * FROM laptops WHERE status='1'";
-						// var_dump($asus_brand);
 						$flag = 0;
 						for($i=0; $i<count($screensizes); $i++)
 						{
@@ -177,9 +168,6 @@ myLink();
 						}
 
 						$resolutions = isset($_REQUEST['resolutions']) ? json_decode($_REQUEST['resolutions']) : array();
-						// $query1=search_By_Brand($asus_brand,$accer_brand,$i3_brand);
-						// $query="SELECT * FROM laptops WHERE status='1'";
-						// var_dump($asus_brand);
 						$flag = 0;
 						for($i=0; $i<count($resolutions); $i++)
 						{
@@ -204,9 +192,6 @@ myLink();
 						}
 
 						$rams = isset($_REQUEST['rams']) ? json_decode($_REQUEST['rams']) : array();
-						// $query1=search_By_Brand($asus_brand,$accer_brand,$i3_brand);
-						// $query="SELECT * FROM laptops WHERE status='1'";
-						// var_dump($asus_brand);
 						$flag = 0;
 						for($i=0; $i<count($rams); $i++)
 						{
@@ -231,9 +216,6 @@ myLink();
 						}
 
 						$storages = isset($_REQUEST['storages']) ? json_decode($_REQUEST['storages']) : array();
-						// $query1=search_By_Brand($asus_brand,$accer_brand,$i3_brand);
-						// $query="SELECT * FROM laptops WHERE status='1'";
-						// var_dump($asus_brand);
 						$flag = 0;
 						for($i=0; $i<count($storages); $i++)
 						{
@@ -258,9 +240,6 @@ myLink();
 						}
 
 						$gpus = isset($_REQUEST['gpus']) ? json_decode($_REQUEST['gpus']) : array();
-						// $query1=search_By_Brand($asus_brand,$accer_brand,$i3_brand);
-						// $query="SELECT * FROM laptops WHERE status='1'";
-						// var_dump($asus_brand);
 						$flag = 0;
 						for($i=0; $i<count($gpus); $i++)
 						{
@@ -283,10 +262,20 @@ myLink();
 						{
 							$query .=")";
 						}
-						var_dump($min_price,$max_price);
-						$query .=" AND ( regular_price BETWEEN $min_price AND $max_price)";
+						// var_dump($min_price,$max_price);
+						// $flag = 0;
+						if($min_price != "" && $max_price != "")
+						{
+							$query .=" AND ( regular_price BETWEEN $min_price AND $max_price)";
+						}
 						
-						var_dump($query);
+						if($query=="SELECT * FROM laptops WHERE status='1'")
+						{
+							return "";
+						}
+						
+						// var_dump($query);
+					
 						$result=mysqli_query(connection(),$query);
 						// var_dump($query1);
 						$rows1=mysqli_num_rows($result);

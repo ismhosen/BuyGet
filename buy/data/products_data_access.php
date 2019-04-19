@@ -22,9 +22,17 @@ function order_By_Date()
 {
 	return mysqli_query(connection(),"SELECT * FROM laptops ORDER BY date ASC LIMIT 5");
 }
+function order_By_Discount()
+{
+	return mysqli_query(connection(),"SELECT * FROM laptops WHERE discount_price > 0");
+}
 function owner_id($email)
 {
 	return mysqli_query(connection(),"SELECT * FROM laptops WHERE owner_email=$email");
+}
+function get_owner_name($email)
+{
+	return mysqli_query(connection(),"SELECT * FROM customers WHERE email=$email");
 }
 function products_id($id)
 {

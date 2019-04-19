@@ -14,9 +14,13 @@ if($email=="")
 {
 	myHeader();
 }
+else if($_SESSION['type']=="seller")
+{
+	sellerheader($name,$imgname);
+}
 else if($_SESSION['type']=="buyer")
 {
-	buyerHeader($name,$imgname);
+	buyerheader($name,$imgname);
 }
 mySearch();
 ?>

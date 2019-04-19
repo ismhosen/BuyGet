@@ -90,11 +90,8 @@ mySearch();
 			<div class="laptop-products">
 				<div class="container">
 					<br>
-					
-					<br><br>
 					<div class="row">
 						<div class="col-lg-3 col-md-2 col-sm-4 col-xs-12">
-							
 							<div class="search">
 								<span class="laptop-products-text pull-left" style="font-weight:bold">Filter By</span><br><hr style="background:#4d94ff;height:2px;margin-top:13px">
 								<div class="brand">
@@ -219,7 +216,7 @@ mySearch();
 								</div>
 							</div>
 						</div>
-						<div id="searchdiv"></div>
+						<div  class="col-lg-2 col-md-4 col-sm-6 col-xs-12" id="searchdiv"></div>
 						<div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
 							<span class="laptop-products-text pull-left">Laptops</span><br><hr style="background:#4d94ff;height:1px;">
 							
@@ -232,10 +229,10 @@ mySearch();
 								{
 
 							?>
-							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 productdiv">
-								<div class="product-box" style="height:305px;">
+							<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
+								<div class="product-box" style="height:302px;">
 									<img src="images/<?php echo $row['main_image'];?>" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
-									<a href="product_details.php?id=<?php echo $row['id'];?>&brand=<?php echo $row['brand'];?>&model=<?php echo $row['model'];?>&processor=<?php echo $row['processor'];?>&gen=<?php echo $row['generation'];?>&clock_speed=<?php echo $row['clock_speed'];?>&cache=<?php echo $row['cache'];?>&d_type=<?php echo $row['display_type'];?>&d_resolution=<?php echo $row['display_resolution'];?>&touch=<?php echo $row['touch'];?>&r_type=<?php echo $row['ram_type'];?>&ram=<?php echo $row['ram'];?>&storage=<?php echo $row['storage'];?>&g_chipset=<?php echo $row['graphics_chipset'];?>&g_memory=<?php echo $row['graphics_memory'];?>&networking=<?php echo $row['networking'];?>&d_port=<?php echo $row['display_port'];?>&a_port=<?php echo $row['audio_port'];?>&u_port=<?php echo $row['usb_port'];?>&battery=<?php echo $row['battery'];?>&weight=<?php echo $row['weight'];?>&color=<?php echo $row['color'];?>&os=<?php echo $row['operating_system'];?>&others=<?php echo $row['networking'];?>&part=<?php echo $row['part_no'];?>&origin=<?php echo $row['origin'];?>&assemble=<?php echo $row['assemble'];?>&warranty=<?php echo $row['warranty'];?>&r_price=<?php echo $row['regular_price'];?>&s_price=<?php echo $row['special_price'];?>&header=<?php echo $row['header'];?>&d_size=<?php echo $row['display_size'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
+									<a href="product_details.php?id=<?php echo $row['id'];?>&header=<?php echo $row['header'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
 									<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
 									<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
 								</div>
@@ -253,67 +250,7 @@ mySearch();
 		{
 			// console.log(brand);
 			let divid=document.getElementById("searchdiv");
-			var asus_input_id=document.getElementById("asus");
-			var accer_input_id=document.getElementById("accer");
-			var dell_input_id=document.getElementById("dell");
-			var hp_input_id=document.getElementById("hp");
-			var lenovo_input_id=document.getElementById("lenovo");
-			var microsoft_input_id=document.getElementById("microsoft");
-			var macbook_input_id=document.getElementById("macbook");
-			var razer_input_id=document.getElementById("razer");
-			var ilife_input_id=document.getElementById("ilife");
-			var i3_input_id=document.getElementById("i3");
-			if(asus_input_id.checked==true)
-			{
-				var asus_brand=asus_input_id.value;
-				
-			}
-			if(accer_input_id.checked==true)
-			{
-				var accer_brand=accer_input_id.value;
-				
-			}
-			if(dell_input_id.checked==true)
-			{
-				var dell_brand=dell_input_id.value;
-				
-			}
-			if(hp_input_id.checked==true)
-			{
-				var hp_brand=hp_input_id.value;
-				
-			}
-			if(lenovo_input_id.checked==true)
-			{
-				var lenovo_brand=lenovo_input_id.value;
-				
-			}
-			if(microsoft_input_id.checked==true)
-			{
-				var microsoft_brand=microsoft_input_id.value;
-				
-			}
-			if(macbook_input_id.checked==true)
-			{
-				var macbook_brand=macbook_input_id.value;
-				
-			}
-			if(razer_input_id.checked==true)
-			{
-				var razer_brand=razer_input_id.value;
-				
-			}
-			if(ilife_input_id.checked==true)
-			{
-				var ilife_brand=ilife_input_id.value;
-				
-			}
-			if(i3_input_id.checked==true)
-			{
-				var i3_brand=i3_input_id.value;
-				
-			}
-
+	
 			let brands =[];
 			let brand = document.getElementsByName("brand");
 			brand.forEach(element => {
@@ -390,7 +327,10 @@ mySearch();
 				})
 
 			});
-
+	// 		if (typeof gpus == 'undefined' && gpus.length < 0) {
+    // // the array is defined and has at least one element
+	// 			console.log("hello");
+	// 		}
 			var minprice=document.getElementById('min').value;
 			var maxprice=document.getElementById('max').value;
 			//  console.log(processors.length);
@@ -399,11 +339,11 @@ mySearch();
 			// alert(accer_brand);
 			// alert(brands);
 			let xhttp=new XMLHttpRequest();
-			if(asus_brand=="" && accer_brand=="" && dell_brand=="" && hp_brand=="" && lenovo_brand=="" && microsoft_brand=="" && macbook_brand=="" && razer_brand=="" && ilife_brand=="")
-				{
-					
-					divid.style.display = "none";
-				}
+			if(brands == 'undefined' && brands.length < 0 && processors == 'undefined' && processors.length < 0 && generations == 'undefined' && generations.length < 0 && screensizes == 'undefined' && screensizes.length < 0 && resolutions == 'undefined' && resolutions.length < 0 && rams == 'undefined' && rams.length < 0 && storages == 'undefined' && storages.length < 0 && gpus == 'undefined' && gpus.length < 0 && maxprice=="" && minprice=="")
+			{
+				
+				divid.style.display = "none";
+			}
 			else
 			{
 				xhttp.onreadystatechange=function()
@@ -411,8 +351,6 @@ mySearch();
 					
 				if(this.readyState==4 && this.status==200)
 					{
-						// console.log("200: ",this.responseText);
-						// alert(this.responseText);
 						divid.style.display = "block";
 						divid.innerHTML=this.responseText;
 					}

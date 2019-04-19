@@ -132,6 +132,15 @@ get_title($id);
 					<div class="row">
 						<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
 							<div class="side-image">
+								<?php
+								// var_dump($id);
+									$query1=products_id($id);
+									$rows1=mysqli_num_rows($query1);
+									if($rows1>0)
+									{
+										while($row=mysqli_fetch_assoc($query1))  
+										{
+								?>
 								<img id='image1' src="images/laptop2.png" alt="" width=100px; onclick="imagechange(this.id);" style='opacity:.5;'><hr>
 								<img src="images/laptop4.png" alt="" width=100px; id='image2' onclick="imagechange(this.id);"><hr>
 								<img src="images/laptop 3.png" alt="" width=100px; id='image3' onclick="imagechange(this.id);"><hr>
@@ -147,18 +156,18 @@ get_title($id);
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="product-short-des">
-						<span style='font-size:15'><strong><?php echo $_GET['header'];?></strong></span><hr>
-						<span>Prodcut Id: &nbsp;laptop-323-23</span><hr>
+						<span style='font-size:15'><strong><?php echo $row['header'];?></strong></span><hr>
+						<span>product owner: &nbsp;<a href="sellerpublicprofile.php"><?php owner_name($row['owner_email']);?></a></span><hr>
 						<span style='opacity:.8;'>Avaibility: &nbsp;Yes</span><hr>
-						<span style='opacity:.8;'>Regular Price: &nbsp;<span style="font-weight:bold;">৳</span>&nbsp;<span><?php echo $_GET['r_price'];?></span>/-</span><br>
-						<span style="font-weight:bold;">Special Price: &nbsp;<span >৳</span>&nbsp;<span><?php echo $_GET['s_price'];?></span>/-</span><hr>
+						<span style='opacity:.8;'>Regular Price: &nbsp;<span style="font-weight:bold;">৳</span>&nbsp;<span><?php echo $row['regular_price'];?></span>/-</span><br>
+						<span style="font-weight:bold;">Special Price: &nbsp;<span >৳</span>&nbsp;<span><?php echo $row['special_price'];?></span>/-</span><hr>
 						<span style="font-weight:bold;">Quick Review</span><br>
-						<span style='opacity:.8;'>Processor: &nbsp;<?php echo $_GET['processor'];?></span><br>
-						<span style='opacity:.8;'>Generation: &nbsp;<?php echo $_GET['gen'];?></span><br>
-						<span style='opacity:.8;'>Processor clock speed: &nbsp;<?php echo $_GET['clock_speed'];?></span><br>
-						<span style='opacity:.8;'>Display size: &nbsp;<?php echo $_GET['d_size'];?></span><br>
-						<span style='opacity:.8;'>Ram: &nbsp; <?php echo $_GET['ram'];?></span><br>
-						<span style='opacity:.8;'>Ram type: &nbsp;<?php echo $_GET['d_type'];?></span><hr>
+						<span style='opacity:.8;'>Processor: &nbsp;<?php echo $row['processor'];?></span><br>
+						<span style='opacity:.8;'>Generation: &nbsp;<?php echo $row['generation'];?></span><br>
+						<span style='opacity:.8;'>Processor clock speed: &nbsp;<?php echo $row['clock_speed'];?></span><br>
+						<span style='opacity:.8;'>Display size: &nbsp;<?php echo $row['display_size'];?></span><br>
+						<span style='opacity:.8;'>Ram: &nbsp; <?php echo $row['ram'];?></span><br>
+						<span style='opacity:.8;'>Ram type: &nbsp;<?php echo $row['display_type'];?></span><hr>
 						<form action="">
 							<button type='Submit'>Add to cart</button>&nbsp;
 							<button type='Submit' style=''><i class='fa fa-bookmark-o'></i></button>&nbsp;
@@ -175,122 +184,124 @@ get_title($id);
 						<table>
 						<h4>Product Details</h4><hr style='width:100%; border:1px solid rgba(77,148,255,.2);margin-top:5px;margin-bottom:15px;'>
 							<tbody>
+								
 								<tr>
 									<td width=300px>Brand</td>
-									<td width=900px><?php echo $_GET['brand'];?></td>
+									<td width=900px><?php echo $row['brand'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Model</td>
-									<td width=900px><?php echo $_GET['model'];?></td>
+									<td width=900px><?php echo $row['model'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Processor</td>
-									<td width=900px><?php echo $_GET['processor'];?></td>
+									<td width=900px><?php echo $row['processor'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Generation</td>
-									<td width=900px><?php echo $_GET['gen'];?></td>
+									<td width=900px><?php echo $row['generation'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Clock speed</td>
-									<td width=900px><?php echo $_GET['clock_speed'];?></td>
+									<td width=900px><?php echo $row['clock_speed'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Cache</td>
-									<td width=900px><?php echo $_GET['cache'];?></td>
+									<td width=900px><?php echo $row['cache'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Dispaly type</td>
-									<td width=900px><?php echo $_GET['d_type'];?></td>
+									<td width=900px><?php echo $row['display_type'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Display size</td>
-									<td width=900px><?php echo $_GET['d_size'];?></td>
+									<td width=900px><?php echo $row['display_size'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Display Resolution</td>
-									<td width=900px><?php echo $_GET['d_resolution'];?></td>
+									<td width=900px><?php echo $row['display_resolution'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Touch</td>
-									<td width=900px><?php echo $_GET['touch'];?></td>
+									<td width=900px><?php echo $row['touch'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>RAM type</td>
-									<td width=900px><?php echo $_GET['r_type'];?></td>
+									<td width=900px><?php echo $row['ram_type'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>RAM</td>
-									<td width=900px><?php echo $_GET['ram'];?></td>
+									<td width=900px><?php echo $row['ram'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Storage</td>
-									<td width=900px><?php echo $_GET['storage'];?></td>
+									<td width=900px><?php echo $row['storage'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Graphics chipset</td>
-									<td width=900px><?php echo $_GET['g_chipset'];?></td>
+									<td width=900px><?php echo $row['graphics_chipset'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Graphics memory</td>
-									<td width=900px><?php echo $_GET['g_memory'];?></td>
+									<td width=900px><?php echo $row['graphics_memory'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Networking</td>
-									<td width=900px><?php echo $_GET['networking'];?></td>
+									<td width=900px><?php echo $row['networking'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Display port</td>
-									<td width=900px><?php echo $_GET['d_port'];?></td>
+									<td width=900px><?php echo $row['display_port'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Audio port</td>
-									<td width=900px><?php echo $_GET['a_port'];?></td>
+									<td width=900px><?php echo $row['audio_port'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>USB Port</td>
-									<td width=900px><?php echo $_GET['u_port'];?></td>
+									<td width=900px><?php echo $row['usb_port'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Battery</td>
-									<td width=900px><?php echo $_GET['battery'];?></td>
+									<td width=900px><?php echo $row['battery'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Weight</td>
-									<td width=900px><?php echo $_GET['weight'];?></td>
+									<td width=900px><?php echo $row['weight'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Color</td>
-									<td width=900px><?php echo $_GET['color'];?></td>
+									<td width=900px><?php echo $row['color'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Operating System</td>
-									<td width=900px><?php echo $_GET['os'];?></td>
+									<td width=900px><?php echo $row['operating_system'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Others</td>
-									<td width=900px><?php echo $_GET['others'];?></td>
+									<td width=900px><?php echo $row['others'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Part No</td>
-									<td width=900px><?php echo $_GET['part'];?></td>
+									<td width=900px><?php echo $row['part_no'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Country of Origin</td>
-									<td width=900px><?php echo $_GET['origin'];?></td>
+									<td width=900px><?php echo $row['origin'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Made in Assemble</td>
-									<td width=900px><?php echo $_GET['assemble'];?></td>
+									<td width=900px><?php echo $row['assemble'];?></td>
 								</tr>
 								<tr>
 									<td width=300px>Warranty</td>
-									<td width=900px><?php echo $_GET['warranty'];?></td>
+									<td width=900px><?php echo $row['warranty'];?></td>
 								</tr>
 								<!-- <tr>
 									<td width=300px>RAM type</td>
 									<td width=900px>DDR4 2400MHz</td>
 								</tr> -->
+								<?php }}?>
 							</tbody>
 						</table>
 					</div>

@@ -2,16 +2,6 @@
 include '../data/search_data_access.php';
 // include '../data/connection.php';
 include 'common.php';
-$asus_brand=$_GET['asus_brand'];
-$accer_brand=$_GET['accer_brand'];
-$dell_brand=$_GET['dell_brand'];
-$hp_brand=$_GET['hp_brand'];
-$lenovo_brand=$_GET['lenovo_brand'];
-$microsoft_brand=$_GET['microsoft_brand'];
-$macbook_brand=$_GET['macbook_brand'];
-$razer_brand=$_GET['razer_brand'];
-$ilife_brand=$_GET['ilife_brand'];
-$i3_brand=$_GET['i3_brand'];
 $min_price=$_GET['min'];
 $max_price=$_GET['max'];
 // $brands=$_GET['brands'];

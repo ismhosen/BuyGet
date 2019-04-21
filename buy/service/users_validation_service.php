@@ -30,6 +30,7 @@ function validate_signin_from_db($email,$pass)
 			while($row=mysqli_fetch_assoc($query))  
 			{
                $user=array(
+				   'id'=>$row['id'],
 				   'name'=>$row['name'],
 				   'email'=>$row['email'],
 				   'password'=>$row['password'],

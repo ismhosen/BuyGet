@@ -22,6 +22,15 @@ function order_By_Date()
 {
 	return mysqli_query(connection(),"SELECT * FROM laptops ORDER BY date ASC LIMIT 5");
 }
+function get_cart($id)
+{
+	// echo "<script>alert($id)</script>";
+	return mysqli_query(connection(),"SELECT cart.c_id, cart.quantity, cart.customer_id, cart.product_id,laptops.special_price, laptops.main_image, laptops.id FROM cart INNER JOIN laptops WHERE cart.product_id=laptops.id  AND cart.customer_id=$id");
+}
+function update_quantity($quantity,$c_id)
+{
+	return mysqli_query(connection(),"UPDATE cart SET quantity='$quantity' WHERE c_id='$c_id'");
+}
 function order_By_Discount()
 {
 	return mysqli_query(connection(),"SELECT * FROM laptops WHERE discount_price > 0");

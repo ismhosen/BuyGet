@@ -1,6 +1,7 @@
 <?php
 echo "<title>Laptop</title>";
 session_start();
+$id=$_SESSION['user']['id'];
 $email=$_SESSION['user']['email'];
 $name=$_SESSION['user']['name'];
 $imgname=$_SESSION['user']['imgname'];
@@ -240,6 +241,59 @@ mySearch();
 							<?php }}?>
 						</div>
 						
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">See Your Cart</h4>
+					</div>
+					<div class="modal-body">
+						<table class="table">
+						
+							<thead>
+								<th>SL no.</th>
+								<th>Product Image</th>
+								<th>Product Price</th>
+								<th>Quantity</th>
+								<th>Delete</th>
+								<th>Save</th>
+								
+							</thead>
+							<tbody>
+							<?php 
+							$slno=0;
+							// echo "<script>alert($id)</script>";
+							$query1=get_cart($id);
+							$rows1=mysqli_num_rows($query1);
+							if($rows1>0)
+							{
+								while($row=mysqli_fetch_assoc($query1))  
+								{		
+									$p_id=$row['c_id'];	
+							?>
+								<tr>
+									<td><?php echo $slno +=1?></td>
+									<td><img src="images/<?php echo $row['main_image']?>" width="70px;"></td>
+									<td><?php echo $row['special_price']*$row['quantity']?></td>
+									<td><input type="number" class="input-sm" value="<?php echo $row['quantity']?>"></td>
+
+									<form method="POST" action="carthandler.php?c_id=<?php echo $p_id;?>">
+										<td><button type="submit" name="delete" class="btn btn-danger fa fa-trash"></button></td>
+										<td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td>
+									</form>
+								</tr>
+								
+								<?php }}?>
+							</tbody>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>

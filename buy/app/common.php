@@ -245,6 +245,8 @@ function buyerheader($name,$imgname)
 							<li><a href=""><font class="mynavbar" color="#4d94ff">cloths</font></a></li>
 							</ul>
 						</li>
+						<li class="scoll-smooth"><a href=""  data-toggle="modal" data-target="#myModal"><font class="mynavbar" size="4" color="#4d94ff"><span class="fa fa-cart-plus">&nbsp;<sup>0</sup></span></font></a></li>
+						
 						
 					</ul>
 				</div>

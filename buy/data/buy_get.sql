@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2019 at 09:53 AM
+-- Generation Time: Apr 21, 2019 at 09:47 AM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.1.15
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `buy&get`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `c_id` int(10) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `customer_id` int(10) NOT NULL,
+  `quantity` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`c_id`, `product_id`, `customer_id`, `quantity`) VALUES
+(1, 1, 186, 2),
+(2, 4, 2, 1),
+(3, 6, 186, 1),
+(4, 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -120,7 +143,7 @@ INSERT INTO `laptops` (`id`, `owner_email`, `brand`, `model`, `header`, `process
 (7, 4, 'Accer', 'LenevoZenBook 15', 'Dyel ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U', 'sdfs', '5th', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', '8GB', '512GB SATA SSD', 'sdf', '8GB', 'sdf', 'sdf', 'sdferghet', 'ret', 'ert', 'ertertt', 'dfg43t', '5tw45t', '54t45', '45t', 'ert4', '', '34t4', '34t3', '4t3', 'laptop%203.png', 797800, 900000, 0, '2019-04-16 00:30:37', 0, 1),
 (8, 3, 'lenevo', 'lenevo updated', 'lenevo updated', 'lenevo updated', '6th', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', '8GB', '512GB SSD', 'lenevo updated', '2GB', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevot updated', 'lenevo updated', 'weight updated', 'color updated', 'os updated', 'others updated', 'part_no updated', 'origin updated', 'ssemble updated', 'warranty updated', 'upcoming updated', 'lenevo updated', 'laptop%203.png', 34534, 345345, 34534, '2019-02-04 00:30:37', 34, 1),
 (10, 4, 'Microsoft', 'LenevoZenBook 30', 'Doyel ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U', 'sdfs', '5th', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', '2GB', '256GB SSD', 'sdf', '8GB', 'sdf', 'sdf', 'sdferghet', 'ret', 'ert', 'ertertt', 'dfg43t', '5tw45t', '54t45', '45t', 'ert4', '', '34t4', '34t3', '4t3', 'laptop%203.png', 797800, 900000, 0, '2019-04-02 00:30:37', 0, 1),
-(11, 4, 'ASus', 'Asus ZenBook 100', 'Asus ZenBook i3 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U', 'i3', '8th', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', '4GB', '64GB eMMC', 'sdf', '4GB', 'sdf', 'sdf', 'sdferghet', 'ret', 'ert', 'ertertt', 'dfg43t', '5tw45t', '54t45', '45t', 'ert4', '', '34t4', '34t3', '4t3', 'laptop%203.png', 797800, 900000, 0, '2019-04-02 00:30:37', 0, 1),
+(11, 4, 'ASus', 'Asus ZenBook 100', 'Asus ZenBook i3 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U', 'i3', '5th', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', '4GB', '64GB eMMC', 'sdf', '4GB', 'sdf', 'sdf', 'sdferghet', 'ret', 'ert', 'ertertt', 'dfg43t', '5tw45t', '54t45', '45t', 'ert4', '', '34t4', '34t3', '4t3', 'laptop%203.png', 797800, 900000, 0, '2019-04-02 00:30:37', 0, 1),
 (12, 4, 'brand', 'model', 'header', 'processor', 'gen', 'clock_speed', 'cache', 'd_type', 'd_size', 'd_res', 'touch', 'r_type', 'ram', '128GB SATA SSD', 'g_chipset', '6GB', 'networking', 'd_port', 'a_port', 'u_port', 'battery', 'weight', 'color', 'os', 'others', 'part_no', 'origin', 'assemble', 'warranty', 'upcoming', 'gifts', '', 0, 0, 0, '2019-04-19 02:49:21', 0, 1),
 (13, 3, 'lenevo', 'lenevo updatedasdasd', 'lenevo i5updatedasdasd', 'i5', '8th', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', '8GB', '128GB SSD', 'lenevo updated', '2GB', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevot updated', 'lenevo updated', 'weight updated', 'color updated', 'os updated', 'others updated', 'part_no updated', 'origin updated', 'ssemble updated', 'warranty updated', 'upcoming updated', 'lenevo updated', '', 34534, 345345, 34534, '2019-04-19 02:52:07', 34, 1),
 (18, 3, 'lenevo', 'lenevo ismail', 'lenevo updatedasdasd', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevo updated', '8GB', 'lenevo updated', 'lenevo updated', 'lenevo updated', 'lenevot updated', 'lenevo updated', 'weight updated', 'color updated', 'os updated', 'others updated', 'part_no updated', 'origin updated', 'ssemble updated', 'warranty updated', 'upcoming updated', 'lenevo updated', '', 34534, 345345, 34534, '2019-04-19 03:10:42', 34, 1),
@@ -177,6 +200,12 @@ INSERT INTO `users` (`id`, `email`, `password`, `type`) VALUES
 --
 
 --
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`c_id`);
+
+--
 -- Indexes for table `customers`
 --
 ALTER TABLE `customers`
@@ -199,6 +228,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `c_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `customers`

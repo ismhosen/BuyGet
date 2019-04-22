@@ -1,12 +1,16 @@
 <?php
 echo "<title>Laptop</title>";
+include 'common.php';
+include '../data/products_data_access.php';
+include '../service/user_service.php';
+// include '../data/cart_data_access.php';
 session_start();
 $id=$_SESSION['user']['id'];
 $email=$_SESSION['user']['email'];
 $name=$_SESSION['user']['name'];
 $imgname=$_SESSION['user']['imgname'];
-include 'common.php';
-include '../data/products_data_access.php';
+$cart_rows=mysqli_num_rows(get_cart($id));
+$bookmark_rows=mysqli_num_rows(get_bookmark($id));
 myLink();
 if($email=="")
 {
@@ -18,7 +22,7 @@ else if($_SESSION['type']=="seller")
 }
 else if($_SESSION['type']=="buyer")
 {
-	buyerheader($name,$imgname);
+	buyerheader($name,$imgname,$cart_rows,$bookmark_rows);
 }
 
 mySearch();
@@ -230,12 +234,17 @@ mySearch();
 								{
 
 							?>
-							<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv">
-								<div class="product-box" style="height:302px;">
+							<div class="col-lg-2 col-md-4 col-sm-6 col-xs-12 productdiv" style="height:335px;">
+								<div class="product-box">
 									<img src="images/<?php echo $row['main_image'];?>" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
 									<a href="product_details.php?id=<?php echo $row['id'];?>&header=<?php echo $row['header'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
 									<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
-									<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
+									<!-- <span class="pull-left text-style" onclick="cartadd()"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span> -->
+									<form method="POST" action="carthandler.php?id=<?=$id?>&p_id=<?=$row['id']?>">		
+										<br><br>
+										<button type="submit" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_laptop"></button>
+										<button type="submit" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark"></button>
+									</form>
 								</div>
 							</div>
 							<?php }}?>
@@ -260,9 +269,9 @@ mySearch();
 								<th>Product Image</th>
 								<th>Product Price</th>
 								<th>Quantity</th>
-								<th>Delete</th>
 								<th>Save</th>
-								
+								<th>Delete</th>
+								<th>Details</th>
 							</thead>
 							<tbody>
 							<?php 
@@ -270,30 +279,33 @@ mySearch();
 							// echo "<script>alert($id)</script>";
 							$query1=get_cart($id);
 							$rows1=mysqli_num_rows($query1);
+							// echo "<script>alert($rows1)</script>";
 							if($rows1>0)
 							{
 								while($row=mysqli_fetch_assoc($query1))  
-								{		
-									$p_id=$row['c_id'];	
+								{			
 							?>
 								<tr>
-									<td><?php echo $slno +=1?></td>
-									<td><img src="images/<?php echo $row['main_image']?>" width="70px;"></td>
-									<td><?php echo $row['special_price']*$row['quantity']?></td>
-									<td><input type="number" class="input-sm" value="<?php echo $row['quantity']?>"></td>
-
-									<form method="POST" action="carthandler.php?c_id=<?php echo $p_id;?>">
-										<td><button type="submit" name="delete" class="btn btn-danger fa fa-trash"></button></td>
+									<form method="POST" action="carthandler.php?c_id=<?php echo $row['c_id'];?>">
+										<td><?php echo $slno +=1?></td>
+										<td><img src="images/<?php echo $row['main_image']?>" width="70px;"></td>
+										<td id="price<?php echo $row['c_id']?>"><?php echo $row['special_price']*$row["quantity"]?></td>
+										<td><input id="quantity<?php echo $row['c_id']?>" type="number" class="input-sm" value="<?php echo $row["quantity"]?>" onchange="quantityupdate(<?= $row['c_id']?>, <?= $row['special_price']?>)" min="1" name="quantity"></td>
 										<td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td>
+										<td><button type="submit" name="delete" class="btn btn-danger fa fa-trash"></button></td>
+										<td><a href="product_details.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="delete" class="btn btn-default fa fa-info-circle"></button></a></td>
+										<!-- <td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td> -->
 									</form>
 								</tr>
-								
 								<?php }}?>
 							</tbody>
 						</table>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<form method="POST" action="carthandler.php?id=<?=$id?>" style="margin:0px; padding:0px; display:inline;">		
+							<button type="submit" class="btn btn-danger pull-left fa fa-trash" name="delete_all">&nbsp; Clear ALL</button>
+						</form>
 					</div>
 				</div>
 			</div>

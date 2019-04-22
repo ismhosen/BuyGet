@@ -46,3 +46,16 @@ include '../data/products_data_access.php';
 			}
 		}
 	}
+
+	function check_cart($p_id,$c_id)
+	{
+		
+		$query=product_cart_check($p_id,$c_id);
+		$rows1=mysqli_num_rows($query);
+		if($rows1>0)
+		{
+			return "error";
+		}
+		else
+			return "";
+	}

@@ -6,7 +6,10 @@ $email=$_SESSION['user']['email'];
 $name=$_SESSION['user']['name'];
 $imgname=$_SESSION['user']['imgname'];
 include 'common.php';
-include '../data/products_data_access.php';
+// include '../data/products_data_access.php';
+include '../service/product_services.php';
+// include '../data/cart_data_access.php';
+$rows1=mysqli_num_rows(get_cart($id));
 myLink();
 if($email=="")
 {
@@ -18,7 +21,7 @@ else if($_SESSION['type']=="seller")
 }
 else if($_SESSION['type']=="buyer")
 {
-	buyerheader($name,$imgname);
+	buyerheader($name,$imgname,$rows1);
 }
 
 

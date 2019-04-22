@@ -2,6 +2,8 @@
 session_start();
 include 'common.php';
 include '../service/user_service.php';
+include '../service/product_services.php';
+$id=$_SESSION['user']['id'];
 $email=$_SESSION['user']['email'];
 $name=$_SESSION['user']['name'];
 $phone=$_SESSION['user']['phone'];
@@ -9,6 +11,7 @@ $dob=$_SESSION['user']['dob'];
 $gender=$_SESSION['user']['gender'];
 $address=$_SESSION['user']['address'];
 $imgname=$_SESSION['user']['imgname'];
+$rows1=mysqli_num_rows(get_cart($id));
 // get_users($email);
 // echo "<script>alert('$email')</script>";
 echo "<title>Buy & Get</title>";
@@ -23,7 +26,7 @@ else if($_SESSION['type']=="seller")
 }
 else if($_SESSION['type']=="buyer")
 {
-	buyerheader($name,$imgname);
+	buyerheader($name,$imgname,$rows1);
 }
 ?>
 <html>

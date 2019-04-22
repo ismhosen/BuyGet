@@ -9,6 +9,8 @@ $name=$_SESSION['user']['name'];
 $imgname=$_SESSION['user']['imgname'];
 // get_users($email);
 // echo "<script>alert('$email')</script>";
+$cart_rows=mysqli_num_rows(get_cart($id));
+$bookmark_rows=mysqli_num_rows(get_bookmark($id));
 echo "<title>Buy & Get</title>";
 myLink();
 if($email=="")
@@ -21,9 +23,15 @@ else if($_SESSION['type']=="seller")
 }
 else if($_SESSION['type']=="buyer")
 {
-	buyerheader($name,$imgname);
+	buyerheader($name,$imgname,$cart_rows,$bookmark_rows);
 }
 mySearch();
+
+if($_GET['error']=="cart_bookmark_error")
+{
+	echo "<script>alert('Already Added')</script>";
+	echo "<script>document.location='homepagebuyer.php';</script>";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -205,7 +213,12 @@ mySearch();
 								<img src="images/<?php echo $row['main_image'];?>" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
 								<a href="product_details.php?id=<?php echo $row['id'];?>&header=<?php echo $row['header'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
 								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
-								<span class="pull-left text-style" onclick="cartadd()"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
+								<!-- <span class="pull-left text-style" onclick="cartadd()"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span> -->
+								<form method="POST" action="carthandler.php?id=<?=$id?>&p_id=<?=$row['id']?>">		
+									<br><br>
+									<button type="submit" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_index"></button>
+									<button type="submit" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark_index"></button>
+								</form>
 							</div>
 						</div>
 						<?php }}?>
@@ -231,7 +244,9 @@ mySearch();
 								<th>Product Image</th>
 								<th>Product Price</th>
 								<th>Quantity</th>
+								<th>Save</th>
 								<th>Delete</th>
+								<th>Details</th>
 							</thead>
 							<tbody>
 							<?php 
@@ -239,35 +254,89 @@ mySearch();
 							// echo "<script>alert($id)</script>";
 							$query1=get_cart($id);
 							$rows1=mysqli_num_rows($query1);
+							// echo "<script>alert($rows1)</script>";
 							if($rows1>0)
 							{
 								while($row=mysqli_fetch_assoc($query1))  
-								{		
-									$p_id=$row['c_id'];	
+								{			
 							?>
 								<tr>
-									<td><?php echo $slno +=1?></td>
-									<td><img src="images/<?php echo $row['main_image']?>" width="70px;"></td>
-									<td id="price"><?php echo $row['special_price']*$row['quantity']?></td>
-									<td><input type="number" class="input-sm" value="<?php echo $row['quantity']?>" onchange="quantityupdate(this.value)" min=></td>
-									<form method="POST" action="carthandler.php?c_id=<?php echo $p_id;?>">
+									<form method="POST" action="carthandler.php?c_id=<?php echo $row['c_id'];?>">
+										<td><?php echo $slno +=1?></td>
+										<td><img src="images/<?php echo $row['main_image']?>" width="70px;"></td>
+										<td id="price<?php echo $row['c_id']?>"><?php echo $row['special_price']*$row["quantity"]?></td>
+										<td><input id="quantity<?php echo $row['c_id']?>" type="number" class="input-sm" value="<?php echo $row["quantity"]?>" onchange="quantityupdate(<?= $row['c_id']?>, <?= $row['special_price']?>)" min="1" name="quantity"></td>
+										<td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td>
 										<td><button type="submit" name="delete" class="btn btn-danger fa fa-trash"></button></td>
+										<td><a href="product_details.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="delete" class="btn btn-default fa fa-info-circle"></button></a></td>
 										<!-- <td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td> -->
 									</form>
 								</tr>
-								
 								<?php }}?>
 							</tbody>
 						</table>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-danger pull-left fa fa-trash">&nbsp; Clear ALL</button>
+						<form method="POST" action="carthandler.php?id=<?=$id?>" style="margin:0px; padding:0px; display:inline;">		
+							<button type="submit" class="btn btn-danger pull-left fa fa-trash" name="delete_all">&nbsp; Clear ALL</button>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+		<div class="modal" id="bookmarkModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">See Your Bookmark Products</h4>
+					</div>
+					<div class="modal-body">
+						<table class="table">
+						
+							<thead>
+								<th>SL no.</th>
+								<th>Product Image</th>
+								<th>Product Price</th>
+								<th>Delete</th>
+								<th>Details</th>
+							</thead>
+							<tbody>
+							<?php 
+							$slno=0;
+							// echo "<script>alert($id)</script>";
+							$query1=get_bookmark($id);
+							$rows1=mysqli_num_rows($query1);
+							// echo "<script>alert($rows1)</script>";
+							if($rows1>0)
+							{
+								while($row=mysqli_fetch_assoc($query1))  
+								{			
+							?>
+								<tr>
+									<form method="POST" action="carthandler.php?b_id=<?php echo $row['b_id'];?>">
+										<td><?php echo $slno +=1?></td>
+										<td><img src="images/<?php echo $row['main_image']?>" width="70px;"></td>
+										<td id="price<?php echo $row['b_id']?>"><?php echo $row['special_price']?></td>
+										<td><button type="submit" name="delete_bookmark" class="btn btn-danger fa fa-trash"></button></td>
+										<td><a href="product_details.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="delete" class="btn btn-default fa fa-info-circle"></button></a></td>
+										<!-- <td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td> -->
+									</form>
+								</tr>
+								<?php }}?>
+							</tbody>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<form method="POST" action="carthandler.php?id=<?=$id?>" style="margin:0px; padding:0px; display:inline;">		
+							<button type="submit" class="btn btn-danger pull-left fa fa-trash" name="delete_bookmark_all">&nbsp; Clear ALL</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>
 <?php
@@ -302,20 +371,23 @@ myFooter();
 			xhttp.send();
 		}
 	}
-	function quantityupdate(str)
+	function quantityupdate(id,price)
 	{
-		let tdid=document.getElementById("demo");
+		let tdiv=document.getElementById("price"+id).innerText;
+		let quantity=document.getElementById("quantity"+id).value;
+		console.log(id,tdiv,quantity);
 		let xhttp=new XMLHttpRequest();
 		xhttp.onreadystatechange=function()
 		{
 			
 		if(this.readyState==4 && this.status==200)
 			{
-				tdid.innerHTML *=str;
+				// alert("hello");
+				tdiv.innerHTML =tdiv*quantity;
 			}
 		
 		};
-		xhttp.open("GET","carthandler.php?str="+str,true);
+		xhttp.open("GET","homepagebuyer.php?c_id="+id+"?price="+price,true);
 		xhttp.send();
 	}
 

@@ -5,6 +5,9 @@ $name=$_SESSION['user']['name'];
 $imgname=$_SESSION['user']['imgname'];
 include 'common.php';
 include '../service/product_services.php';
+// include '../data/cart_data_access.php';
+$cart_rows=mysqli_num_rows(get_cart($id));
+$bookmark_rows=mysqli_num_rows(get_bookmark($id));
 myLink();
 myHeader();
 //mySearch();
@@ -18,7 +21,7 @@ else if($_SESSION['type']=="seller")
 }
 else if($_SESSION['type']=="buyer")
 {
-	buyerheader($name,$imgname);
+	buyerheader($name,$imgname,$cart_rows,$bookmark_rows);
 }
 $id=$_GET['id'];
 get_title($id);

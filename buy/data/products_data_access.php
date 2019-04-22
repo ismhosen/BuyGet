@@ -22,15 +22,6 @@ function order_By_Date()
 {
 	return mysqli_query(connection(),"SELECT * FROM laptops ORDER BY date ASC LIMIT 5");
 }
-function get_cart($id)
-{
-	// echo "<script>alert($id)</script>";
-	return mysqli_query(connection(),"SELECT cart.c_id, cart.quantity, cart.customer_id, cart.product_id,laptops.special_price, laptops.main_image, laptops.id FROM cart INNER JOIN laptops WHERE cart.product_id=laptops.id  AND cart.customer_id=$id");
-}
-function update_quantity($quantity,$c_id)
-{
-	return mysqli_query(connection(),"UPDATE cart SET quantity='$quantity' WHERE c_id='$c_id'");
-}
 function order_By_Discount()
 {
 	return mysqli_query(connection(),"SELECT * FROM laptops WHERE discount_price > 0");
@@ -67,5 +58,54 @@ function products_delete($id)
 {
 	return mysqli_query(connection(),"DELETE FROM laptops WHERE id='$id'");
 }
+
+function get_cart($id)
+{
+	// echo "<script>alert($id)</script>";
+	return mysqli_query(connection(),"SELECT cart.c_id, cart.quantity, cart.customer_id, cart.product_id,laptops.special_price, laptops.header, laptops.main_image, laptops.id FROM cart INNER JOIN laptops WHERE cart.product_id=laptops.id  AND cart.customer_id=$id");
+}
+function update_quantity($quantity,$c_id)
+{
+	return mysqli_query(connection(),"UPDATE cart SET quantity='$quantity' WHERE c_id='$c_id'");
+}
+function delete_cart($c_id)
+{
+	return mysqli_query(connection(),"DELETE FROM cart WHERE c_id='$c_id'");
+}
+function delete_cart_all($id)
+{
+	return mysqli_query(connection(),"DELETE FROM cart WHERE customer_id='$id'");
+}
+function add_to_cart($id,$product_id)
+{
+	return mysqli_query(connection(),"INSERT INTO cart(product_id,customer_id,quantity) VALUES('$product_id','$id','1')");
+}
+
+function get_bookmark($id)
+{
+	// echo "<script>alert($id)</script>";
+	return mysqli_query(connection(),"SELECT bookmark.b_id, bookmark.customer_id, bookmark.product_id,laptops.special_price, laptops.header, laptops.main_image, laptops.id FROM bookmark INNER JOIN laptops WHERE bookmark.product_id=laptops.id  AND bookmark.customer_id=$id");
+}
+function delete_bookmark($b_id)
+{
+	return mysqli_query(connection(),"DELETE FROM bookmark WHERE b_id='$b_id'");
+}
+function delete_bookmark_all($id)
+{
+	return mysqli_query(connection(),"DELETE FROM bookmark WHERE customer_id='$id'");
+}
+function bookmark($id,$product_id)
+{
+	return mysqli_query(connection(),"INSERT INTO bookmark(product_id,customer_id) VALUES('$product_id','$id')");
+}
+function product_cart_check($p_id,$u_id)
+{
+	return mysqli_query(connection(),"SELECT * FROM cart WHERE product_id='$p_id' AND customer_id='$u_id'");
+}
+function product_bookmark_check($p_id,$u_id)
+{
+	return mysqli_query(connection(),"SELECT * FROM bookmark WHERE product_id='$p_id' AND customer_id='$u_id'");
+}
+
 
 ?>

@@ -159,7 +159,7 @@ function myheader()
 	';
 }
 
-function buyerheader($name,$imgname)
+function buyerheader($name,$imgname,$cart,$bookmark)
 {
 	echo '
 	<!DOCTYPE html>
@@ -214,7 +214,7 @@ function buyerheader($name,$imgname)
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 					<span class="fa fa-bars""></span>	
 				</button>
-				<a href="homepagebuyer.php" class="navbar-brand">Buy & Get</a>
+				<a href="homepagebuyer.php" class="navbar-brand"><img src="images/logo.png" width=70px></a>
 			</div>
 			
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -245,7 +245,8 @@ function buyerheader($name,$imgname)
 							<li><a href=""><font class="mynavbar" color="#4d94ff">cloths</font></a></li>
 							</ul>
 						</li>
-						<li class="scoll-smooth"><a href=""  data-toggle="modal" data-target="#myModal"><font class="mynavbar" size="4" color="#4d94ff"><span class="fa fa-cart-plus">&nbsp;<sup>0</sup></span></font></a></li>
+						<li class="scoll-smooth"><a href=""  data-toggle="modal" data-target="#myModal"><font class="mynavbar" size="4" color="#4d94ff"><span class="fa fa-cart-plus">&nbsp;<sup>'.$cart.'</sup></span></font></a></li>
+						<li class="scoll-smooth"><a href=""  data-toggle="modal" data-target="#bookmarkModal"><font class="mynavbar" size="4" color="#4d94ff"><span class="fa fa-bookmark-o">&nbsp;<sup>'.$bookmark.'</sup></span></font></a></li>
 						
 						
 					</ul>
@@ -314,7 +315,7 @@ function sellerheader($name,$imgname)
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 					<span class="fa fa-bars""></span>	
 				</button>
-				<a href="homepagebuyer.php" class="navbar-brand">Buy & Get</a>
+				<a href="homepageseller.php" class="navbar-brand"><img src="images/logo.png" width=70px></a>
 			</div>
 			
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -482,6 +483,8 @@ function mySearch()
 	
 	';
 }
+
+
 
 function mymodal()
 {

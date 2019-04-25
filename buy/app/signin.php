@@ -1,6 +1,7 @@
 <?php
 echo "<title>Sign in</title>";
 include 'common.php';
+include '../data/products_data_access.php';
 myLink();
 myHeader();
 ?>
@@ -105,4 +106,5 @@ myHeader();
 </html>	
 <?php
 myFooter();
+submitfeedback();
 ?>

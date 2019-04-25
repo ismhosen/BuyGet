@@ -98,4 +98,5 @@ mySearch();
 	
 <?php
 myFooter();
+submitfeedback();
 ?>

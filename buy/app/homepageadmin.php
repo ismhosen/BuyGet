@@ -10,18 +10,17 @@ $imgname=$_SESSION['user']['imgname'];
 // echo "<script>alert('$email')</script>";
 echo "<title>Buy & Get</title>";
 myLink();
-if($email=="")
-{
-	myHeader();
-	echo "<script>document.location='index.php';</script>";
-}
-else if($_SESSION['type']=="seller")
+if($_SESSION['type']=="seller")
 {
 	sellerheader($name,$imgname);
 }
 else if($_SESSION['type']=="buyer")
 {
 	buyerheader($name,$imgname);
+}
+else if($_SESSION['type']=="admin")
+{
+	adminheader();
 }
 ?>
 <!DOCTYPE html>

@@ -456,6 +456,7 @@ else if($_SESSION['type']=="seller")
 </html>
 <?php
 myFooter();
+submitfeedback();
 ?>
 
 <script>

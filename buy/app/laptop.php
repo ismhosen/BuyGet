@@ -506,4 +506,5 @@ mySearch();
 	
 <?php
 myFooter();
+submitfeedback();
 ?>

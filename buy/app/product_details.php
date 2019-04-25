@@ -547,4 +547,5 @@ if($_GET['error']=="cart_bookmark_error")
 </html>
 <?php
 myFooter();
+submitfeedback();
 ?>

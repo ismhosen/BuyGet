@@ -271,6 +271,7 @@ mySearch();
 </html>
 <?php
 myFooter();
+submitfeedback();
 ?>
 
 <script>

@@ -2,6 +2,7 @@
 session_start();
 echo "<title>Sign Up</title>";
 include 'common.php';
+include '../data/products_data_access.php';
 //include '../service/users_service.php';
 myLink();
 myHeader();
@@ -184,6 +185,7 @@ myHeader();
 session_unset();
 //session_destroy();
 myFooter();
+submitfeedback();
 ?>
 
 <script>

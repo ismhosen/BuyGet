@@ -214,4 +214,5 @@ else if($_SESSION['type']=="buyer")
 	
 <?php
 myFooter();
+submitfeedback();
 ?>

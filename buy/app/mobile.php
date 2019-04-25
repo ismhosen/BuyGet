@@ -170,4 +170,5 @@ mySearch();
 	
 <?php
 myFooter();
+submitfeedback();
 ?>

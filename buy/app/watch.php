@@ -92,8 +92,9 @@ mySearch();
 			</div>
 		</div>
 	</body>
-</html><br><br><br><br><br><br><br><br>
+</html><br><br>
 	
 <?php
 myFooter();
+submitfeedback();
 ?>

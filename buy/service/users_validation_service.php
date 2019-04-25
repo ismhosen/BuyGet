@@ -51,9 +51,13 @@ function validate_signin_from_db($email,$pass)
 			{
 				echo "<script>document.location='homepagebuyer.php';</script>";
 			}
-			else
+			else if(($types=="seller"))
 			{
 				echo "<script>document.location='homepageseller.php';</script>";
+			}
+			else if(($types=="admin"))
+			{
+				echo "<script>document.location='homepageadmin.php';</script>";
 			}
 			// header('location: userhomepage.php?email='.$_SESSION['user']['email']);
 			

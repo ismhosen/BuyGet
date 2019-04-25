@@ -25,6 +25,13 @@ else if($_SESSION['type']=="buyer")
 	buyerheader($name,$imgname,$cart_rows,$bookmark_rows);
 }
 
+
+if($_GET['error']=="cart_bookmark_error")
+{
+	echo "<script>alert('Already Added')</script>";
+	echo "<script>document.location='homepagebuyer.php';</script>";
+}
+
 mySearch();
 ?>
 <html>
@@ -240,11 +247,21 @@ mySearch();
 									<a href="product_details.php?id=<?php echo $row['id'];?>&header=<?php echo $row['header'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
 									<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
 									<!-- <span class="pull-left text-style" onclick="cartadd()"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span> -->
+									<?php
+									if($email==""){
+									?>
+									<br><br>
+									<button type="submit" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_index" onclick="signin()"></button>
+									<button type="submit" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark_index" onclick="signin()"></button>
+									<?php }
+									else {
+									?>
 									<form method="POST" action="carthandler.php?id=<?=$id?>&p_id=<?=$row['id']?>">		
 										<br><br>
 										<button type="submit" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_laptop"></button>
-										<button type="submit" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark"></button>
+										<button type="submit" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark_laptop"></button>
 									</form>
+									<?php }?>
 								</div>
 							</div>
 							<?php }}?>
@@ -291,9 +308,9 @@ mySearch();
 										<td><img src="images/<?php echo $row['main_image']?>" width="70px;"></td>
 										<td id="price<?php echo $row['c_id']?>"><?php echo $row['special_price']*$row["quantity"]?></td>
 										<td><input id="quantity<?php echo $row['c_id']?>" type="number" class="input-sm" value="<?php echo $row["quantity"]?>" onchange="quantityupdate(<?= $row['c_id']?>, <?= $row['special_price']?>)" min="1" name="quantity"></td>
-										<td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td>
-										<td><button type="submit" name="delete" class="btn btn-danger fa fa-trash"></button></td>
-										<td><a href="product_details.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="delete" class="btn btn-default fa fa-info-circle"></button></a></td>
+										<td><button type="submit" name="save_laptop" class="btn btn-success fa fa-check"></button></td>
+										<td><button type="submit" name="delete_laptop" class="btn btn-danger fa fa-trash"></button></td>
+										<td><a href="product_details.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="details" class="btn btn-default fa fa-info-circle"></button></a></td>
 										<!-- <td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td> -->
 									</form>
 								</tr>
@@ -304,7 +321,59 @@ mySearch();
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<form method="POST" action="carthandler.php?id=<?=$id?>" style="margin:0px; padding:0px; display:inline;">		
-							<button type="submit" class="btn btn-danger pull-left fa fa-trash" name="delete_all">&nbsp; Clear ALL</button>
+							<button type="submit" class="btn btn-danger pull-left fa fa-trash" name="delete_all_laptop">&nbsp; Clear ALL</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="bookmarkModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">See Your Bookmark Products</h4>
+					</div>
+					<div class="modal-body">
+						<table class="table">
+						
+							<thead>
+								<th>SL no.</th>
+								<th>Product Image</th>
+								<th>Product Price</th>
+								<th>Delete</th>
+								<th>Details</th>
+							</thead>
+							<tbody>
+							<?php 
+							$slno=0;
+							// echo "<script>alert($id)</script>";
+							$query1=get_bookmark($id);
+							$rows1=mysqli_num_rows($query1);
+							// echo "<script>alert($rows1)</script>";
+							if($rows1>0)
+							{
+								while($row=mysqli_fetch_assoc($query1))  
+								{			
+							?>
+								<tr>
+									<form method="POST" action="carthandler.php?b_id=<?php echo $row['b_id'];?>">
+										<td><?php echo $slno +=1?></td>
+										<td><img src="images/<?php echo $row['main_image']?>" width="70px;"></td>
+										<td id="price<?php echo $row['b_id']?>"><?php echo $row['special_price']?></td>
+										<td><button type="submit" name="delete_bookmark_laptop" class="btn btn-danger fa fa-trash"></button></td>
+										<td><a href="product_details.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="details" class="btn btn-default fa fa-info-circle"></button></a></td>
+										<!-- <td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td> -->
+									</form>
+								</tr>
+								<?php }}?>
+							</tbody>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<form method="POST" action="carthandler.php?id=<?=$id?>" style="margin:0px; padding:0px; display:inline;">		
+							<button type="submit" class="btn btn-danger pull-left fa fa-trash" name="delete_bookmark_all_laptop">&nbsp; Clear ALL</button>
 						</form>
 					</div>
 				</div>
@@ -425,6 +494,12 @@ mySearch();
 				xhttp.open("GET","searchByCategory.php?brands="+ JSON.stringify(brands) + "&processors="+ JSON.stringify(processors) + "&generations="+ JSON.stringify(generations) + "&screensizes="+ JSON.stringify(screensizes) + "&resolutions="+ JSON.stringify(resolutions) + "&rams="+ JSON.stringify(rams) + "&storages="+ JSON.stringify(storages) + "&gpus="+ JSON.stringify(gpus) + "&min="+minprice + "&max="+maxprice,true);
 				xhttp.send();
 			}
+		}
+
+
+		function signin()
+		{
+			alert("Please sign in");
 		}
 	</script>
 </html>

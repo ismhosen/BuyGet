@@ -188,7 +188,21 @@ mySearch();
 								<img src="images/<?php echo $row['main_image'];?>" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
 								<a href="product_details.php?id=<?php echo $row['id'];?>&header=<?php echo $row['header'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
 								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
+								<!-- <span class="pull-left text-style" onclick="cartadd()"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span> -->
+								<?php
+									if($_SESSION['signin']=!true){
+								?>
+								<button type="submit" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_index"></button>
+								<button type="submit" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark_index"></button>
+								<?php }
+								else {
+								?>
+								<form method="POST" action="carthandler.php?id=<?=$id?>&p_id=<?=$row['id']?>">		
+									<br><br>
+									<button type="button" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_index" onclick="signin()"></button>
+									<button type="button" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark_index" onclick="signin()"></button>
+								</form>
+								<?php }?>
 							</div>
 						</div>
 						<?php }}?>
@@ -316,6 +330,11 @@ myFooter();
 			dots[slideIndex-1].className +=" active";
 			setTimeout(showSlides,2000);
 			// setInterval(showSlides,2000);
+		}
+
+		function signin()
+		{
+			alert("Please sign in");
 		}
 
 </script>

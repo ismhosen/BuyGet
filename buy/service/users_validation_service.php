@@ -23,6 +23,7 @@ function validate_signin_from_db($email,$pass)
 			{
 				$types=$row['type'];
 				$_SESSION['type']=$types;
+				$_SESSION['signin']=true;
 				// echo "<script>alert('$types')</script>";
 			}
 			

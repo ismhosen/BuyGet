@@ -1,11 +1,15 @@
 <?php
 session_start();
-$email=$_SESSION['user']['email'];
-$name=$_SESSION['user']['name'];
-$imgname=$_SESSION['user']['imgname'];
 include 'common.php';
 include '../service/product_services.php';
 // include '../data/cart_data_access.php';
+// include '../service/user_service.php';
+
+$id=$_SESSION['user']['id'];
+$email=$_SESSION['user']['email'];
+$name=$_SESSION['user']['name'];
+$imgname=$_SESSION['user']['imgname'];
+
 $cart_rows=mysqli_num_rows(get_cart($id));
 $bookmark_rows=mysqli_num_rows(get_bookmark($id));
 myLink();
@@ -23,8 +27,15 @@ else if($_SESSION['type']=="buyer")
 {
 	buyerheader($name,$imgname,$cart_rows,$bookmark_rows);
 }
-$id=$_GET['id'];
-get_title($id);
+$p_id=$_GET['id'];
+get_title($p_id);
+// echo "<script>alert($id)</script>";
+
+if($_GET['error']=="cart_bookmark_error")
+{
+	echo "<script>alert('Already Added')</script>";
+	// echo "<script>document.location='homepagebuyer.php';</script>";
+}
 ?>
 <html>
 	<head>
@@ -137,7 +148,7 @@ get_title($id);
 							<div class="side-image">
 								<?php
 								// var_dump($id);
-									$query1=products_id($id);
+									$query1=products_id($p_id);
 									$rows1=mysqli_num_rows($query1);
 									if($rows1>0)
 									{
@@ -171,11 +182,25 @@ get_title($id);
 						<span style='opacity:.8;'>Display size: &nbsp;<?php echo $row['display_size'];?></span><br>
 						<span style='opacity:.8;'>Ram: &nbsp; <?php echo $row['ram'];?></span><br>
 						<span style='opacity:.8;'>Ram type: &nbsp;<?php echo $row['display_type'];?></span><hr>
-						<form action="">
-							<button type='Submit'>Add to cart</button>&nbsp;
-							<button type='Submit' style=''><i class='fa fa-bookmark-o'></i></button>&nbsp;
+						
+						<?php
+						if($email==""){
+						?>
+						<br><br>
+						<!-- <button type="submit" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_index" ></button>
+						<button type="submit" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark_index" onclick="signin()"></button> -->
+						<button type='Submit' name='add_to_cart_details' onclick="signin()">Add to cart</button>&nbsp;
+						<button type='Submit' style='' name='bookmark_details' onclick="signin()"><i class='fa fa-bookmark-o'></i></button>&nbsp;
+						<button type='Submit'>Add to compare</button>&nbsp;
+						<?php }
+						else {
+						?>
+						<form action="carthandler.php?id=<?=$id?>&p_id=<?=$row['id']?>" method="POST">
+							<button type='Submit' name='add_to_cart_details'>Add to cart</button>&nbsp;
+							<button type='Submit' style='' name='bookmark_details'><i class='fa fa-bookmark-o'></i></button>&nbsp;
 							<button type='Submit'>Add to compare</button>&nbsp;
 						</form>
+						<?php }?>
 					</div>
 				</div>
 			</div><hr>
@@ -321,6 +346,125 @@ get_title($id);
 				</div>
 			</div>
 		</div>
+		
+		<div class="modal" id="myModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">See Your Cart</h4>
+					</div>
+					<div class="modal-body">
+						<table class="table">
+						
+							<thead>
+								<th>SL no.</th>
+								<th>Product Image</th>
+								<th>Product Price</th>
+								<th>Quantity</th>
+								<th>Save</th>
+								<th>Delete</th>
+								<th>Details</th>
+							</thead>
+							<tbody>
+							
+							<?php 
+							$slno=0;
+							// echo "<script>alert($id)</script>";
+							$query1=get_cart($id);
+							$rows1=mysqli_num_rows($query1);
+							// echo "<script>alert($rows1)</script>";
+							if($rows1>0)
+							{
+								while($row=mysqli_fetch_assoc($query1))  
+								{			
+							?>
+								<tr>
+									<form method="POST" action="carthandler.php?c_id=<?php echo $row['c_id'];?>&p_id=<?php echo $p_id;?>">
+										<td><?php echo $slno +=1?></td>
+										<td><img src="images/<?php echo $row['main_image']?>" width="70px;"></td>
+										<td id="price<?php echo $row['c_id']?>"><?php echo $row['special_price']*$row["quantity"]?></td>
+										<td><input id="quantity<?php echo $row['c_id']?>" type="number" class="input-sm" value="<?php echo $row["quantity"]?>" onchange="quantityupdate(<?= $row['c_id']?>, <?= $row['special_price']?>)" min="1" name="quantity"></td>
+										<td><button type="submit" name="save_details" class="btn btn-success fa fa-check"></button></td>
+										<td><button type="submit" name="delete_details" class="btn btn-danger fa fa-trash"></button></td>
+										<td><a href="product_details.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="details" class="btn btn-default fa fa-info-circle"></button></a></td>
+										<!-- <td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td> -->
+									</form>
+								</tr>
+								<?php }}?>
+							</tbody>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<form method="POST" action="carthandler.php?id=<?=$id?>&p_id=<?php echo $p_id;?>" style="margin:0px; padding:0px; display:inline;">		
+							<button type="submit" class="btn btn-danger pull-left fa fa-trash" name="delete_all_details">&nbsp; Clear ALL</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal" id="bookmarkModal" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">See Your Bookmark Products</h4>
+					</div>
+					<div class="modal-body">
+						<table class="table">
+						
+							<thead>
+								<th>SL no.</th>
+								<th>Product Image</th>
+								<th>Product Price</th>
+								<th>Delete</th>
+								<th>Details</th>
+							</thead>
+							<tbody>
+							<tr>
+							<!-- <td>Hello</td>
+							<td>Hello</td>
+							<td>Hello</td>
+							<td>Hello</td>
+							<td>Hello</td> -->
+							</tr>
+							<?php 
+							$slno=0;
+							// echo "<script>alert($id)</script>";
+							$query1=get_bookmark($id);
+							$rows1=mysqli_num_rows($query1);
+							// echo "<script>alert($rows1)</script>";
+							
+							if($rows1>0)
+							{
+								while($row=mysqli_fetch_assoc($query1))  
+								{			
+							?>
+								<tr>
+									<form method="POST" action="carthandler.php?b_id=<?php echo $row['b_id'];?>&p_id=<?php echo $p_id;?>">
+										<td><?php echo $slno +=1?></td>
+										<td><img src="images/<?php echo $row['main_image']?>" width="70px;"></td>
+										<td id="price<?php echo $row['b_id']?>"><?php echo $row['special_price']?></td>
+										<td><button type="submit" name="delete_bookmark_details" class="btn btn-danger fa fa-trash"></button></td>
+										<td><a href="product_details.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="details" class="btn btn-default fa fa-info-circle"></button></a></td>
+										<!-- <td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td> -->
+									</form>
+								</tr>
+								<?php }}?>
+							</tbody>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<form method="POST" action="carthandler.php?id=<?=$id?>&p_id=<?php echo $p_id;?>" style="margin:0px; padding:0px; display:inline;">		
+							<button type="submit" class="btn btn-danger pull-left fa fa-trash" name="delete_bookmark_all_details">&nbsp; Clear ALL</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 	</body><hr>
 	<script>
 		function selectbutton()
@@ -394,7 +538,10 @@ get_title($id);
 	// 		y.style.display = "none";
 	// 	}
 	// }
-		
+	function signin()
+		{
+			alert("Please sign in");
+		}
 
 	</script>
 </html>

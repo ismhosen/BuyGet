@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2019 at 09:47 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.1.15
+-- Generation Time: Apr 26, 2019 at 08:20 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.1.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,6 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bookmark`
+--
+
+CREATE TABLE `bookmark` (
+  `b_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bookmark`
+--
+
+INSERT INTO `bookmark` (`b_id`, `product_id`, `customer_id`) VALUES
+(1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `cart`
 --
 
@@ -40,10 +59,15 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`c_id`, `product_id`, `customer_id`, `quantity`) VALUES
-(1, 1, 186, 2),
 (2, 4, 2, 1),
-(3, 6, 186, 1),
-(4, 1, 2, 1);
+(4, 1, 2, 1),
+(13, 6, 6, 1),
+(14, 6, 0, 1),
+(17, 1, 187, 2),
+(19, 7, 187, 2),
+(26, 8, 186, 3),
+(27, 7, 186, 1),
+(28, 6, 186, 1);
 
 -- --------------------------------------------------------
 
@@ -80,6 +104,37 @@ INSERT INTO `customers` (`id`, `name`, `email`, `password`, `phone`, `dob`, `gen
 (191, 'ism hosenseller', 'seller1@gm.com', '1@345', '01521332411', '2019-03-31', 'Male', 'asdasd', ''),
 (192, 'seller vai 2', '4', '4', '01541332419', '2019-04-07', 'Male', 'asdasdf\';asd;asd', ''),
 (193, 'ism hosenseller', 'sdfsellernow@gm.com', '1@345', '01521332411', '2019-04-01', 'Male', 'asdasd', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `id` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `comment` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `name`, `email`, `comment`) VALUES
+(1, 'ismail', '2', 'dsgdfgd'),
+(2, 'ismail hosen', 'skdjfsijkef', 'sdfnskldfhwof,dnflsdhf'),
+(3, 'ismail', '2', 'dgdfgdfgdfg'),
+(4, 'kjsd', 'kj;fdhgs', 'lkjhs skdjfhskf dgdfg'),
+(5, 'dfgdfgdfgdg', 'ddfgdfgd', 'dg'),
+(6, 'ismail', '2', 'fsdfs sdfsdf'),
+(7, 'ismail', 'sdfs', 'sdfsf sdfsdf'),
+(8, 'sdf details', 'sdfs', 'sdfsd'),
+(9, 'log in', 'sdfsd', 'fsdfs'),
+(10, 'hello', 'sfsds', 'sdfsdf'),
+(11, 'ZxZ', 'ZXZ', 'XZXZxZXZX'),
+(12, 'dfgdfgdfgdg', 'zxczxc', 'zxcz zxczxcz zdcz ');
 
 -- --------------------------------------------------------
 
@@ -136,8 +191,6 @@ CREATE TABLE `laptops` (
 
 INSERT INTO `laptops` (`id`, `owner_email`, `brand`, `model`, `header`, `processor`, `generation`, `clock_speed`, `cache`, `display_type`, `display_size`, `display_resolution`, `touch`, `ram_type`, `ram`, `storage`, `graphics_chipset`, `graphics_memory`, `networking`, `display_port`, `audio_port`, `usb_port`, `battery`, `weight`, `color`, `operating_system`, `others`, `part_no`, `origin`, `assemble`, `warranty`, `upcoming`, `gifts`, `main_image`, `regular_price`, `special_price`, `discount_price`, `date`, `quantity`, `status`) VALUES
 (1, 3, 'Asus', 'HP PROBOOK 450 G55', 'ASUS i5ZenBook 15 Ultra-Slim Compact Laptop 15.6ï¿½ FHD 4-Way Narrow Bezel, Intel Core i7-8565U', 'Intel Core i5 8250U', '8th', '1.60-3.40GHz', '6mb', 'HD LED', '15.6', '1366x768 (WxH) HD', 'No', 'DDR4 2400MHz', '4GB', '1TB HDD', 'Intel UHD Graphics 620', 'Shared', 'LAN, WiFi, Bluetooth, Card Reader, WebCam', 'HDMI, VGA', 'Combo', '1 x USB3.1 Type-C Gen 1, 2 x USB3.0, 1 x USB2.0', '3 Cell Li-Ion', '2.10Kg', 'Silver', 'Free-Dos', '1 x M.2 Slot', '3MC70PA', 'USA', 'usa', '2 year (Battery, Adapter 1 year)', 'No', 'Yes', 'laptop%203.png', 10000, 20000, 10, '2019-01-04 00:30:37', 100, 1),
-(2, 4, 'HP', 'sdfdf', 'HP i3 ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U', 'i3', '5th', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', '2GB', '256GB SATA ssd', 'sdf', '2GB', 'sdf', 'sdf', 'sdferghet', 'ret', 'ert', 'ertertt', 'dfg43t', '5tw45t', '54t45', '45t', 'ert4', '', '34t4', '34t3', '4t3', 'laptop%203.png', 40000, 60000, 0, '2019-04-04 00:30:37', 0, 1),
-(3, 4, 'Lenovo', '', 'Lenovo ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U', 'aksdjhfgwf', '6th', 'sdf34ekjfa', 'asdfawe4faefawefaw', 'fsdfasdf', 'ewfaw4efrawef', 'sdfaf', 'awerfwae', 'vzdv', '6GB', '2TB HDD', 'yift', '4GB', 'tyyf', 'asdfds', 'hj67', 'awerf', 'dsfas', 'hfhfg', 'hj', '', 'sdf', '', '', '', '', '', '', 'laptop%203.png', 80000, 90000, 0, '2019-07-04 00:30:37', 0, 1),
 (4, 4, 'Macbook', 'ASUS ZenBook 15', 'MAc i7 ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565', 'i7', '7th', '', '', '', '', '', '', '', '', '', '', '6GB', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 25000, 40000, 0, '2019-01-01 00:30:37', 0, 1),
 (6, 3, 'Asus', 'PROBOOK 450 G5', 'ZenBook i5 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U', 'Intel Core i5 8250U', '8th', '1.60-3.40GHz', '6mb', 'HD LED', '15.6\"', '1366x768 (WxH) HD', 'No', 'DDR4 2400MHz', '4GB', '1TB HDD', 'Intel UHD Graphics 620', 'Shared', 'LAN, WiFi, Bluetooth, Card Reader, WebCam', 'HDMI, VGA', 'Combo', '1 x USB3.1 Type-C Gen 1, 2 x USB3.0, 1 x USB2.0', '3 Cell Li-Ion', '2.10Kg', 'Silver', 'Free-Dos', '1 x M.2 Slot', '3MC70PA', 'USA', '', '2 year (Battery, Adapter 1 year)', 'No', 'Yes', 'laptop%203.png', 10000, 40000, 0, '2019-05-04 00:30:37', 0, 1),
 (7, 4, 'Accer', 'LenevoZenBook 15', 'Dyel ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U', 'sdfs', '5th', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', 'sdf', '8GB', '512GB SATA SSD', 'sdf', '8GB', 'sdf', 'sdf', 'sdferghet', 'ret', 'ert', 'ertertt', 'dfg43t', '5tw45t', '54t45', '45t', 'ert4', '', '34t4', '34t3', '4t3', 'laptop%203.png', 797800, 900000, 0, '2019-04-16 00:30:37', 0, 1),
@@ -161,7 +214,28 @@ INSERT INTO `laptops` (`id`, `owner_email`, `brand`, `model`, `header`, `process
 (32, 3, 'onoac n', 'xcvdfgerv ergeg', 'dfvdfvergeg ergegf', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Untitled-222.jpg', 0, 0, 0, '2019-04-19 16:25:36', 0, 0),
 (33, 3, 'sad sdf asaedf', ' sdf sdf sfwef wef', 'wefwef', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Untitled-222.jpg', 0, 0, 0, '2019-04-19 16:26:09', 0, 0),
 (34, 3, 'dfgdfg', 'fdfgdfg', 'dfgd', 'dfgdfg', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Untitled-222.jpg', 0, 0, 0, '2019-04-19 16:27:18', 0, 0),
-(35, 3, 'f 45dfggd dfg', 'gg3td erfgeg34', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Untitled-222.jpg', 0, 0, 0, '2019-04-19 16:27:56', 0, 0);
+(35, 3, 'f 45dfggd dfg', 'gg3td erfgeg34', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 'Untitled-222.jpg', 0, 0, 0, '2019-04-19 16:27:56', 0, 0),
+(36, 4, 'brand', 'model NOW', 'header', 'processor', 'gen', 'clock_speed', 'cache', 'd_type', 'd_size', 'd_res', 'touch', 'r_type', 'ram', '128GB SATA SSD', 'g_chipset', '6GB', 'networking', 'd_port', 'a_port', 'u_port', 'battery', 'weight', 'color', 'os', 'others', 'part_no', 'origin', 'assemble', 'warranty', 'upcoming', 'gifts', '', 0, 0, 0, '2019-04-22 06:12:57', 0, 1),
+(37, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, 0, 0, '2019-04-25 04:22:08', 0, 0),
+(40, 4, 'brand', 'model NOW sdsdf', 'header', 'processor', 'gen', 'clock_speed', 'cache', 'd_type', 'd_size', 'd_res', 'touch', 'r_type', 'ram', '128GB SATA SSD', 'g_chipset', '6GB', 'networking', 'd_port', 'a_port', 'u_port', 'battery', 'weight', 'color', 'os', 'others', 'part_no', 'origin', 'assemble', 'warranty', 'upcoming', 'gifts', '', 0, 0, 0, '2019-04-25 04:23:54', 0, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(10) NOT NULL,
+  `product_id` int(10) NOT NULL,
+  `customer_id` int(10) NOT NULL,
+  `quantity` int(10) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `mobile` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `comment` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -200,6 +274,12 @@ INSERT INTO `users` (`id`, `email`, `password`, `type`) VALUES
 --
 
 --
+-- Indexes for table `bookmark`
+--
+ALTER TABLE `bookmark`
+  ADD PRIMARY KEY (`b_id`);
+
+--
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
@@ -213,11 +293,23 @@ ALTER TABLE `customers`
   ADD UNIQUE KEY `email` (`email`);
 
 --
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `laptops`
 --
 ALTER TABLE `laptops`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `model` (`model`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -230,10 +322,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `bookmark`
+--
+ALTER TABLE `bookmark`
+  MODIFY `b_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `c_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `c_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -242,10 +340,22 @@ ALTER TABLE `customers`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
 
 --
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `laptops`
 --
 ALTER TABLE `laptops`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

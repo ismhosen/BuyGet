@@ -38,6 +38,22 @@ else if(isset($_POST['delete_all_laptop']))
     delete_cart_all($user_id);
     echo "<script>document.location='laptop.php';</script>";
 }
+else if(isset($_POST['save_order']))
+{
+//    echo "<script>alert($quantity)</script>";
+   update_quantity($quantity,$c_id);
+   echo "<script>document.location='order.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_order']))
+{
+    delete_cart($c_id);
+    echo "<script>document.location='order.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_all_order']))
+{
+    delete_cart_all($user_id);
+    echo "<script>document.location='order.php?id=$product_id';</script>";
+}
 else if(isset($_POST['save_details']))
 {
    update_quantity($quantity,$c_id);
@@ -77,6 +93,17 @@ else if(isset($_POST['add_to_cart_laptop']))
     else
         echo "<script>document.location='laptop.php?error=cart_bookmark_error';</script>";
 }
+else if(isset($_POST['add_to_cart_order']))
+{
+    if(mysqli_num_rows(product_cart_check($product_id,$user_id))==0)
+    {
+        // echo "<script>alert('hello');</script>";
+        add_to_cart($user_id,$product_id);
+        echo "<script>document.location='order.php?id=$product_id';</script>";
+    }
+    else
+        echo "<script>document.location='order.php?id=$product_id&error=cart_bookmark_error';</script>";
+}
 else if(isset($_POST['add_to_cart_details']))
 {
     if(mysqli_num_rows(product_cart_check($product_id,$user_id))==0)
@@ -108,6 +135,7 @@ else if(isset($_POST['delete_bookmark_all_laptop']))
     delete_bookmark_all($user_id);
     echo "<script>document.location='laptop.php';</script>";
 }
+
 else if(isset($_POST['delete_bookmark_details']))
 {
     // echo "<script>alert('hello');</script>";
@@ -118,6 +146,18 @@ else if(isset($_POST['delete_bookmark_all_details']))
 {
     delete_bookmark_all($user_id);
     echo "<script>document.location='product_details.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_bookmark_order']))
+{
+    // echo "<script>alert('hello');</script>";
+    delete_bookmark($b_id);
+    echo "<script>document.location='order.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_bookmark_all_order']))
+{
+    echo "<script>alert('$c_id');</script>";
+    delete_bookmark_all($c_id);
+    echo "<script>document.location='order.php?id=$product_id';</script>";
 }
 else if(isset($_POST['bookmark_index']))
 {    

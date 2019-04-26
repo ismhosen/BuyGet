@@ -75,7 +75,7 @@ $imgname=$_SESSION['user']['imgname'];
 											</td>
 											<td>
 												<hr>
-												<input type="text" class="myinput input-sm" name="email" placeholder="&nbsp;Enter your Email here..." value="<?= $email ?>"readonly>
+												<input type="text" class="myinput input-sm" name="email" placeholder="&nbsp;Enter your Email here..." value="<?= $email ?>" readonly>
 											</td>
 										</tr>
 										<tr>

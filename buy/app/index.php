@@ -70,53 +70,34 @@ mySearch();
 			} */
 			.products
 			{
-				margin-top: 10px;
+				margin-top: 120px;
 				background: #e6f0ff;
-				
-			}
-			.new-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
-			}
-			.discount-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
 			}
 			.laptop-products-text
 			{
 				font-size: 17;			
 				color: #4d94ff;
-			}.mobile-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
 			}
-			.productdiv{
-				
+			.productdiv
+			{
+				width: 205px;
+				margin-right: 5px;
+				margin-bottom: 15px;
+				border: 1px solid 10px rgba(32, 80, 223, .2);;
 				background: #fff;
-				margin-right:13px;
-				margin-bottom:10px;
 				padding: 10px 15px;
 				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .2);
     			box-shadow: 0 0 10px rgba(32, 80, 223, .2);
 				
-			}.productdiv:hover{
+			}
+			.productdiv:hover
+			{
 				transition: all .3s ease-in-out;
 				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .4);
-    			box-shadow: 0 0 10px rgba(32, 80, 223, .4);
-				
+    			box-shadow: 0 0 10px rgba(32, 80, 223, .5);
 			}
-			.productdiv img:hover
+			.text-style
 			{
-				transition: all .3s ease-in-out; 
-				-ms-transform: scale(1.5); /* IE 9 */
-				-webkit-transform: scale(.5); /* Safari 3-8 */
-  				transform: scale(1.1); 
-			}
-			.text-style{
-				
 				font-size: 15px;
 			}
 			@media screen and (max-width: 1200px) and (min-width: 639px) {
@@ -190,10 +171,11 @@ mySearch();
 								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span>100000</span>/-</span>
 								<!-- <span class="pull-left text-style" onclick="cartadd()"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span> -->
 								<?php
-									if($_SESSION['signin']=!true){
+									if($_SESSION['signin']==true){
 								?>
 								<button type="submit" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_index"></button>
 								<button type="submit" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark_index"></button>
+								<button type="submit" class="btn btn-default pull-left fa fa-exchange btn-sm" name="compare_index" title="Add to Compare"></button>
 								<?php }
 								else {
 								?>
@@ -201,6 +183,7 @@ mySearch();
 									<br><br>
 									<button type="button" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_index" onclick="signin()"></button>
 									<button type="button" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark_index" onclick="signin()"></button>
+									<button type="submit" class="btn btn-default pull-left fa fa-exchange btn-sm" name="compare_index" title="Add to Compare"></button>
 								</form>
 								<?php }?>
 							</div>

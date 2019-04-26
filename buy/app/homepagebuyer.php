@@ -96,53 +96,34 @@ if($_GET['error']=="cart_bookmark_error")
 			} */
 			.products
 			{
-				margin-top: 10px;
+				margin-top: 120px;
 				background: #e6f0ff;
-				
-			}
-			.new-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
-			}
-			.discount-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
 			}
 			.laptop-products-text
 			{
 				font-size: 17;			
 				color: #4d94ff;
-			}.mobile-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
 			}
-			.productdiv{
-				
+			.productdiv
+			{
+				width: 205px;
+				margin-right: 5px;
+				margin-bottom: 15px;
+				border: 1px solid 10px rgba(32, 80, 223, .2);;
 				background: #fff;
-				margin-right:13px;
-				margin-bottom:10px;
 				padding: 10px 15px;
 				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .2);
     			box-shadow: 0 0 10px rgba(32, 80, 223, .2);
 				
-			}.productdiv:hover{
+			}
+			.productdiv:hover
+			{
 				transition: all .3s ease-in-out;
 				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .4);
-    			box-shadow: 0 0 10px rgba(32, 80, 223, .4);
-				
+    			box-shadow: 0 0 10px rgba(32, 80, 223, .5);
 			}
-			.productdiv img:hover
+			.text-style
 			{
-				transition: all .3s ease-in-out; 
-				-ms-transform: scale(1.5); /* IE 9 */
-				-webkit-transform: scale(.5); /* Safari 3-8 */
-  				transform: scale(1.1); 
-			}
-			.text-style{
-				
 				font-size: 15px;
 			}
 			@media screen and (max-width: 1200px) and (min-width: 639px) {
@@ -271,7 +252,7 @@ if($_GET['error']=="cart_bookmark_error")
 										<td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td>
 										<td><button type="submit" name="delete" class="btn btn-danger fa fa-trash"></button></td>
 										<td><a href="product_details.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="details" class="btn btn-default fa fa-info-circle"></button></a></td>
-										<td><a href="order.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="order" class="btn btn-default fa fa-info-circle"></button></a></td>
+										<td><a href="order.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="order" class="btn btn-default fa fa-arrow-right"></button></a></td>
 										<!-- <td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td> -->
 									</form>
 								</tr>

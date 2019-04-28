@@ -12,8 +12,7 @@ $fileName=$_FILES['imgname']['name'];
 $tempName=$_FILES['imgname']['temp_name'];
 // echo "<script>alert('$imgname')</script>";
 $existing_image = $_POST['existing_image'];
-$dup_image = $_POST['dup_image'];
-
+image_mvoe($imgname);
 $brand=$_POST['brand'];
 $model=$_POST['model'];
 $header=$_POST['header'];
@@ -83,7 +82,7 @@ if(isset($_POST['save']))
 {
     if(model_validate($model)==true)
     {
-        products_duplicate($u_id,$brand,$model,$header,$processor,$gen,$clock_speed,$cache,$d_type,$d_size,$d_res,$touch,$r_type,$ram,$storage,$g_chipset,$g_memory,$networking,$d_port,$a_port,$u_port,$battery,$weight,$color,$os,$others,$part_no,$origin,$assemble,$warranty,$upcoming,$gifts,$r_price,$s_price,$d_price,$quantity,$status,$dup_image);
+        products_duplicate($u_id,$brand,$model,$header,$processor,$gen,$clock_speed,$cache,$d_type,$d_size,$d_res,$touch,$r_type,$ram,$storage,$g_chipset,$g_memory,$networking,$d_port,$a_port,$u_port,$battery,$weight,$color,$os,$others,$part_no,$origin,$assemble,$warranty,$upcoming,$gifts,$r_price,$s_price,$d_price,$quantity,$status,$date);
         echo "<script>document.location='homepageseller.php';</script>";
     }
     else

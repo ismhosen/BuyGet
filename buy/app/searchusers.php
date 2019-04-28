@@ -8,65 +8,7 @@ $email=$_SESSION['user']['email'];
 <!DOCTYPE html>
 <html>
 	<head>
-		<style>
-			body
-			{
-				margin-top: 52px;
-				padding: 0%;
-			}
-			
-			table tbody tr:hover
-			{
-				transition: all .3s ease-in-out;
-				background:#fff;
-			}
-			.products-container
-			{
-				background: #1c67d8;
-				height: 40px;
-				padding: 1px;
-			}
-			.products-container h4
-			{
-				padding: 1px 10px;
-			}
-			.mysearchbox
-			{
-				border: .1px solid #fff;
-				border-radius: 2px;
-				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .3);
-				box-shadow: 0 0 10px rgba(0, 0, 204, .3);
-				background-image: url("images/search.png");
-				background-position: 123px 3px; 
-  				background-repeat: no-repeat;
-			}
-		
-			.mysearchbox:hover
-			{
-				transition: all .3s ease-in-out;
-				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .5);
-    			box-shadow: 0 0 10px rgba(0, 0, 204, .5);
-			}
-			.mysearchbox:focus
-			{
-				transition: all .3s ease-in-out;
-				-webkit-box-shadow: 0 0 10px rgba(255, 255, 255, .7);
-    			box-shadow: 0 0 10px rgba(255, 255, 255, .7);
-			}
-			.myseacrh
-			{
-				padding: 7px 10px;
-			}
-            .search-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
-			}
-            .error
-            {
-                color:red;
-            }
-		</style>
+		<link rel="stylesheet" type="text/css" href="admincss.css">
 	</head>
 	<body>
     

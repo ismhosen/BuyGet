@@ -1,7 +1,8 @@
 <?php
 include '../data/users_data_access.php';
-include '../data/products_data_access.php';
-include '../data/user_feedback.php';
+include_once '../data/products_data_access.php';
+
+include_once '../data/user_feedback.php';
 $name=$_POST['name'];
 $email=$_POST['email'];
 $comment=$_POST['comment'];

@@ -3,6 +3,7 @@ session_start();
 include 'common.php';
 include '../service/user_service.php';
 include '../data/search_data_access.php';
+$email=$_SESSION['user']['email'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,21 +15,17 @@ include '../data/search_data_access.php';
         <table class="table table-responsive">
         <br>
             <thead>
-                <!-- <th>Select All</th> -->
-                <th width="300px">Product Model</th>
-                <th width="200px">Product Image</th>
-                <th width="200px">Price</th>
-                <th width="200px">Quantity</th>
-                <th width="200px">Customer Name</th>
-                <th width="200px">Customer Email</th>
-                <th width="200px">Customer Mobile</th>
-                <th width="200px">Customer Address</th>
-                <th width="200px">Customer Comment</th>
+                <th>SL no.</th>
+                <th width="">Model</th>
+                <th width="">Image</th>
+                <th width="">Owner</th>
+                <th width="">Details</th>
+                <th width="">Delete</th>
             </thead>
             <span class="search-products-text pull-left">Search Products</span><br><br>
             <tbody>
                 <?php
-                $query1=admin_search_all_orders_Query();
+                $query1=admin_search_all_laptops();
                 $rows1=mysqli_num_rows($query1);
                 if($rows1>0)
                 {
@@ -36,15 +33,16 @@ include '../data/search_data_access.php';
                     {
                 ?>
                 <tr>
+                    <td><?php echo $slno +=1?></td>
                     <td><?= $row['model']?></td>
-                    <td><img src="images/<?= $row['main_image']?>" width="80px;"></td>
-                    <td> <?= $row['price']?></td>
-                    <td><?= $row['quantity']?></td>
-                    <td><?= $row['name']?></td>
-                    <td><?= $row['email']?></td>
-                    <td><?= $row['mobile']?></td>
-                    <td><?= $row['address']?></td>
-                    <td><?= $row['comment']?></td>	
+                    <td><img src="images/<?= $row['main_image']?>" width="80px"></td>
+                    <td><?= $row['owner_id']?></td>
+                    <td><a href="product_details.php?id=<?php echo $row['id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="details" class="btn btn-default fa fa-info-circle"></button></a></td>
+                    <td>
+                        <form method="POST" action="server.php?id=<?php echo $row['id'];?>">
+                            <button type="submit" class="btn btn-danger fa fa-trash" name="delete_laptop"></button>
+                        </form>
+                    </td>
                 </tr>
                 <?php }}
                 else

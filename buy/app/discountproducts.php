@@ -1,13 +1,15 @@
 <?php
 echo "<title>Discount Products</title>";
 session_start();
+$id=$_SESSION['user']['id'];
 $email=$_SESSION['user']['email'];
 $name=$_SESSION['user']['name'];
 $imgname=$_SESSION['user']['imgname'];
 include 'common.php';
 include '../data/products_data_access.php';
 include '../data/cart_data_access.php';
-$rows1=mysqli_num_rows(get_cart($id));
+$cart_rows=mysqli_num_rows(get_cart($id));
+$bookmark_rows=mysqli_num_rows(get_bookmark($id));
 myLink();
 if($email=="")
 {
@@ -19,9 +21,15 @@ else if($_SESSION['type']=="seller")
 }
 else if($_SESSION['type']=="buyer")
 {
-	buyerheader($name,$imgname,$rows1);
+	buyerheader($name,$imgname,$cart_rows,$bookmark_rows);
 }
 mySearch();
+
+if($_GET['error']=="cart_bookmark_error")
+{
+	echo "<script>alert('Already Added')</script>";
+	echo "<script>document.location='discountproducts.php';</script>";
+}
 ?>
 <html>
 	<head>
@@ -81,8 +89,22 @@ mySearch();
 							<div class="product-box">
 								<img src="images/<?php echo $row['main_image'];?>" class="img-responsive" title="ASUS ZenBook 15 Ultra-Slim Compact Laptop 15.6” FHD 4-Way Narrow Bezel, Intel Core i7-8565U">
 								<a href="product_details.php?id=<?php echo $row['id'];?>&header=<?php echo $row['header'];?>"><span style="cursor: pointer;"><?php echo $row['header']?> </span></a><br><br>
-								<span class="pull-left text-style"><span style="color:#4d94ff; font-weight:bold;">৳</span>&nbsp;&nbsp;<span style="font-weight:bold;"> <del><?php echo $row['regular_price']?></del></span> <?php echo $row['discount_price']?> /-</span>
-								<span class="pull-left text-style"><a href=""><span><i class="fa fa-cart-plus"></i>&nbsp;&nbsp;Add to cart</span></a></span>
+								<?php
+									if($_SESSION['signin']==true){
+								?>
+								<form method="POST" action="carthandler.php?id=<?=$id?>&p_id=<?=$row['id']?>">
+									<button type="submit" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_discount"></button>
+									<button type="submit" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark_index_discount"></button>
+									<!-- <button type="submit" class="btn btn-default pull-left fa fa-exchange btn-sm" name="compare_index_new" title="Add to Compare"></button> -->
+								</form>
+								<?php }
+								else {
+								?>
+									<br><br>
+									<button type="button" class="btn btn-default pull-left fa fa-cart-plus btn-sm pull-left" name="add_to_cart_index" onclick="signin()"></button>
+									<button type="button" class="btn btn-default pull-left fa fa-bookmark-o btn-sm" name="bookmark_index" onclick="signin()"></button>
+									<button type="submit" class="btn btn-default pull-left fa fa-exchange btn-sm" name="compare_index" title="Add to Compare"></button>
+								<?php }?>
 							</div>
 						</div>
 						<?php }}?>
@@ -92,7 +114,12 @@ mySearch();
 		</div>
 	</body>
 </html><br><br><br><br><br><br><br><br>
-	
+	<script>
+	function signin()
+		{
+			alert("Please sign in");
+		}
+	</script>
 <?php
 myFooter();
 submitfeedback();

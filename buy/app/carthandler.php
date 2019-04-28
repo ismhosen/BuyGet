@@ -69,6 +69,21 @@ else if(isset($_POST['delete_all_details']))
     delete_cart_all($user_id);
     echo "<script>document.location='product_details.php?id=$product_id';</script>";
 }
+else if(isset($_POST['save_new']))
+{
+   update_quantity($quantity,$c_id);
+   echo "<script>document.location='newproducts.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_new']))
+{
+    delete_cart($c_id);
+    echo "<script>document.location='newproducts.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_all_new']))
+{
+    delete_cart_all($user_id);
+    echo "<script>document.location='newproducts.php?id=$product_id';</script>";
+}
 else if(isset($_POST['add_to_cart_index']))
 {
     // var_dump(mysqli_num_rows(product_cart_check($product_id,$user_id)));
@@ -80,6 +95,32 @@ else if(isset($_POST['add_to_cart_index']))
     }
     else
         echo "<script>document.location='homepagebuyer.php?error=cart_bookmark_error';</script>";
+    
+}
+else if(isset($_POST['add_to_cart_discount']))
+{
+    // var_dump(mysqli_num_rows(product_cart_check($product_id,$user_id)));
+    if(mysqli_num_rows(product_cart_check($product_id,$user_id))==0)
+    {
+        // echo "<script>alert('hello');</script>";
+        add_to_cart($user_id,$product_id);
+        echo "<script>document.location='discountproducts.php';</script>";
+    }
+    else
+        echo "<script>document.location='discountproducts.php?error=cart_bookmark_error';</script>";
+    
+}
+else if(isset($_POST['add_to_cart_new']))
+{
+    // var_dump(mysqli_num_rows(product_cart_check($product_id,$user_id)));
+    if(mysqli_num_rows(product_cart_check($product_id,$user_id))==0)
+    {
+        // echo "<script>alert('hello');</script>";
+        add_to_cart($user_id,$product_id);
+        echo "<script>document.location='newproducts.php';</script>";
+    }
+    else
+        echo "<script>document.location='newproducts.php?error=cart_bookmark_error';</script>";
     
 }
 else if(isset($_POST['add_to_cart_laptop']))
@@ -155,9 +196,21 @@ else if(isset($_POST['delete_bookmark_order']))
 }
 else if(isset($_POST['delete_bookmark_all_order']))
 {
-    echo "<script>alert('$c_id');</script>";
+    // echo "<script>alert('$c_id');</script>";
     delete_bookmark_all($c_id);
     echo "<script>document.location='order.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_bookmark_new']))
+{
+    // echo "<script>alert('hello');</script>";
+    delete_bookmark($b_id);
+    echo "<script>document.location='newproducts.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_bookmark_all_new']))
+{
+    // echo "<script>alert('$c_id');</script>";
+    delete_bookmark_all($c_id);
+    echo "<script>document.location='newproducts.php?id=$product_id';</script>";
 }
 else if(isset($_POST['bookmark_index']))
 {    
@@ -170,6 +223,17 @@ else if(isset($_POST['bookmark_index']))
     else
         echo "<script>document.location='homepagebuyer.php?error=cart_bookmark_error';</script>";
 }
+else if(isset($_POST['bookmark_discount']))
+{    
+    if(mysqli_num_rows(product_bookmark_check($product_id,$user_id))==0)
+    {
+        // echo "<script>alert('hello');</script>";
+        bookmark($user_id,$product_id);
+        echo "<script>document.location='discountproducts.php';</script>";
+    }
+    else
+        echo "<script>document.location='discountproducts.php?error=cart_bookmark_error';</script>";
+}
 else if(isset($_POST['bookmark_laptop']))
 {    
     if(mysqli_num_rows(product_bookmark_check($product_id,$user_id))==0)
@@ -180,6 +244,17 @@ else if(isset($_POST['bookmark_laptop']))
     }
     else
         echo "<script>document.location='laptop.php?error=cart_bookmark_error';</script>";
+}
+else if(isset($_POST['bookmark_new']))
+{    
+    if(mysqli_num_rows(product_bookmark_check($product_id,$user_id))==0)
+    {
+        // echo "<script>alert('hello');</script>";
+        bookmark($user_id,$product_id);
+        echo "<script>document.location='newproducts.php';</script>";
+    }
+    else
+        echo "<script>document.location='newproducts.php?error=cart_bookmark_error';</script>";
 }
 else if(isset($_POST['bookmark_details']))
 {    

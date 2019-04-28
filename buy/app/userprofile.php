@@ -11,7 +11,8 @@ $dob=$_SESSION['user']['dob'];
 $gender=$_SESSION['user']['gender'];
 $address=$_SESSION['user']['address'];
 $imgname=$_SESSION['user']['imgname'];
-$rows1=mysqli_num_rows(get_cart($id));
+$cart_rows=mysqli_num_rows(get_cart($id));
+$bookmark_rows=mysqli_num_rows(get_bookmark($id));
 // get_users($email);
 // echo "<script>alert('$email')</script>";
 echo "<title>Buy & Get</title>";
@@ -26,7 +27,7 @@ else if($_SESSION['type']=="seller")
 }
 else if($_SESSION['type']=="buyer")
 {
-	buyerheader($name,$imgname,$rows1);
+	buyerheader($name,$imgname,$cart_rows,$bookmark_rows);
 }
 ?>
 <html>

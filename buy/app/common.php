@@ -222,8 +222,6 @@ function buyerheader($name,$imgname,$cart,$bookmark)
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff"><img class="img-circle" src="images/'.$imgname.'" width="21px" height="21px">&nbsp;&nbsp;'.$name.' <span class="caret"></span> </font></a>
 						<ul class="dropdown-menu">
 						<li><a href="userprofile.php"><font class="mynavbar" color="#4d94ff">My Profile</font></a></li>
-						<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Cart Requests</font></a></li>
-						<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Bookmarks products</font></a></li>
 						<li><a href="index.php"><font class="mynavbar" color="#4d94ff">Sign Out</font></a></li>
 						<li><a href=""><font class="mynavbar" color="#4d94ff">Help</font></a></li>
 						</ul>
@@ -321,8 +319,6 @@ function sellerheader($name,$imgname)
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff"><img class="img-circle" src="images/'.$imgname.'" width="21px" height="21px">&nbsp;&nbsp;'.$name.' <span class="caret"></span> </font></a>
 						<ul class="dropdown-menu">
 						<li><a href="userprofile.php"><font class="mynavbar" color="#4d94ff">My Profile</font></a></li>
-						<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Cart Requests</font></a></li>
-						<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Bookmarks products</font></a></li>
 						<li><a href="index.php"><font class="mynavbar" color="#4d94ff">Sign Out</font></a></li>
 						<li><a href=""><font class="mynavbar" color="#4d94ff">Help</font></a></li>
 						</ul>
@@ -416,8 +412,6 @@ function adminheader()
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff"><img class="img-circle" width="21px" height="21px">&nbsp;&nbsp;ADMIN <span class="caret"></span> </font></a>
 						<ul class="dropdown-menu">
 						<li><a href="userprofile.php"><font class="mynavbar" color="#4d94ff">My Profile</font></a></li>
-						<li><a href="laptop.php"><font class="mynavbar" color="#4d94ff">Cart Requests</font></a></li>
-						<li><a href="watch.php"><font class="mynavbar" color="#4d94ff">Bookmarks products</font></a></li>
 						<li><a href="index.php"><font class="mynavbar" color="#4d94ff">Sign Out</font></a></li>
 						<li><a href=""><font class="mynavbar" color="#4d94ff">Help</font></a></li>
 						</ul>

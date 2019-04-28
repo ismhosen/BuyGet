@@ -258,7 +258,7 @@ function validate_update_password($pass,$cpass)
 {
 	if($pass==""||$cpass=="")
 	{
-				return "*Password is required";
+		return "*Password is required";
 	}
 	else
 	{

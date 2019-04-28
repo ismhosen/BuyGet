@@ -3,7 +3,7 @@ session_start();
 require '../service/users_validation_service.php';
 include 'common.php';
 myLink();
-$name=$_POST['fullname'];
+$name=$_POST['name'];
 $email=$_SESSION['user']['email'];
 $oldpass=$_POST['oldpassword'];
 $newpass=$_POST['newpassword'];
@@ -35,15 +35,16 @@ if(isset($_POST['update_profile']))
 }
 elseif(isset($_POST['update_password']))
 {
-    $pass1 = validate_update_password($newpass,$cpass);
-    if($pass1=="")
-    {
-        echo "hello". $email." ". $newpass ;
+    
+    // $pass1 = validate_update_password($newpass,$cpass);
+    // if($pass1=="")
+    // {
+        // echo "hello". $email." ". $newpass ;
         update_password_Query($email,$newpass);
         // echo "<script>alert='Successfully Updated'</script>";
         // $_SESSION['user']['password']=$newpass;
-        // echo "<script>document.location='userprofile.php';</script>";
-    }
+         echo "<script>document.location='userprofile.php';</script>";
+    // }
 }
 else
 {

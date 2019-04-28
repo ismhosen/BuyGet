@@ -66,7 +66,7 @@ myHeader();
 											<td>
 												<select class="myinput input-sm" style="cursor:pointer;" name="types">
 													<option>buyer</option>
-													<option>Seller</option>
+													<option>seller</option>
 												</select>
 											</td>		
 										</tr>
@@ -110,7 +110,7 @@ myHeader();
 											</td>
 											<td>
 												<hr>
-												<input type="text" id="passwordinput" class="myinput input-sm" name="password" placeholder="&nbsp;Paswword..." value="<?php echo $_SESSION['password'];?>">
+												<input type="password" id="passwordinput" class="myinput input-sm" name="password" placeholder="&nbsp;Paswword..." value="<?php echo $_SESSION['password'];?>">
 												<span class="error"><?php echo $_GET['msgpass'];?></span>
 											</td>
 										</tr>
@@ -121,7 +121,7 @@ myHeader();
 											</td>
 											<td>
 												<hr>
-												<input type="text" id="cpasswordinput" class="myinput input-sm"  placeholder="&nbsp;Enter your paswword..." name="cpassword" value="<?php echo $_SESSION['cpassword'];?>">
+												<input type="password" id="cpasswordinput" class="myinput input-sm"  placeholder="&nbsp;Enter your paswword..." name="cpassword" value="<?php echo $_SESSION['cpassword'];?>">
 												<span class="error"><?php echo $_GET['msgpassc'];?></span>
 											</td>
 										</tr>

@@ -5,6 +5,7 @@ include '../app/common.php';
 mylink();
 include '../service/product_services.php';
 $id=$_GET['id'];
+$u_id=$_SESSION['user']['id'];
 $email=$_SESSION['user']['email'];
 $imgname=$_POST['imgname'];
 $fileName=$_FILES['imgname']['name'];
@@ -51,7 +52,7 @@ $date=date("Y-m-d h:i:sa");
 
 if(isset($_POST['add']))
 {
-    products_add($email,$brand,$model,$header,$processor,$gen,$clock_speed,$cache,$d_type,$d_size,$d_res,$touch,$r_type,$ram,$storage,$g_chipset,$g_memory,$networking,$d_port,$a_port,$u_port,$battery,$weight,$color,$os,$others,$part_no,$origin,$assemble,$warranty,$upcoming,$gifts,$r_price,$s_price,$d_price,$quantity,$status,$imgname);
+    products_add($u_id,$brand,$model,$header,$processor,$gen,$clock_speed,$cache,$d_type,$d_size,$d_res,$touch,$r_type,$ram,$storage,$g_chipset,$g_memory,$networking,$d_port,$a_port,$u_port,$battery,$weight,$color,$os,$others,$part_no,$origin,$assemble,$warranty,$upcoming,$gifts,$r_price,$s_price,$d_price,$quantity,$status,$imgname);
     echo "<script>document.location='homepageseller.php';</script>";
 }
 if(isset($_POST['update']))
@@ -62,6 +63,8 @@ if(isset($_POST['update']))
 }
 if(isset($_POST['duplicate']))
 {
+    // echo "<script>alert('$id')</script>"
+    // products_duplicate($u_id,$brand,$model,$header,$processor,$gen,$clock_speed,$cache,$d_type,$d_size,$d_res,$touch,$r_type,$ram,$storage,$g_chipset,$g_memory,$networking,$d_port,$a_port,$u_port,$battery,$weight,$color,$os,$others,$part_no,$origin,$assemble,$warranty,$upcoming,$gifts,$r_price,$s_price,$d_price,$quantity,$status,$date);
     echo "<script>document.location='duplicateproducts.php?id=$id';</script>";
 }
 if(isset($_POST['ok']))
@@ -78,7 +81,7 @@ if(isset($_POST['save']))
 {
     if(model_validate($model)==true)
     {
-        products_duplicate($email,$brand,$model,$header,$processor,$gen,$clock_speed,$cache,$d_type,$d_size,$d_res,$touch,$r_type,$ram,$storage,$g_chipset,$g_memory,$networking,$d_port,$a_port,$u_port,$battery,$weight,$color,$os,$others,$part_no,$origin,$assemble,$warranty,$upcoming,$gifts,$r_price,$s_price,$d_price,$quantity,$status,$date);
+        products_duplicate($u_id,$brand,$model,$header,$processor,$gen,$clock_speed,$cache,$d_type,$d_size,$d_res,$touch,$r_type,$ram,$storage,$g_chipset,$g_memory,$networking,$d_port,$a_port,$u_port,$battery,$weight,$color,$os,$others,$part_no,$origin,$assemble,$warranty,$upcoming,$gifts,$r_price,$s_price,$d_price,$quantity,$status,$date);
         echo "<script>document.location='homepageseller.php';</script>";
     }
     else

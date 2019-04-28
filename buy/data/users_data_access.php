@@ -24,6 +24,8 @@ function update_password_Query($email,$pass)
 	// echo "hello". $email." ". $pass;
 	$sql="UPDATE customers SET password='$pass' WHERE email='$email'";
 	mysqli_query(connection(),$sql);
+	$sql1="UPDATE users SET password='$pass' WHERE email='$email'";
+	mysqli_query(connection(),$sql1);
 }
 function email_Query($email)
 {

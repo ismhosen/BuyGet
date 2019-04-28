@@ -429,7 +429,7 @@ submitfeedback();
                 }
                 else if(option.value=="mobile")
                 {
-                    divid.style.display = "hello";
+                    divid.style.innerHTML = "hello";
                 }
                 
                 // divid.innerHTML=this.responseText;
@@ -467,28 +467,28 @@ submitfeedback();
 			xhttp.send();
 		}
 	}
-    let modal=document.getElementById("mymodal");
-    var btn=document.getElementById("myBtn");
-    var close=document.getElementsByClassName("close")[0];
+    // let modal=document.getElementById("mymodal");
+    // var btn=document.getElementById("myBtn");
+    // var close=document.getElementsByClassName("close")[0];
     
-    function myfunction()
-    { 
-        // document.getElementById("myform").addEventListener("submit", function(event){
-        //     event.preventDefault();
-        // });
-        modal.style.display="block";
-    }
-    close.onclick=function()
-    {
-        modal.style.display="none";
-    }
-    window.onclick=function(e)
-    {
-        console.log(e);
-        if(e.target==modal)
-            {
-                modal.style.display="none";
-            }
-    }
+    // function myfunction()
+    // { 
+    //     // document.getElementById("myform").addEventListener("submit", function(event){
+    //     //     event.preventDefault();
+    //     // });
+    //     modal.style.display="block";
+    // }
+    // close.onclick=function()
+    // {
+    //     modal.style.display="none";
+    // }
+    // window.onclick=function(e)
+    // {
+    //     console.log(e);
+    //     if(e.target==modal)
+    //         {
+    //             modal.style.display="none";
+    //         }
+    // }
 </script>
 

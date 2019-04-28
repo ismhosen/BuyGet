@@ -171,7 +171,7 @@ if($_GET['error']=="cart_bookmark_error")
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<div class="product-short-des">
 						<span style='font-size:15'><strong><?php echo $row['header'];?></strong></span><hr>
-						<span>product owner: &nbsp;<a href="sellerpublicprofile.php"><?php owner_name($row['owner_email']);?></a></span><hr>
+						<span>product owner: &nbsp;<a href="sellerpublicprofile.php"><?php owner_name($row['owner_id']);?></a></span><hr>
 						<span style='opacity:.8;'>Avaibility: &nbsp;Yes</span><hr>
 						<span style='opacity:.8;'>Regular Price: &nbsp;<span style="font-weight:bold;">৳</span>&nbsp;<span><?php echo $row['regular_price'];?></span>/-</span><br>
 						<span style="font-weight:bold;">Special Price: &nbsp;<span >৳</span>&nbsp;<span><?php echo $row['special_price'];?></span>/-</span><hr>

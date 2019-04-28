@@ -3,6 +3,7 @@ session_start();
 include 'common.php';
 include '../service/user_service.php';
 include '../data/search_data_access.php';
+$id=$_SESSION['user']['id'];
 $email=$_SESSION['user']['email'];
 ?>
 <!DOCTYPE html>
@@ -87,7 +88,7 @@ $email=$_SESSION['user']['email'];
             <span class="search-products-text pull-left">Search Products</span><br><br>
             <tbody>
                 <?php
-                $query1=owner_search_orders_products_Query($email);
+                $query1=owner_search_orders_products_Query($id);
                 $rows1=mysqli_num_rows($query1);
                 if($rows1>0)
                 {

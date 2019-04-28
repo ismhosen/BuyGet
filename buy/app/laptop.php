@@ -29,7 +29,7 @@ else if($_SESSION['type']=="buyer")
 if($_GET['error']=="cart_bookmark_error")
 {
 	echo "<script>alert('Already Added')</script>";
-	echo "<script>document.location='homepagebuyer.php';</script>";
+	echo "<script>document.location='laptop.php';</script>";
 }
 
 mySearch();
@@ -272,7 +272,7 @@ mySearch();
 			</div>
 		</div>
 		<div class="modal" id="myModal" role="dialog">
-			<div class="modal-dialog">
+			<div class="modal-dialog" style="width:900px;">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -289,6 +289,7 @@ mySearch();
 								<th>Save</th>
 								<th>Delete</th>
 								<th>Details</th>
+								<th>Order</th>
 							</thead>
 							<tbody>
 							<?php 
@@ -311,6 +312,7 @@ mySearch();
 										<td><button type="submit" name="save_laptop" class="btn btn-success fa fa-check"></button></td>
 										<td><button type="submit" name="delete_laptop" class="btn btn-danger fa fa-trash"></button></td>
 										<td><a href="product_details.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="details" class="btn btn-default fa fa-info-circle"></button></a></td>
+										<td><a href="order.php?id=<?php echo $row['product_id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="order" class="btn btn-default fa fa-arrow-right"></button></a></td>
 										<!-- <td><button type="submit" name="save" class="btn btn-success fa fa-check"></button></td> -->
 									</form>
 								</tr>

@@ -63,7 +63,7 @@ $imgname=$_SESSION['user']['imgname'];
 												<label>Full Name : &nbsp;</label>
 											</td>
 											<td>
-                                                <input type="text" class="myinput input-sm"  placeholder="&nbsp;Enter your Full Name..." name="fullname" size="50" value="<?= $name ?>">
+                                                <input type="text" class="myinput input-sm"  placeholder="&nbsp;Enter your Full Name..." name="name" size="50" value="<?= $name ?>">
                                                 <span class="error"><?php echo $_GET['msgname']?></span>
 												
 											</td>		

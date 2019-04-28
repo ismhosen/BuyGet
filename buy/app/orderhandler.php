@@ -10,7 +10,7 @@ $phone=$_GET['phone'];
 $voucher=$_GET['voucher'];
 $comment=$_GET['comment'];
 $price=$_GET['price'];
-$owner_email=$_GET['owner_email'];
+$owner_id=$_GET['owner_id'];
 
-echo order($p_id,$owner_email,$u_id,$price,$quantity,$name,$address,$phone,$email,$comment);
+echo order($p_id,$owner_id,$u_id,$price,$quantity,$name,$address,$phone,$email,$comment);
 // echo "<script>document.location='index.php';</script>";

@@ -4,6 +4,7 @@ include 'common.php';
 include '../service/user_service.php';
 include '../data/products_data_access.php';
 include '../data/cart_data_access.php';
+$u_id=$_SESSION['user']['id'];
 $email=$_SESSION['user']['email'];
 $name=$_SESSION['user']['name'];
 $imgname=$_SESSION['user']['imgname'];

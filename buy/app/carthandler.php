@@ -84,6 +84,21 @@ else if(isset($_POST['delete_all_new']))
     delete_cart_all($user_id);
     echo "<script>document.location='newproducts.php?id=$product_id';</script>";
 }
+else if(isset($_POST['save_discount']))
+{
+   update_quantity($quantity,$c_id);
+   echo "<script>document.location='discounts.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_discount']))
+{
+    delete_cart($c_id);
+    echo "<script>document.location='discounts.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_all_discount']))
+{
+    delete_cart_all($user_id);
+    echo "<script>document.location='discounts.php?id=$product_id';</script>";
+}
 else if(isset($_POST['add_to_cart_index']))
 {
     // var_dump(mysqli_num_rows(product_cart_check($product_id,$user_id)));
@@ -211,6 +226,18 @@ else if(isset($_POST['delete_bookmark_all_new']))
     // echo "<script>alert('$c_id');</script>";
     delete_bookmark_all($c_id);
     echo "<script>document.location='newproducts.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_bookmark_discount']))
+{
+    // echo "<script>alert('hello');</script>";
+    delete_bookmark($b_id);
+    echo "<script>document.location='discountproducts.php?id=$product_id';</script>";
+}
+else if(isset($_POST['delete_bookmark_all_discount']))
+{
+     echo "<script>alert('$b_id');</script>";
+    delete_bookmark_all($b_id);
+    echo "<script>document.location='discountproducts.php?id=$product_id';</script>";
 }
 else if(isset($_POST['bookmark_index']))
 {    

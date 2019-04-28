@@ -70,7 +70,7 @@ $pass=$_SESSION['user']['password'];
 											</td>
 											<td>
 												<hr>
-												<input type="text" class="myinput input-sm"  placeholder="&nbsp;Enter New paswword..." name="newpassword" value="">
+												<input type="password" class="myinput input-sm"  placeholder="&nbsp;Enter New paswword..." name="newpassword" value="">
 												
 											</td>
                                         </tr>
@@ -81,7 +81,7 @@ $pass=$_SESSION['user']['password'];
 											</td>
 											<td>
 												<hr>
-												<input type="text" class="myinput input-sm"  placeholder="&nbsp;Confirm New paswword..." name="cpassword" value="">
+												<input type="password" class="myinput input-sm"  placeholder="&nbsp;Confirm New paswword..." name="cpassword" value="">
 											</td>
 										</tr>
 									</tbody>	

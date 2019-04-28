@@ -280,7 +280,7 @@ $get_sellers=mysqli_num_rows(get_sellers());
                                 <td><?php echo $slno +=1?></td>
 								<td><?= $row['model']?></td>
 								<td><img src="images/<?= $row['main_image']?>" width="80px"></td>
-								<td><?= $row['owner_email']?></td>
+								<td><?= $row['owner_id']?></td>
                                 <td><a href="product_details.php?id=<?php echo $row['id'];?>&header=<?php echo $row['header'];?>"><button type="button" name="details" class="btn btn-default fa fa-info-circle"></button></a></td>
                                 <td>
                                     <form method="POST" action="server.php?id=<?php echo $row['id'];?>">

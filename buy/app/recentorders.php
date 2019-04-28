@@ -3,6 +3,7 @@ session_start();
 include 'common.php';
 include '../service/user_service.php';
 include '../data/products_data_access.php';
+$id=$_SESSION['user']['id'];
 $email=$_SESSION['user']['email'];
 $name=$_SESSION['user']['name'];
 $imgname=$_SESSION['user']['imgname'];
@@ -201,7 +202,7 @@ else if($_SESSION['type']=="buyer")
 						<tbody >
 							
 							<?php
-							$query1=owner_order_id($email);
+							$query1=owner_order_id($id);
 							$rows1=mysqli_num_rows($query1);
 							if($rows1>0)
 							{

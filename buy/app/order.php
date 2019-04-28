@@ -16,7 +16,7 @@ $cart_rows=mysqli_num_rows(get_cart($id));
 $bookmark_rows=mysqli_num_rows(get_bookmark($id));
 echo "<title>Buy & Get</title>";
 $p_id=$_GET['id'];
-$owner_email=get_owner_email($p_id);
+$owner_id=get_owner_id($p_id);
 //echo "<script>alert($id +' '+ $p_id)</script>";
 myLink();
 if($email=="")
@@ -190,7 +190,7 @@ if($_GET['error']=="cart_bookmark_error")
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8"> 
-                            <button id="proceed" onclick="order(<?=$id?>,<?=$p_id?>,<?=$owner_email?>)" class="btn btn-success" name="proceed">Click to proceed</button>                          
+                            <button id="proceed" onclick="order(<?=$id?>,<?=$p_id?>,<?=$owner_id?>)" class="btn btn-success" name="">Click to proceed</button>                          
                         </div>
                     </div>
                 <!-- </form> -->
@@ -310,7 +310,7 @@ if($_GET['error']=="cart_bookmark_error")
 </html>
 <script>
 
-    function order(u_id,p_id,owner_email)
+    function order(u_id,p_id,owner_id)
     {
         //  alert(p_id);
         // console.log('sdfsdf');
@@ -353,7 +353,7 @@ if($_GET['error']=="cart_bookmark_error")
 
 				}
 			};
-			xhttp.open("GET","orderhandler.php?name="+name+"&email="+email+"&address="+address+"&phone="+phone+"&comment="+comment+"&quantity="+quantity+"&price="+price+"&u_id="+u_id+"&p_id="+p_id+"&owner_email="+owner_email,true);
+			xhttp.open("GET","orderhandler.php?name="+name+"&email="+email+"&address="+address+"&phone="+phone+"&comment="+comment+"&quantity="+quantity+"&price="+price+"&u_id="+u_id+"&p_id="+p_id+"&owner_id="+owner_id,true);
             // xhttp.open("GET","order.php",true);
 			xhttp.send();
 		

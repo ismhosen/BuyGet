@@ -12,18 +12,30 @@ include_once '../data/products_data_access.php';
 			}
 		}
 	}
-	function get_owner_email($p_id)
+	function get_owner_id($p_id)
 	{
-		$query=owner_email_query($p_id);
+		$query=owner_id_query($p_id);
 		$rows1=mysqli_num_rows($query);
 		if($rows1>0)
 		{
 			while($row=mysqli_fetch_assoc($query))  
 			{
-				return $row['owner_email'];
+				return $row['owner_id'];
 			}
 		}
 	}
+	// function get_owner_id($p_id)
+	// {
+	// 	$query=owner_id_query($p_id);
+	// 	$rows1=mysqli_num_rows($query);
+	// 	if($rows1>0)
+	// 	{
+	// 		while($row=mysqli_fetch_assoc($query))  
+	// 		{
+	// 			return $row['owner_id'];
+	// 		}
+	// 	}
+	// }
 	function model_validate($model)
 	{
 		$query=laptops_model_query($model);
@@ -46,9 +58,9 @@ include_once '../data/products_data_access.php';
 			}
 		
 	}
-	function owner_name($email)
+	function owner_name($id)
 	{
-		$query=get_owner_name($email);
+		$query=get_owner_name($id);
 		$rows1=mysqli_num_rows($query);
 		if($rows1>0)
 		{

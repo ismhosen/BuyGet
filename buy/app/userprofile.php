@@ -19,7 +19,8 @@ echo "<title>Buy & Get</title>";
 myLink();
 if($email=="")
 {
-	myHeader();
+    myHeader();
+    echo "<script>document.location='index.php';</script>";
 }
 else if($_SESSION['type']=="seller")
 {

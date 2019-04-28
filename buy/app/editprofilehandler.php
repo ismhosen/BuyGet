@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../service/users_validation_service.php';
+include '../data/users_data_access.php';
 include 'common.php';
 myLink();
 $name=$_POST['name'];
@@ -14,23 +14,25 @@ $address=$_POST['address'];
 
 if(isset($_POST['update_profile']))
 {
-    $phone1 = validate_update_phone($phone);
-    $name1 = validate_update_name($name);
+    // echo "<script>alert='Successfully Updated'</script>";
+    // $phone1 = validate_update_phone($phone);
+    // $name1 = validate_update_name($name);
     if($phone1 == "" && $name1 == "")
 		{
+            // echo "<script>alert='Successfully Updated'</script>";
             update_Query($name,$email,$phone,$date,$address);
-            echo "<script>alert='Successfully Updated'</script>";
+            // echo "<script>alert='Successfully Updated'</script>";
             $_SESSION['user']['name']=$name;
             $_SESSION['user']['phone']=$phone;
             $_SESSION['user']['dob']=$date;
-            $address=$_SESSION['user']['address']=$address;
-            // $imgname=$_SESSION['user']['imgname'];
+            $_SESSION['user']['address']=$address;
+            // $_SESSION['user']['imgname']=$imgname;
             echo "<script>document.location='userprofile.php';</script>";
             
 		}
 		else
 		{
-			echo "<script>document.location='?msgname=$name1 & msgphone=$phone1';</script>";
+			echo "<script>document.location='userprofile.php';</script>";
 		}
 }
 elseif(isset($_POST['update_password']))
@@ -40,10 +42,33 @@ elseif(isset($_POST['update_password']))
     // if($pass1=="")
     // {
         // echo "hello". $email." ". $newpass ;
-        update_password_Query($email,$newpass);
+        if(!empty($newpass) && !empty($cpass))
+        {
+            // echo "error";
+            // update_password_Query($email,$newpass);
+            // echo "<script>document.location='userprofile.php';</script>";
+            if($newpass==$cpass)
+            {
+                $_SESSION['user']['password']=$newpass;
+                update_password_Query($email,$newpass);
+            echo "<script>document.location='userprofile.php';</script>";
+            }
+            else
+            {
+                echo "<script>alert('passwort doesn\'t match')</script>";
+                echo "<script>document.location='userprofile.php';</script>";
+            }
+        }
+        else
+        {
+            // echo "hello";
+            echo "<script>alert('passwort can\'t be empty')</script>";
+            echo "<script>document.location='userprofile.php';</script>";
+        }
+        
         // echo "<script>alert='Successfully Updated'</script>";
         // $_SESSION['user']['password']=$newpass;
-         echo "<script>document.location='userprofile.php';</script>";
+         
     // }
 }
 else

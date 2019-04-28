@@ -164,9 +164,9 @@ else if($_SESSION['type']=="buyer")
 				<h4 class="dashboard-header">Dashboard</h4>
 				<div class="mynavbar">
 					<ul>
-						<li><a class="active" href="homepageseller.php">My Products</a></li>
+						<li><a href="homepageseller.php">My Products</a></li>
 						<li><a href="addproducts.php">Add Products</a></li>
-						<li><a href="recentorders.php">Recent Orders</a></li>
+						<li><a class="active" href="recentorders.php">Recent Orders</a></li>
 						<li><a>Contact List</a></li>
 					</ul>
 				</div>
@@ -177,7 +177,7 @@ else if($_SESSION['type']=="buyer")
 						<h4 class="" style="color:#fff;float: left;">Product Table</h4>
 						
 						<div class="myseacrh">
-							<span class=""><input id="searchBox" onkeyup="ownersProducts(this.value)" type="text" class="mysearchbox pull-right"  placeholder="&nbsp;Search here ..." name="searchBox" ></span>
+							<span class=""><input id="searchBox" onkeyup="ownersordersProducts(this.value)" type="text" class="mysearchbox pull-right"  placeholder="&nbsp;Search here ..." name="searchBox" ></span>
 							<a href="addproducts.php"><button type="button" class="pull-right myiconbutton-plus"><span class="fa fa-plus"></span></button></a>
 							<a><button type="button" class="pull-right myiconbutton-delete"><span class="fa fa-trash"></span></button></a>
 						</div>			
@@ -191,14 +191,17 @@ else if($_SESSION['type']=="buyer")
 							<th width="200px">Product Image</th>
 							<th width="200px">Price</th>
 							<th width="200px">Quantity</th>
-							<th>Status</th>
-							<th>Action</th>
+                            <th width="200px">Customer Name</th>
+                            <th width="200px">Customer Email</th>
+                            <th width="200px">Customer Mobile</th>
+                            <th width="200px">Customer Address</th>
+                            <th width="200px">Customer Comment</th>
 						</thead>
 						
 						<tbody >
 							
 							<?php
-							$query1=owner_id($email);
+							$query1=owner_order_id($email);
 							$rows1=mysqli_num_rows($query1);
 							if($rows1>0)
 							{
@@ -210,14 +213,15 @@ else if($_SESSION['type']=="buyer")
 								<td><input type="checkbox" name="select_all"></td>
 								<td><?= $row['model']?></td>
 								<td><img src="images/<?= $row['main_image']?>" width="80px;"></td>
-								<td>Regular: <?= $row['regular_price']?></br>Special: <?= $row['special_price']?></br>Discount: <?= $row['discount_price']?></td>
+								<td> <?= $row['price']?></td>
 								<td><?= $row['quantity']?></td>
-								<td><?= $row['status']?></td>
-								<td>
-									<a href="editproducts.php?header=<?php echo $row['header']?>&id=<?php echo $row['id']?>"><button type="submit" class="btn btn-success" name=""><span class="fa fa-edit"></span></button></a>
-									
-								</td>	
-								</tr>
+								<td><?= $row['name']?></td>
+								<td><?= $row['email']?></td>
+								<td><?= $row['mobile']?></td>
+								<td><?= $row['address']?></td>
+								<td><?= $row['comment']?></td>
+								
+							</tr>
 							<?php }}?>
 						</tbody>
 					</table>
@@ -234,7 +238,7 @@ submitfeedback();
 ?>
 
 <script>
-	function ownersProducts(str)
+	function ownersordersProducts(str)
 	{
 		let divid=document.getElementById("demo");
 		let xhttp=new XMLHttpRequest();
@@ -257,7 +261,7 @@ submitfeedback();
 				}
 			
 			};
-			xhttp.open("GET","searchownerproducts.php?str="+str,true);
+			xhttp.open("GET","search_owner_orders_products.php?str="+str,true);
 			xhttp.send();
 		}
 	}

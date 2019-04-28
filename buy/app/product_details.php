@@ -206,8 +206,8 @@ if($_GET['error']=="cart_bookmark_error")
 			</div><hr>
 			<div class="product-table">
 				<div class="row">
-						<button id='details-btn' onclick='selectbutton();'>Product-Details</button>
-						<button id='review-btn' onclick='selectbutton();'>Product-Review</button>
+						<button id='details-btn'>Product-Details</button>
+						<button id='review-btn'>Product-Review</button>
 					<div id="details">
 						<table>
 						<h4>Product Details</h4><hr style='width:100%; border:1px solid rgba(77,148,255,.2);margin-top:5px;margin-bottom:15px;'>
@@ -467,39 +467,38 @@ if($_GET['error']=="cart_bookmark_error")
 		
 	</body><hr>
 	<script>
-		function selectbutton()
-			{
-				let details=document.getElementById("details");
-				let detailsbtn=document.getElementById("details-btn");
-				let reviewbtn=document.getElementById("review-btn");
-				let review=document.getElementById("review");
-				let xhttp=new XMLHttpRequest();
-				
-				xhttp.onreadystatechange=function()
-				{
-					
-				if(this.readyState==4 && this.status==200)
-					{
-						// console.log("200: ",this.responseText);
-						// alert(this.responseText);
-						reviewbtn.onclick=function()
-						{
-							review.style.display = "block";
-							details.style.display = "none";
-						};
-						detailsbtn.onclick=function()
-						{
-							details.style.display = "block";
-							review.style.display = "none";
-						};
-						// divid.innerHTML=this.responseText;
-					}
-				
-				};
-				xhttp.open("GET","product_details.php",true);
-				xhttp.send();
+		
+		let details=document.getElementById("details");
+		let detailsbtn=document.getElementById("details-btn");
+		let reviewbtn=document.getElementById("review-btn");
+		let review=document.getElementById("review");
+		let xhttp=new XMLHttpRequest();
+		
+		xhttp.onreadystatechange=function()
+		{
 			
+		if(this.readyState==4 && this.status==200)
+			{
+				// console.log("200: ",this.responseText);
+				// alert(this.responseText);
+				reviewbtn.onclick=function()
+				{
+					review.style.display = "block";
+					details.style.display = "none";
+				};
+				detailsbtn.onclick=function()
+				{
+					details.style.display = "block";
+					review.style.display = "none";
+				};
+				// divid.innerHTML=this.responseText;
 			}
+		
+		};
+		xhttp.open("GET","product_details.php",true);
+		xhttp.send();
+			
+			
 	function imagechange(id)
 	{
 		var x=document.getElementById(id).src;

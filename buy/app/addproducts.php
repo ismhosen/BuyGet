@@ -198,7 +198,7 @@ else if($_SESSION['type']=="seller")
 					<ul>
                         <li><a href="homepageseller.php">My Products</a></li>
 						<li><a class="active" href="addproducts.php">Add Products</a></li>                        
-						<li><a>Recent Orders</a></li>
+						<li><a href="recentorders.php">Recent Orders</a></li>
 						<li><a>Contact List</a></li>
 					</ul>
 				</div>

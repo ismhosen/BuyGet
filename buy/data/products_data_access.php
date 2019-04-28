@@ -111,6 +111,18 @@ function product_bookmark_check($p_id,$u_id)
 {
 	return mysqli_query(connection(),"SELECT * FROM bookmark WHERE product_id='$p_id' AND customer_id='$u_id'");
 }
+function owner_email_query($p_id)
+{
+	return mysqli_query(connection(),"SELECT owner_email FROM laptops WHERE id='$p_id'");
+}
+function order($p_id,$owner_email,$u_id,$price,$quantity,$name,$address,$mobile,$email,$comment)
+{
+	return mysqli_query(connection(),"INSERT INTO orders(product_id,owner_email,customer_id,price,quantity,name,address,mobile,email,comment) VALUES('$p_id','$owner_email','$u_id','$price','$quantity','$name','$address','$mobile','$email','$comment')");
+}
 
-
+function owner_order_id($email)
+{
+	// echo "<script>alert($id)</script>";
+	return mysqli_query(connection(),"SELECT orders.product_id, orders.customer_id, orders.price, orders.quantity,orders.name, orders.address, orders.mobile, orders.email, orders.comment, laptops.main_image, laptops.model FROM orders INNER JOIN laptops WHERE orders.product_id=laptops.id  AND orders.owner_email=$email");
+}
 ?>

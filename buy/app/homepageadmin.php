@@ -3,6 +3,7 @@ session_start();
 include 'common.php';
 include '../service/user_service.php';
 include '../data/products_data_access.php';
+include '../data/users_data_access.php';
 $email=$_SESSION['user']['email'];
 $name=$_SESSION['user']['name'];
 $imgname=$_SESSION['user']['imgname'];
@@ -22,6 +23,9 @@ else if($_SESSION['type']=="admin")
 {
 	adminheader();
 }
+$get_users=mysqli_num_rows(get_users());
+$get_buyers=mysqli_num_rows(get_buyers());
+$get_sellers=mysqli_num_rows(get_sellers());
 ?>
 <!DOCTYPE html>
 <html>
@@ -111,7 +115,7 @@ else if($_SESSION['type']=="admin")
 				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .3);
 				box-shadow: 0 0 10px rgba(0, 0, 204, .3);
 				background-image: url("images/search.png");
-				background-position: 123px 3px; 
+				background-position: 157px 3px; 
   				background-repeat: no-repeat;
 			}
 		
@@ -155,6 +159,50 @@ else if($_SESSION['type']=="admin")
 				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .5);
     			box-shadow: 0 0 10px rgba(255,255,255, .5);
 			}
+			.box
+			{
+				float: left;
+				margin-left:17px; 
+				margin-right:45px; 
+				margin-top: 40px; 
+				width: 200px;
+				background-color: #32ac0d;
+				color: #fff;
+				font-weight: bolder;
+				text-align: center;
+				padding: 20px 20px;
+				border-radius: 2px;
+				cursor: pointer;
+			}
+			.count-text
+			{
+				font-size:31;
+			}
+			.count-text:hover
+			{
+				transition: all .2s ease-in-out;
+				-webkit-text-shadow: 0 0 20px rgba(0, 0, 204, .7);
+    			text-shadow: 0 0 20px rgba(255,255,255, .7);
+			}
+			.all-user
+			{
+				margin-top:40px; 
+			}
+			.buyers
+			{
+				display: none;
+			}
+			.sellers
+			{
+				display: none;
+			}
+			.users-header
+			{
+				font-weight: bolder;
+				color: #32ac0d;
+				padding: 10px 0px;
+				border-bottom:1px solid #32ac0d; 
+			}
 		</style>
 	</head>
 	<body>
@@ -163,65 +211,181 @@ else if($_SESSION['type']=="admin")
 				<h4 class="dashboard-header">Dashboard</h4>
 				<div class="mynavbar">
 					<ul>
-						<li><a class="active" href="homepageseller.php">My Products</a></li>
-						<li><a href="addproducts.php">Add Products</a></li>
-						<li><a>Recent Orders</a></li>
+						<li><a class="active" href="admin_users.php">Users</a></li>
+						<li><a href="allorders.php">All Orders</a></li>
+						<li><a href="allfeedback.php">Feedback</a></li>
 						<li><a>Contact List</a></li>
 					</ul>
 				</div>
 			</div>
-			<div class="col-lg-10 col-md-9 col-sm-9 col-xs-8 right-bar">
-					
-					<div class="products-container">
-						<h4 class="" style="color:#fff;float: left;">Product Table</h4>
-						
-						<div class="myseacrh">
-							<span class=""><input id="searchBox" onkeyup="ownersProducts(this.value)" type="text" class="mysearchbox pull-right"  placeholder="&nbsp;Search here ..." name="searchBox" ></span>
-							<a href="addproducts.php"><button type="button" class="pull-right myiconbutton-plus"><span class="fa fa-plus"></span></button></a>
-							<a><button type="button" class="pull-right myiconbutton-delete"><span class="fa fa-trash"></span></button></a>
-						</div>			
-					</div>
-					<span id="demo"></span>
-					<table class="table table-responsive">
-						
+			<div class="col-lg-10 col-md-9 col-sm-9 col-xs-8 right-bar">	
+				<div class="products-container">
+					<h4 class="" style="color:#fff;float: left;">User Dashboard</h4>
+					<div class="myseacrh">
+						<span class=""><input id="searchBox" onkeyup="ownersProducts(this.value)" type="text" class="mysearchbox pull-right"  placeholder="&nbsp;Search here ..." name="searchBox" ></span>
+						<a href="addproducts.php"><button type="button" class="pull-right myiconbutton-plus"><span class="fa fa-plus"></span></button></a>
+						<a><button type="button" class="pull-right myiconbutton-delete"><span class="fa fa-trash"></span></button></a>
+					</div>			
+				</div>
+				<span id="demo"></span>
+					<!-- <div class="flex-container"></div> -->
+			</div>			
+				<div class="box" id="total_uesrs" onclick="">
+					Total<br> <span class="count-text"><?=$get_users?></span><br> Users
+				</div>
+				<div class="box" id="total_buyers" onclick="">
+					Total<br> <span class="count-text"><?=$get_buyers?></span><br> Buyers
+				</div>
+				<div class="box" id="total_sellers" onclick="">
+					Total<br> <span class="count-text"><?=$get_sellers?></span><br> Sellers
+				</div>
+			<div id="users" class="col-lg-10 col-md-9 col-sm-9 col-xs-8 right-bar users">
+				<table class="table">
+					<h4 class="users-header">All user</h4>
+					<thead>
+						<th>SL no.</th>
+						<th>Image</th>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>Date Of Birth</th>
+						<th>Gender</th>
+						<th>Address</th>
+						<th>Type</th>
+						<th>Reg Time</th>
+						<th>User validity</th>
+						<th>Block/UnBlock</th>
+					</thead>
+					<tbody>
+					<?php 
+					$slno=0;
+					// echo "<script>alert($id)</script>";
+					$query1=get_all_users();
+					$rows1=mysqli_num_rows($query1);
+					// echo "<script>alert($rows1)</script>";
+					if($rows1>0)
+					{
+						while($row=mysqli_fetch_assoc($query1))  
+						{			
+					?>
+						<tr>
+							<form method="POST" action="carthandler.php?c_id=<?php echo $row['c_id'];?>">
+								<td><?php echo $slno +=1?></td>
+								<td><img src="images/<?php echo $row['imgname']?>" width="80px"></td>
+								<td><?php echo $row['name']?></td>
+								<td><?php echo $row['email']?></td>
+								<td><?php echo $row['phone']?></td>
+								<td><?php echo $row['dob']?></td>
+								<td><?php echo $row['gender']?></td>
+								<td><?php echo $row['address']?></td>
+								<td><?php echo $row['type']?></td>
+								<td><?php echo $row['date']?></td>
+								<td><?php echo $row['validity']?></td>
+								<td><button class="btn btn-success fa fa-check btn-xs"></button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger fa fa-ban btn-xs"></button></td>
+							</form>
+						</tr>
+						<?php }}?>
+					</tbody>
+				</table>
+			</div>
+			<div id="buyers" class="col-lg-10 col-md-9 col-sm-9 col-xs-8 right-bar buyers">
+					<table class="table">
+						<h4 class="users-header">Buyer</h4>
 						<thead>
-							<th width="150px"><input type="checkbox" name="select_all">&nbsp;&nbsp;Select All</th>
-							<th width="300px">Product Model</th>
-							<th width="200px">Product Image</th>
-							<th width="200px">Price</th>
-							<th width="200px">Quantity</th>
-							<th>Status</th>
-							<th>Action</th>
+							<th>SL no.</th>
+							<th>Image</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Phone</th>
+							<th>Date Of Birth</th>
+							<th>Gender</th>
+							<th>Address</th>
+							<th>Type</th>
+							<th>Reg Time</th>
+							<th>User validity</th>
+							<th>Block/UnBlock</th>
 						</thead>
-						
-						<tbody >
-							
-							<?php
-							$query1=owner_id($email);
-							$rows1=mysqli_num_rows($query1);
-							if($rows1>0)
-							{
-								while($row=mysqli_fetch_assoc($query1))  
-								{
-								
-							?>
+						<tbody>
+						<?php 
+						$slno=0;
+						// echo "<script>alert($id)</script>";
+						$query1=get_all_buyers();
+						$rows1=mysqli_num_rows($query1);
+						// echo "<script>alert($rows1)</script>";
+						if($rows1>0)
+						{
+							while($row=mysqli_fetch_assoc($query1))  
+							{			
+						?>
 							<tr>
-								<td><input type="checkbox" name="select_all"></td>
-								<td><?= $row['model']?></td>
-								<td><img src="images/<?= $row['main_image']?>" width="80px;"></td>
-								<td>Regular: <?= $row['regular_price']?></br>Special: <?= $row['special_price']?></br>Discount: <?= $row['discount_price']?></td>
-								<td><?= $row['quantity']?></td>
-								<td><?= $row['status']?></td>
-								<td>
-									<a href="editproducts.php?header=<?php echo $row['header']?>&id=<?php echo $row['id']?>"><button type="submit" class="btn btn-success" name=""><span class="fa fa-edit"></span></button></a>
-									
-								</td>	
-								</tr>
+								<form method="POST" action="carthandler.php?c_id=<?php echo $row['c_id'];?>">
+									<td><?php echo $slno +=1?></td>
+									<td><img src="images/<?php echo $row['imgname']?>" width="80px"></td>
+									<td><?php echo $row['name']?></td>
+									<td><?php echo $row['email']?></td>
+									<td><?php echo $row['phone']?></td>
+									<td><?php echo $row['dob']?></td>
+									<td><?php echo $row['gender']?></td>
+									<td><?php echo $row['address']?></td>
+									<td><?php echo $row['type']?></td>
+									<td><?php echo $row['date']?></td>
+									<td><?php echo $row['validity']?></td>
+									<td><button class="btn btn-success fa fa-check btn-xs"></button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger fa fa-ban btn-xs"></button></td>
+								</form>
+							</tr>
 							<?php }}?>
 						</tbody>
 					</table>
-					
 				</div>
+				<div id="sellers" class="col-lg-10 col-md-9 col-sm-9 col-xs-8 right-bar sellers">
+						<table class="table">
+							<h4 class="users-header">All Sellers</h4>
+							<thead>
+								<th>SL no.</th>
+								<th>Image</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th>Date Of Birth</th>
+								<th>Gender</th>
+								<th>Address</th>
+								<th>Type</th>
+								<th>Reg Time</th>
+								<th>User validity</th>
+								<th>Block/UnBlock</th>
+							</thead>
+							<tbody>
+							<?php 
+							$slno=0;
+							// echo "<script>alert($id)</script>";
+							$query1=get_all_sellers();
+							$rows1=mysqli_num_rows($query1);
+							// echo "<script>alert($rows1)</script>";
+							if($rows1>0)
+							{
+								while($row=mysqli_fetch_assoc($query1))  
+								{			
+							?>
+								<tr>
+									<form method="POST" action="carthandler.php?c_id=<?php echo $row['c_id'];?>">
+										<td><?php echo $slno +=1?></td>
+										<td><img src="images/<?php echo $row['imgname']?>" width="80px"></td>
+										<td><?php echo $row['name']?></td>
+										<td><?php echo $row['email']?></td>
+										<td><?php echo $row['phone']?></td>
+										<td><?php echo $row['dob']?></td>
+										<td><?php echo $row['gender']?></td>
+										<td><?php echo $row['address']?></td>
+										<td><?php echo $row['type']?></td>
+										<td><?php echo $row['date']?></td>
+										<td><?php echo $row['validity']?></td>
+										<td><button class="btn btn-success fa fa-check btn-xs"></button>&nbsp;&nbsp;&nbsp;<button class="btn btn-danger fa fa-ban btn-xs"></button></td>
+									</form>
+								</tr>
+								<?php }}?>
+							</tbody>
+						</table>
+					</div>
 		</div>
 		
 		
@@ -256,9 +420,42 @@ submitfeedback();
 				}
 			
 			};
-			xhttp.open("GET","searchownerproducts.php?str="+str,true);
+			xhttp.open("GET","searchusers.php?str="+str,true);
 			xhttp.send();
 		}
 	}
+
+	
+		// alert('hell');
+		var total_users=document.getElementById('total_uesrs');
+		var total_buyers=document.getElementById('total_buyers');
+		var total_sellers=document.getElementById('total_sellers');
+
+		var users=document.getElementById('users');
+		var buyers=document.getElementById('buyers');
+		var sellers=document.getElementById('sellers');
+
+		total_users.onclick=function()
+		{
+			// alert('hell');
+			users.style.display="block";
+			buyers.style.display="none";
+			sellers.style.display="none";
+		};
+		total_buyers.onclick=function()
+		{
+			users.style.display="none";
+			buyers.style.display="block";
+			sellers.style.display="none";
+		};
+		total_sellers.onclick=function()
+		{
+			users.style.display="none";
+			buyers.style.display="none";
+			sellers.style.display="block";
+		};
+
+
+	
 </script>
 

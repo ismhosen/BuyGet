@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+include_once 'connection.php';
 
 function signin_Query($email,$pass)
 {
@@ -29,5 +29,28 @@ function email_Query($email)
 {
 	return mysqli_query(connection(),"SELECT * FROM customers WHERE email='$email'");
 }
-
+function get_users()
+{
+	return mysqli_query(connection(),"SELECT * FROM customers");
+}
+function get_buyers()
+{
+	return mysqli_query(connection(),"SELECT * FROM users where type='buyer'");
+}
+function get_sellers()
+{
+	return mysqli_query(connection(),"SELECT * FROM users where type='seller'");
+}
+function get_all_users()
+{
+	return mysqli_query(connection(),"SELECT * FROM customers INNER JOIN users where customers.email=users.email");
+}
+function get_all_buyers()
+{
+	return mysqli_query(connection(),"SELECT * FROM customers INNER JOIN users where users.type='buyer' AND customers.email=users.email");
+}
+function get_all_sellers()
+{
+	return mysqli_query(connection(),"SELECT * FROM customers INNER JOIN users where users.type='seller' AND customers.email=users.email");
+}
 ?>

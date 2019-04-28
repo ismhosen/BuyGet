@@ -13,6 +13,10 @@ function owner_search_orders_products_Query($email)
 {
 	return mysqli_query(connection(),"SELECT laptops.main_image,laptops.model, laptops.header, laptops.owner_email, laptops.id, orders.product_id, orders.owner_email, orders.price, orders.quantity, orders.name, orders.email, orders.mobile, orders.address,orders.comment FROM laptops INNER JOIN orders WHERE laptops.header LIKE '".$_GET['str']."%' AND laptops.owner_email= orders.owner_email AND laptops.id=orders.product_id");
 }
+function admin_search_all_orders_Query()
+{
+	return mysqli_query(connection(),"SELECT laptops.main_image,laptops.model, laptops.header, laptops.owner_email, laptops.id, orders.product_id, orders.owner_email, orders.price, orders.quantity, orders.name, orders.email, orders.mobile, orders.address,orders.comment FROM laptops INNER JOIN orders WHERE laptops.header LIKE '".$_GET['str']."%' AND laptops.id=orders.product_id");
+}
 
 function owner_search_users_Query()
 {

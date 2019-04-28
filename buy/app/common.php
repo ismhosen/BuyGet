@@ -408,7 +408,7 @@ function adminheader()
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
 					<span class="fa fa-bars""></span>	
 				</button>
-				<a href="homepageseller.php" class="navbar-brand"><img src="images/logo.png" width=70px></a>
+				<a href="homepageadmin.php" class="navbar-brand"><img src="images/logo.png" width=70px></a>
 			</div>
 			
 			<div class="collapse navbar-collapse" id="myNavbar">

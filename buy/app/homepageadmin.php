@@ -23,6 +23,10 @@ else if($_SESSION['type']=="admin")
 {
 	adminheader();
 }
+else
+{
+    echo "<script>document.location='index.php';</script>";
+}
 $get_users=mysqli_num_rows(get_users());
 $get_buyers=mysqli_num_rows(get_buyers());
 $get_sellers=mysqli_num_rows(get_sellers());
@@ -159,6 +163,18 @@ $get_sellers=mysqli_num_rows(get_sellers());
 				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .5);
     			box-shadow: 0 0 10px rgba(255,255,255, .5);
 			}
+			#total_users
+			{
+				background-color: #1c67d8;;
+			}
+			#total_buyers
+			{
+				background-color: #4d94ff;
+			}
+			#total_sellers
+			{
+				background-color: #4d94ff;
+			}
 			.box
 			{
 				float: left;
@@ -166,7 +182,7 @@ $get_sellers=mysqli_num_rows(get_sellers());
 				margin-right:45px; 
 				margin-top: 40px; 
 				width: 200px;
-				background-color: #32ac0d;
+				/* background-color: #32ac0d; */
 				color: #fff;
 				font-weight: bolder;
 				text-align: center;
@@ -199,9 +215,9 @@ $get_sellers=mysqli_num_rows(get_sellers());
 			.users-header
 			{
 				font-weight: bolder;
-				color: #32ac0d;
+				color: #1c67d8;
 				padding: 10px 0px;
-				border-bottom:1px solid #32ac0d; 
+				border-bottom:1px solid #4d94ff; 
 			}
 		</style>
 	</head>
@@ -213,8 +229,9 @@ $get_sellers=mysqli_num_rows(get_sellers());
 					<ul>
 						<li><a class="active" href="admin_users.php">Users</a></li>
 						<li><a href="allorders.php">All Orders</a></li>
+						<li><a href="alllaptops.php">All Laptops</a></li>
 						<li><a href="allfeedback.php">Feedback</a></li>
-						<li><a>Contact List</a></li>
+						<!-- <li><a>Contact List</a></li> -->
 					</ul>
 				</div>
 			</div>
@@ -230,7 +247,7 @@ $get_sellers=mysqli_num_rows(get_sellers());
 				<span id="demo"></span>
 					<!-- <div class="flex-container"></div> -->
 			</div>			
-				<div class="box" id="total_uesrs" onclick="">
+				<div class="box" id="total_users" onclick="">
 					Total<br> <span class="count-text"><?=$get_users?></span><br> Users
 				</div>
 				<div class="box" id="total_buyers" onclick="">
@@ -290,7 +307,7 @@ $get_sellers=mysqli_num_rows(get_sellers());
 			</div>
 			<div id="buyers" class="col-lg-10 col-md-9 col-sm-9 col-xs-8 right-bar buyers">
 					<table class="table">
-						<h4 class="users-header">Buyer</h4>
+						<h4 class="users-header">All Buyer</h4>
 						<thead>
 							<th>SL no.</th>
 							<th>Image</th>
@@ -427,7 +444,7 @@ submitfeedback();
 
 	
 		// alert('hell');
-		var total_users=document.getElementById('total_uesrs');
+		var total_users=document.getElementById('total_users');
 		var total_buyers=document.getElementById('total_buyers');
 		var total_sellers=document.getElementById('total_sellers');
 
@@ -441,18 +458,27 @@ submitfeedback();
 			users.style.display="block";
 			buyers.style.display="none";
 			sellers.style.display="none";
+			total_users.style.backgroundColor="#1c67d8";
+			total_buyers.style.backgroundColor="#4d94ff";
+			total_sellers.style.backgroundColor="#4d94ff";
 		};
 		total_buyers.onclick=function()
 		{
 			users.style.display="none";
 			buyers.style.display="block";
 			sellers.style.display="none";
+			total_users.style.backgroundColor="#4d94ff";
+			total_buyers.style.backgroundColor="#1c67d8";
+			total_sellers.style.backgroundColor="#4d94ff";
 		};
 		total_sellers.onclick=function()
 		{
 			users.style.display="none";
 			buyers.style.display="none";
 			sellers.style.display="block";
+			total_users.style.backgroundColor="#4d94ff";
+			total_buyers.style.backgroundColor="#4d94ff";
+			total_sellers.style.backgroundColor="#1c67d8";
 		};
 
 

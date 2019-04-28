@@ -1,6 +1,6 @@
 <?php
 
-include 'connection.php';
+include_once 'connection.php';
 
 function laptops_index_query()
 {
@@ -124,5 +124,15 @@ function owner_order_id($email)
 {
 	// echo "<script>alert($id)</script>";
 	return mysqli_query(connection(),"SELECT orders.product_id, orders.customer_id, orders.price, orders.quantity,orders.name, orders.address, orders.mobile, orders.email, orders.comment, laptops.main_image, laptops.model FROM orders INNER JOIN laptops WHERE orders.product_id=laptops.id  AND orders.owner_email=$email");
+}
+
+function owner_order()
+{
+	return mysqli_query(connection(),"SELECT orders.product_id, orders.customer_id, orders.price, orders.quantity,orders.name, orders.address, orders.mobile, orders.email, orders.comment, laptops.main_image, laptops.model FROM orders INNER JOIN laptops WHERE orders.product_id=laptops.id ");
+}
+
+function get_all_laptop()
+{
+	return mysqli_query(connection(),"SELECT * from laptops");
 }
 ?>

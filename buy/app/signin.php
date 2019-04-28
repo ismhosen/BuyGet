@@ -9,13 +9,14 @@ myHeader();
 <html>
 	<head>
 		<style>
-			.signup
+			/* .signin
 			{
 				margin-top: 120px;
 				background: #fff;
+				margin-bottom:80px;
 				
 			}
-			.myinput
+			.myinput-signin
 			{
 				width: 300px;
 				border: .1px solid #fff;
@@ -23,7 +24,7 @@ myHeader();
 				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .2);
     			box-shadow: 0 0 10px rgba(0, 0, 204, .2);
 			}
-			.myinput:focus
+			.myinput-signin:focus
 			{
 				transition: all .3s ease-in-out;
 				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .4);
@@ -39,14 +40,16 @@ myHeader();
 				color: red;
 				margin-left: 7px;
 				font-size: 11px;
-			}
+			} */
 		</style>
+		<link rel="stylesheet" type="text/css" href="buyercss.css">
+
 	</head>
 	<body>
 		<div class="container text-center">
 <!--			<form action="" method="POST">-->
 			<form action="signinhandler.php" method="POST">
-				<div class="signup">
+				<div class="signin">
 					<div class="row">
 						<div class="col-md-12">
 							<h3 class="">Sign IN Form</h3>
@@ -62,7 +65,7 @@ myHeader();
 											</td>
 											<td>
 												<hr>
-												<input type="text" class="myinput input-sm"  placeholder="&nbsp;Enter your email..." name="email">
+												<input type="text" class="myinput-signin input-sm"  placeholder="&nbsp;Enter your email..." name="email">
 											</td>
 										</tr>
 										<tr>
@@ -73,7 +76,7 @@ myHeader();
 											</td>
 											<td>
 												<hr>
-												<input type="password" class="myinput input-sm"  placeholder="&nbsp;Enter your paswword ..." name="password">
+												<input type="password" class="myinput-signin input-sm"  placeholder="&nbsp;Enter your paswword ..." name="password">
 												<?php
 													
 													if($_GET['msg']=='email_empty' || $_GET['msg']=='pass_empty')

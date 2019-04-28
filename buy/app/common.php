@@ -16,23 +16,9 @@ function demoheader(){
 <!DOCTYPE html>
 <html lang='en'>	
 	<head>
-		<style type='text/css'>
-			body
-			{
-				background: #e6f0ff;
-			}
-			.signupin
-			{
-				padding: 15px 25px;
-			}
-			.mynavbar:hover
-			{
-				color: #000099;
-				transition: all .5s ease-in-out;
-				-webkit-transition: all .5s ease-in-out;
-				
-			}
-		</style>
+		
+			<link rel='stylesheet' type='text/css' href='commoncss.css'>
+		
 	</head>
 	<body>
 		<header>
@@ -80,39 +66,10 @@ function myheader()
 <html lang="en">	
 	<head>
 		<style type="text/css">
-			body
-			{
-				background: #e6f0ff;
-			}
-			.signupin
-			{
-				padding: 15px 20px;
-			}
-			#myNavbar a
-			{
-				margin:0;
-				paddin:0;
-			}
-			.mynavbar:hover
-			{
-				color: #000099;
-				transition: all .5s ease-in-out;
-				-webkit-transition: all .5s ease-in-out;	
-			}
-			@media screen and (max-width: 932px) and (min-width: 768px) {
-				.signupin {
-					padding: 15px 5px!important;
-				}
-				
-			  }
-			  @media screen and (max-width: 852px) and (min-width: 768px) {
-				
-				.mynavbar, .fa {
-					font-size:11px;
-				}
-			  }
+			
 			  
 		</style>
+		<link rel="stylesheet" type="text/css" href="commoncss.css">
 	</head>
 	<body>
 		<header>
@@ -165,46 +122,7 @@ function buyerheader($name,$imgname,$cart,$bookmark)
 	<!DOCTYPE html>
 <html lang="en">	
 	<head>
-		<style type="text/css">
-		body
-		{
-			background: #e6f0ff;
-		}
-		nav
-		{
-			background-color:rgba(0, 0, 128,0.3);
-		}
-		.signupin
-		{
-			padding: 15px 20px;
-		}
-		#myNavbar a
-		{
-			margin:0;
-			paddin:0;
-		}
-		.mynavbar:hover
-		{
-			color: #000099;
-			transition: all .5s ease-in-out;
-			-webkit-transition: all .5s ease-in-out;	
-		}
-		@media screen and (max-width: 932px) and (min-width: 768px) {
-			.signupin {
-				padding: 15px 5px!important;
-			}
-		
-			
-		  }
-		  @media screen and (max-width: 858px) and (min-width: 768px) {
-			
-			.mynavbar, .fa {
-				font-size:11px;
-			}
-		
-		  }
-			  
-		</style>
+		<link rel="stylesheet" type="text/css" href="commoncss.css">
 	</head>
 	<body>
 	<header>
@@ -262,46 +180,7 @@ function sellerheader($name,$imgname)
 	<!DOCTYPE html>
 <html lang="en">	
 	<head>
-		<style type="text/css">
-		body
-		{
-			background: #e6f0ff;
-		}
-		nav
-		{
-			background-color:rgba(0, 0, 128,0.3);
-		}
-		.signupin
-		{
-			padding: 15px 20px;
-		}
-		#myNavbar a
-		{
-			margin:0;
-			paddin:0;
-		}
-		.mynavbar:hover
-		{
-			color: #000099;
-			transition: all .5s ease-in-out;
-			-webkit-transition: all .5s ease-in-out;	
-		}
-		@media screen and (max-width: 932px) and (min-width: 768px) {
-			.signupin {
-				padding: 15px 5px!important;
-			}
-		
-			
-		  }
-		  @media screen and (max-width: 858px) and (min-width: 768px) {
-			
-			.mynavbar, .fa {
-				font-size:11px;
-			}
-		
-		  }
-			  
-		</style>
+		<link rel="stylesheet" type="text/css" href="commoncss.css">
 	</head>
 	<body>
 	<header>
@@ -355,46 +234,7 @@ function adminheader()
 	<!DOCTYPE html>
 <html lang="en">	
 	<head>
-		<style type="text/css">
-		body
-		{
-			background: #e6f0ff;
-		}
-		nav
-		{
-			background-color:rgba(0, 0, 128,0.3);
-		}
-		.signupin
-		{
-			padding: 15px 20px;
-		}
-		#myNavbar a
-		{
-			margin:0;
-			paddin:0;
-		}
-		.mynavbar:hover
-		{
-			color: #000099;
-			transition: all .5s ease-in-out;
-			-webkit-transition: all .5s ease-in-out;	
-		}
-		@media screen and (max-width: 932px) and (min-width: 768px) {
-			.signupin {
-				padding: 15px 5px!important;
-			}
-		
-			
-		  }
-		  @media screen and (max-width: 858px) and (min-width: 768px) {
-			
-			.mynavbar, .fa {
-				font-size:11px;
-			}
-		
-		  }
-			  
-		</style>
+		<link rel="stylesheet" type="text/css" href="commoncss.css">
 	</head>
 	<body>
 	<header>

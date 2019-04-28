@@ -13,39 +13,7 @@ $imgname=$_SESSION['user']['imgname'];
 ?>
 <html>
 	<head>
-		<style>
-			.update
-			{
-				background: #fff;
-				
-			}
-			.myinput
-			{
-				width: 300px;
-				border: .1px solid #fff;
-				border-radius: 2px;
-				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .2);
-    			box-shadow: 0 0 10px rgba(0, 0, 204, .2);
-			}
-			.myinput:focus
-			{
-				transition: all .3s ease-in-out;
-				-webkit-box-shadow: 0 0 10px rgba(0, 0, 204, .4);
-    			box-shadow: 0 0 10px rgba(0, 0, 204, .4);
-			}
-			.table-class hr
-			{
-				height: 5px;
-				border: 1px solid #fff;
-			}
-			.error
-			{
-				color: red;
-				margin-left: 7px;
-				font-size: 11px;
-			}
-			
-		</style>
+		<link rel="stylesheet" type="text/css" href="commoncss.css">
 	</head>
 	<body>
 		<div class="container text-center">
@@ -66,7 +34,7 @@ $imgname=$_SESSION['user']['imgname'];
 												<td width=900px><input type="file" name="imgname" class="productseditbox"></td>
 										</tr>
 
-										<input type="text" name="existing_image" value="<?= $imgname ?>">
+										<input type="hidden" name="existing_image" value="<?= $imgname ?>">
 
 
 											<td>

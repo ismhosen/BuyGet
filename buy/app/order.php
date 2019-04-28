@@ -43,40 +43,8 @@ if($_GET['error']=="cart_bookmark_error")
 <!DOCTYPE html>
 <html>
 	<head>
-		<style>
-            .order
-            {
-                margin-top:100px;
-                margin-bottom:100px;
-            }
-            .information
-            {
-                border:1px solid black;
-                padding: 20px 20px;
-            }
-            .order-details,.voucher,.payment
-            {
-                border:1px solid black;
-                padding: 10px 20px;
-                margin-bottom: 20px;
-            }
-            /* .voucher
-            {
-                border:1px solid black;
-                padding: 15px 20px;
-                margin-bottom: 20px;
-            } */
-            /* .voucher
-            {
-                border:1px solid black;
-                padding: 15px 20px;
-                margin-bottom: 20px;
-            } */
-            .succcess
-            {
-                display:none;
-            }
-        </style>
+			<link rel="stylesheet" type="text/css" href="commoncss.css">
+
     </head>
     <body>
         <div class="container order">

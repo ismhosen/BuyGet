@@ -9,7 +9,7 @@ $email=$_SESSION['user']['email'];
 <!DOCTYPE html>
 <html>
 	<head>
-		<style>
+		<!-- <style>
 			body
 			{
 				margin-top: 52px;
@@ -67,7 +67,9 @@ $email=$_SESSION['user']['email'];
             {
                 color:red;
             }
-		</style>
+		</style> -->
+	<link rel="stylesheet" type="text/css" href="commoncss.css">
+
 	</head>
 	<body>
     

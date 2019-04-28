@@ -36,66 +36,7 @@ mySearch();
 ?>
 <html>
 	<head>
-		<style>
-			.products
-			{
-				margin-top: 120px;
-				background: #e6f0ff;
-			}
-			.laptop-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
-			}
-			.productdiv
-			{
-				width: 205px;
-				margin-right: 5px;
-				margin-bottom: 15px;
-				border: 1px solid 10px rgba(32, 80, 223, .2);;
-				background: #fff;
-				padding: 10px 15px;
-				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .2);
-    			box-shadow: 0 0 10px rgba(32, 80, 223, .2);
-				
-			}
-			.productdiv:hover
-			{
-				transition: all .3s ease-in-out;
-				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .4);
-    			box-shadow: 0 0 10px rgba(32, 80, 223, .5);
-			}
-			.text-style
-			{
-				font-size: 15px;
-			}
-			.search
-			{
-				background: #fff;
-				padding: 7px 15px;
-			}
-			.collapse-style
-			{
-				
-			}
-			.collapse-style span
-			{
-				font-size:15px;
-				font-weight:300;
-			}
-			.collapse-style hr
-			{
-				height:2px;
-				margin:7px;
-			}
-			.title-hr
-			{
-				background:#4d94ff;
-				height:2px;
-				margin-top:10;
-			}
-			
-		</style>
+		<link rel="stylesheet" type="text/css" href="commoncss.css">
 	</head>
 	<body>
 		<div class="products">

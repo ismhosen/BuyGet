@@ -6,39 +6,7 @@ myLink();
 ?>
 <html>
 	<head>
-		<style>
-			body
-			{
-				background: #e6f0ff;
-			}
-			.products
-			{
-				background: #e6f0ff;
-			}
-			.search-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
-			}
-			.productdiv
-			{
-				margin-right: 39px;
-				background: #fff;
-				padding: 10px 15px;
-				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .2);
-    			box-shadow: 0 0 10px rgba(32, 80, 223, .2);
-			}
-			.productdiv:hover
-			{
-				transition: all .3s ease-in-out;
-				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .4);
-    			box-shadow: 0 0 10px rgba(32, 80, 223, .4);
-			}
-			.text-style
-			{
-				font-size: 15px;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="commoncss.css">
 	</head>
 	<body>
 		<div class="products">

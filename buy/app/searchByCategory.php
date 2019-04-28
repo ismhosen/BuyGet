@@ -11,42 +11,7 @@ myLink();
 ?>
 <html>
 	<head>
-		<style>
-			body
-			{
-				background: #e6f0ff;
-			}
-			.products
-			{
-				background: #e6f0ff;
-			}
-			.search-products-text
-			{
-				font-size: 17;			
-				color: #4d94ff;
-			}
-			.productdiv
-			{
-				width: 205px;
-				margin-right: 5px;
-				margin-bottom: 15px;
-				border: 1px solid 10px rgba(32, 80, 223, .2);;
-				background: #fff;
-				padding: 10px 15px;
-				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .2);
-    			box-shadow: 0 0 10px rgba(32, 80, 223, .2);
-			}
-			.productdiv:hover
-			{
-				transition: all .3s ease-in-out;
-				-webkit-box-shadow: 0 0 10px rgba(32, 80, 223, .4);
-    			box-shadow: 0 0 10px rgba(32, 80, 223, .5);
-			}
-			.text-style
-			{
-				font-size: 15px;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="commoncss.css">
 	</head>
 	<body>
 		<div class="produts">

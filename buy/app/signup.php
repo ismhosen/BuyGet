@@ -47,7 +47,7 @@ myHeader();
 	</head>
 	<body>
 		<div class="container text-center">
-			<form action="signuphandler.php" method="POST">
+			<form action="signuphandler.php" method="POST" enctype= "multipart/form-data">
 				<div class="signup">
 					<div class="row">
 						<div class="col-md-12">

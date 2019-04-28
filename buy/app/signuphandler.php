@@ -4,7 +4,10 @@ require '../service/users_validation_service.php';
 $nameErr=$emailErr=$passErr=$cpassErr=$phoneErr=$dateErr=$addresErr=$genderErr=$emailErrspace="";
 $errCount=1;
 $types=$_POST['types'];
-$imgname=$_POST['imgname'];
+
+$imgname=$_FILES['imgname']['name'];
+$imgname_temp=$_FILES['imgname']['tmp_name'];
+
 $_SESSION['imgname'] = $imgname;
 $name=$_POST['fullname'];
 $_SESSION['name'] = $name;
@@ -46,6 +49,9 @@ $checkBox=$_POST['checkBox'];
 			$_SESSION['date'] = "";
 			$_SESSION['address'] = "";
 			$_SESSION['gender'] = "";
+
+
+			move_uploaded_file($imgname_temp, "images/$imgname");
 
 		}
 		else

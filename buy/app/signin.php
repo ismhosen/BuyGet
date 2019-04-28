@@ -49,7 +49,7 @@ myHeader();
 				<div class="signup">
 					<div class="row">
 						<div class="col-md-12">
-							<h3 class="">Sign UP Form</h3>
+							<h3 class="">Sign IN Form</h3>
 							<hr>
 							
 							<div class="table-responsive">

@@ -80,6 +80,14 @@ function validate_unique_email($email)
 	else
 		return true;
 }
+function validate_signup_imgname($imgname)
+{
+	if(empty($imgname))
+	{
+		return "*Image required";
+	}
+	return "";
+}
 function validate_signup_name($name)
 {
 	if(empty($name))

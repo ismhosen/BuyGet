@@ -5,10 +5,10 @@ function signin_Query($email,$pass)
 {
 	return mysqli_query(connection(),"SELECT * FROM users WHERE email='$email' AND password='$pass'");
 }
-function signup_Query($name,$email,$pass,$phone,$date,$gender,$address,$types)
+function signup_Query($imgname,$name,$email,$pass,$phone,$date,$gender,$address,$types)
 {
 	$address=mysqli_real_escape_string(connection(),$address);
-	$sql="INSERT INTO customers(name,email,password,phone,dob,gender,address) VALUES('$name','$email','$pass','$phone','$date','$gender','$address')";
+	$sql="INSERT INTO customers(name,email,password,phone,dob,gender,address,imgname) VALUES('$name','$email','$pass','$phone','$date','$gender','$address','$imgname')";
 	$sql1="INSERT INTO users(email,password,type) VALUES('$email','$pass','$types')";
 	mysqli_query(connection(),$sql);
 	mysqli_query(connection(),$sql1);

@@ -1,5 +1,5 @@
 <?php 
-include '../data/products_data_access.php';
+include_once '../data/products_data_access.php';
 	function get_title($id)
 	{
 		$query=laptops_id_query($id);

@@ -73,6 +73,17 @@ myHeader();
 										<tr>
 											<td>
 												<hr>	
+												<label>Please Select a Image : &nbsp;</label>
+											</td>
+											<td>	
+												<hr>
+												<input type="file" name="imgname" id="imgname">
+												<span class="error"><?php echo $_GET['msgimg']?></span>
+											</td>		
+										</tr>
+										<tr>
+											<td>
+												<hr>	
 												<label>Full Name : &nbsp;</label>
 											</td>
 											<td>	

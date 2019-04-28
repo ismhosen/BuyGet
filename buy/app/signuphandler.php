@@ -4,6 +4,8 @@ require '../service/users_validation_service.php';
 $nameErr=$emailErr=$passErr=$cpassErr=$phoneErr=$dateErr=$addresErr=$genderErr=$emailErrspace="";
 $errCount=1;
 $types=$_POST['types'];
+$imgname=$_POST['imgname'];
+$_SESSION['imgname'] = $imgname;
 $name=$_POST['fullname'];
 $_SESSION['name'] = $name;
 $email=$_POST['email'];
@@ -23,6 +25,7 @@ $_SESSION['gender'] = $gender;
 $checkBox=$_POST['checkBox'];
 	if(isset($_POST['submit']))
 	{
+		$img=validate_signup_imgname($imgname);
 		$ch = validate_signup_checkbox($checkBox);
 		$add = validate_signup_address($address);
 		$gen = validate_signup_gender($gender);
@@ -31,9 +34,9 @@ $checkBox=$_POST['checkBox'];
 		$pass1 = validate_signup_password($pass,$cpass);
 		$email1 = validate_signup_email($email);
 		$name1 = validate_signup_name($name);
-		if($ch == "" && $add == "" && $gen == "" && $date1 == "" && $phone1 == "" && $pass1 == "" && $email1 == "" && $name1 == "")
+		if($ch == "" && $add == "" && $gen == "" && $date1 == "" && $phone1 == "" && $pass1 == "" && $email1 == "" && $name1 == "" && $img == "")
 		{
-			signup_Query($name,$email,$pass,$phone,$date,$gender,$address,$types);
+			signup_Query($imgname,$name,$email,$pass,$phone,$date,$gender,$address,$types);
 			echo "<script>document.location='signin.php';</script>";
 			$_SESSION['name'] = "";
 			$_SESSION['email'] = "";
@@ -47,7 +50,7 @@ $checkBox=$_POST['checkBox'];
 		}
 		else
 		{
-			echo "<script>document.location='signup.php?msgname=$name1 & msgemail=$email1 & msgpass=$pass1 & msgphone=$phone1 & msgdate=$date1 & msggender=$gen & msgaddress=$add & msgcheckbox=$ch';</script>";
+			echo "<script>document.location='signup.php?msgname=$name1 & msgimg=$img & msgemail=$email1 & msgpass=$pass1 & msgphone=$phone1 & msgdate=$date1 & msggender=$gen & msgaddress=$add & msgcheckbox=$ch';</script>";
 		}
 		
 	}

@@ -258,6 +258,7 @@ $get_sellers=mysqli_num_rows(get_sellers());
                             <th width="">Name</th>
                             <th width="">Email</th>
                             <th width="">Comment</th>
+                            <th width="">Delete</th>
 						</thead>
 						
 						<tbody >
@@ -278,7 +279,11 @@ $get_sellers=mysqli_num_rows(get_sellers());
 								<td><?= $row['name']?></td>
 								<td><?= $row['email']?></td>
 								<td><?= $row['comment']?></td>
-								
+								<td>
+                                    <form method="POST" action="server.php?id=<?php echo $row['id'];?>">
+                                        <button type="submit" class="btn btn-danger fa fa-trash" name="delete_feedback"></button>
+                                    </form>
+                                </td>								
 							</tr>
 							<?php }}?>
 						</tbody>

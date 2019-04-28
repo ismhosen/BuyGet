@@ -11,6 +11,7 @@ $imgname=$_POST['imgname'];
 $fileName=$_FILES['imgname']['name'];
 $tempName=$_FILES['imgname']['temp_name'];
 // echo "<script>alert('$imgname')</script>";
+$existing_image = $_POST['existing_image'];
 image_mvoe($imgname);
 $brand=$_POST['brand'];
 $model=$_POST['model'];
@@ -58,7 +59,7 @@ if(isset($_POST['add']))
 if(isset($_POST['update']))
 {
     //  echo "hello ".$date." ".$status." ".$d_price;
-    products_update($id,$brand,$model,$header,$processor,$gen,$clock_speed,$cache,$d_type,$d_size,$d_res,$touch,$r_type,$ram,$storage,$g_chipset,$g_memory,$networking,$d_port,$a_port,$u_port,$battery,$weight,$color,$os,$others,$part_no,$origin,$assemble,$warranty,$upcoming,$gifts,$r_price,$s_price,$d_price,$quantity,$status,$date);
+    products_update($id,$brand,$model,$header,$processor,$gen,$clock_speed,$cache,$d_type,$d_size,$d_res,$touch,$r_type,$ram,$storage,$g_chipset,$g_memory,$networking,$d_port,$a_port,$u_port,$battery,$weight,$color,$os,$others,$part_no,$origin,$assemble,$warranty,$upcoming,$gifts,$r_price,$s_price,$d_price,$quantity,$status,$imgname,$existing_image);
     echo "<script>document.location='homepageseller.php';</script>";
 }
 if(isset($_POST['duplicate']))

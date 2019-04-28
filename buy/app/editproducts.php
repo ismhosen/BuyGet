@@ -281,6 +281,9 @@ else if($_SESSION['type']=="seller")
                                 <td width=900px><img src="images/<?php echo $row['main_image'];?>" width="200px"><input type="file" name="imgname" class="productseditbox" value="sdfsd"></td>
                             </tr>
                             <tr>
+                                <td><input type="hidden" name="existing_image" value="<?php echo $row['main_image'];?>"></td>
+                            </tr>
+                            <tr>
                                 <td width=300px>Brand</td>
                                 <td width=900px><input type="text" name="brand" class="productseditbox" value="<?php echo $row['brand'];?>"></td>
                             </tr>

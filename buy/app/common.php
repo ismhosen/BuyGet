@@ -140,6 +140,7 @@ function buyerheader($name,$imgname,$cart,$bookmark)
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff"><img class="img-circle" src="images/'.$imgname.'" width="21px" height="21px">&nbsp;&nbsp;'.$name.' <span class="caret"></span> </font></a>
 						<ul class="dropdown-menu">
 						<li><a href="userprofile.php"><font class="mynavbar" color="#4d94ff">My Profile</font></a></li>
+						<li><a href="inbox.php"><font class="mynavbar" color="#4d94ff">Inbox</font></a></li>
 						<li><a href="index.php"><font class="mynavbar" color="#4d94ff">Sign Out</font></a></li>
 						<li><a href=""><font class="mynavbar" color="#4d94ff">Help</font></a></li>
 						</ul>
@@ -198,7 +199,8 @@ function sellerheader($name,$imgname)
 					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href=""><font class="mynavbar " color="#4d94ff"><img class="img-circle" src="images/'.$imgname.'" width="21px" height="21px">&nbsp;&nbsp;'.$name.' <span class="caret"></span> </font></a>
 						<ul class="dropdown-menu">
 						<li><a href="userprofile.php"><font class="mynavbar" color="#4d94ff">My Profile</font></a></li>
-						<li><a href="index.php"><font class="mynavbar" color="#4d94ff">Sign Out</font></a></li>
+						<li><a href="inbox.php"><font class="mynavbar" color="#4d94ff">Inbox</font></a></li>
+						<li><a href="signout.php"><font class="mynavbar" color="#4d94ff">Sign Out</font></a></li>
 						<li><a href=""><font class="mynavbar" color="#4d94ff">Help</font></a></li>
 						</ul>
 					</li>

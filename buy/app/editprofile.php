@@ -9,6 +9,7 @@ $phone=$_SESSION['user']['phone'];
 $dob=$_SESSION['user']['dob'];
 $address=$_SESSION['user']['address'];
 $imgname=$_SESSION['user']['imgname'];
+
 ?>
 <html>
 	<head>
@@ -48,7 +49,7 @@ $imgname=$_SESSION['user']['imgname'];
 	</head>
 	<body>
 		<div class="container text-center">
-			<form action="editprofilehandler.php" method="POST">
+			<form action="editprofilehandler.php" method="POST" enctype="multipart/form-data">
 				<div class="update">
 					<div class="row">
 						<div class="col-md-12">
@@ -59,6 +60,15 @@ $imgname=$_SESSION['user']['imgname'];
 								<table align="center" class="table-class">
 									<tbody>
 										<tr>
+
+										<tr>
+												<td width=300px><strong>Select an Image: </strong></td>
+												<td width=900px><input type="file" name="imgname" class="productseditbox"></td>
+										</tr>
+
+										<input type="text" name="existing_image" value="<?= $imgname ?>">
+
+
 											<td>
 												<label>Full Name : &nbsp;</label>
 											</td>

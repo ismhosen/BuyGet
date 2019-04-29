@@ -55,11 +55,11 @@ $pass=$_SESSION['user']['password'];
 										<tr>
 											<td>
 												<hr>
-												<label>Password : &nbsp;</label>
+												<label>Old Password : &nbsp;</label>
 											</td>
 											<td>
 												<hr>
-												<input type="password" class="myinput input-sm" placeholder="&nbsp;Paswword..." value="<?= $pass ?>" name="oldpassword">
+												<input type="password" class="myinput input-sm" placeholder="&nbsp;Paswword..." name="oldpassword">
 												
 											</td>
 										</tr>

@@ -10,6 +10,8 @@ $pass=$_POST['password'];
 if(isset($_POST['submit']))
 {
 
+	$pass = md5($pass);
+
 	// echo '<script>alert("message successfully sent")</script>';
 	validate_signin_from_db($email,$pass);
 	

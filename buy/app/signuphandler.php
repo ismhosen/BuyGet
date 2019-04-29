@@ -39,6 +39,9 @@ $checkBox=$_POST['checkBox'];
 		$name1 = validate_signup_name($name);
 		if($ch == "" && $add == "" && $gen == "" && $date1 == "" && $phone1 == "" && $pass1 == "" && $email1 == "" && $name1 == "" && $img == "")
 		{
+
+			$pass = md5($pass);
+
 			signup_Query($imgname,$name,$email,$pass,$phone,$date,$gender,$address,$types);
 			echo "<script>document.location='signin.php';</script>";
 			$_SESSION['name'] = "";

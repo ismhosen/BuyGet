@@ -8,7 +8,7 @@ $email=$_SESSION['user']['email'];
 $name=$_SESSION['user']['name'];
 $imgname=$_SESSION['user']['imgname'];
 // get_users($email);
-// echo "<script>alert('$email')</script>";
+// echo "<script>alert('$id')</script>";
 echo "<title>Buy & Get</title>";
 myLink();
 if($email=="")

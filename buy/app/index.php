@@ -1,7 +1,7 @@
 <?php
 echo "<title>Buy & Get</title>";
 session_start();
-// session_destroy();
+session_destroy();
 include 'common.php';
 include '../data/products_data_access.php';
 myLink();

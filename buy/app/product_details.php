@@ -95,16 +95,13 @@ if($_GET['error']=="cart_bookmark_error")
 						<button type='Submit' name='add_to_cart_details' onclick="signin()">Add to cart</button>&nbsp;
 						<button type='Submit' style='' name='bookmark_details' onclick="signin()"><i class='fa fa-bookmark-o'></i></button>&nbsp;
 						<button type='Submit'>Add to compare</button>&nbsp;
-						
 						<?php }
 						else {
 						?>
 						<form action="carthandler.php?id=<?=$id?>&p_id=<?=$row['id']?>" method="POST">
 							<button type='Submit' name='add_to_cart_details'>Add to cart</button>&nbsp;
 							<button type='Submit' style='' name='bookmark_details'><i class='fa fa-bookmark-o'></i></button>&nbsp;
-							<!-- <button type='Submit'>Add to compare</button>&nbsp; -->
-							<button type='Submit'> <a href="chat.php?r_id=<?php echo $row['owner_id'] ?>">Contact Seller</a> </button>&nbsp;
-							<?php   $_SESSION['reciever'] = $row['owner_id']; ?>
+							<button type='Submit'>Add to compare</button>&nbsp;
 						</form>
 						<?php }?>
 					</div>

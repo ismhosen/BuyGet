@@ -13,19 +13,6 @@ function signup_Query($imgname,$name,$email,$pass,$phone,$date,$gender,$address,
 	mysqli_query(connection(),$sql);
 	mysqli_query(connection(),$sql1);
 }
-function get_sender_name($id)
-{
-	// echo "<script>alert($id)</script>";
-	$query=mysqli_query(connection(),"SELECT * from customers where id='$id'");
-	$rows=mysqli_num_rows($query);
-		if($rows==1)
-		{
-			while($row=mysqli_fetch_assoc($query))  
-			{
-				return $row['name'];
-			}
-		}
-}
 function update_Query($name,$email,$phone,$date,$address, $imgname)
 {
 	

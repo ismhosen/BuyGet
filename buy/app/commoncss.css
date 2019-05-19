@@ -205,7 +205,7 @@ nav
     table tbody tr td
     {
         padding: 10px;
-        border:.1px solid rgba(77,148,255,.3);
+        /* border:.1px solid rgba(77,148,255,.3); */
     }
     table tbody tr:hover
     {
@@ -422,7 +422,7 @@ body
             table tbody tr td
 			{
 				padding: 10px;
-				border:.1px solid rgba(77,148,255,.3);
+				/* border:.1px solid rgba(77,148,255,.3); */
 			}
 			table tbody tr:hover
 			{
